@@ -62,6 +62,10 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		console.log("Checkkkkkkkk");
 
    		let indexRemove="";
+
+
+
+
 			
 		for(let i in FailedInputs)
 		{
@@ -180,7 +184,9 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		//currentRow=Number(lastLineValue.replace("line",""));
 		//trId="EditRow"+currentRow;
 
-	
+		
+
+
 
 	}
 
@@ -302,22 +308,50 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 
 	self.CheckKeyFields=function()
 	{
+		console.log(self.GetValueInp);
+/*
+		let empty_2=self.GetValueInp(2)=="";
+		let empty_3=self.GetValueInp(3)=="";
+		let empty_4=self.GetValueInp(4)=="";
+
+		let empty_2_3_4= empty_2 && empty_3 && empty_4;*/
+
+		let ThisRowEmpty=true;
+		for(let i=2;i<=23;i++)
+		{
+			if(self.GetValueInp(i)!="")
+			{
+				ThisRowEmpty=false;
+			}
+
+		}
+		//console.log(ThisRowEmpty);
+
+		if(ThisRowEmpty)
+		{
+			console.log(lastLineValue);
+			ErorsContainer.ObjMessageErrorManager.RemoveMessageWithClass("lastLineValue");
+		}
+		
+
 		for(let i=2;i<=4;i++)
 		{		
 
-			if(self.GetValueInp(i)=="")
+			if((self.GetValueInp(i)=="")&&(!ThisRowEmpty))
 			{
 				AllCorrect*=false;
 				let inpId= idTableText+"Inpr"+currentRow+"c"+i;
 				FailedInputs[FailedInputs.length]={"code":inpId,"field":""};
 				ErorsContainer.ObjMessageErrorManager.AddMessage(inpId,"Поле '"+self.GetNameField(i)+"' не заполнено (строка: "+currentRow+").",currentRow);
 			}
+			
 		}
 
+		//AllCorrect*=empty_2_3_4;
 		
 
 
-		if(!self.CheckInput5_6_8())
+		if((!self.CheckInput5_6_8())&&(!ThisRowEmpty))
 		{
 			//console.log("oooooooooo");
 			let inpIsExist=false;
@@ -362,13 +396,20 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 	self.Highlight=function()
 	{
 		$("#"+trId).css('background', 'rosybrown');
+		//$(".inputEditor.line3").css('background', 'Violet');
+		//$(".inputEditor.line3").addClass(".bg-gradient-dark")
+		$(".inputEditor."+lastLineValue).addClass("bg-danger text-white");
+
+		//background-color: #ffe;
 	}
 
 
 	self.Unhighlight=function()
 	{
 		$("#"+trId).css('background', 'transparent');
+		$(".inputEditor."+lastLineValue).removeClass("bg-danger text-white");
 	}
+
 
 	self.CheckMetadata =function(valueForChecking,index)
 	{

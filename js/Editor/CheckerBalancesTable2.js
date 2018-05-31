@@ -191,13 +191,18 @@ function CheckerBalancesTable2(idTable,rErorsContainer)
 
 	self.Highlight=function()
 	{
+		console.log("------------------");
 		$("#"+trId).css('background', 'rosybrown');
+		$(".inputEditor2."+lastLineValue).addClass("bg-danger text-white");
+		console.log($(".inputEditor2."+lastLineValue));
+	
 	}
 
 
 	self.Unhighlight=function()
 	{
 		$("#"+trId).css('background', 'transparent');
+		$(".inputEditor2."+lastLineValue).removeClass("bg-danger text-white");
 	}
 	self.GetNameField=function(columNumber)
 	{

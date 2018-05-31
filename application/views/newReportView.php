@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="/js/Editor/form1Style.css">
 
+<datalist id="Editor_column2"></datalist>
 <datalist id="Editor_column3"></datalist>
 <datalist id="Editor_column7"></datalist>
 <datalist id="Editor_column10"></datalist>
@@ -80,6 +81,7 @@
 <script type="text/javascript" src="/js/Editor/Data/Table1/HeadersForTable.js"></script>
 <script type="text/javascript" src="/js/Editor/Data/Table1/DataLists.js"></script>   
 <script type="text/javascript" src="/js/Editor/Data/Table1/PhysicCondition.js"></script>
+<script type="text/javascript" src="/js/Editor/Data/Table1/WasteCod.js"></script>
 
 <script type="text/javascript" src="/js/Editor/Data/Table2/HeadersForTable2.js"></script>
 
@@ -100,6 +102,10 @@
 <script type="text/javascript" src="/js/Editor/TableManager.js"></script>
 <script type="text/javascript" src="/js/Editor/LoaderEditor.js"></script>
 <script type="text/javascript" src="/js/Editor/Main.js"></script> 
+
+
+
+
 
 <!-- <script type="text/javascript">
 	

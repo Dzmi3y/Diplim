@@ -87,8 +87,11 @@ $.ajax(
 
 let ArrayDataList1=new Array();
 
-	
+		
+		ArrayDataList1["Editor_column2"]=WasteCodClean;
+		console.log(WasteCodClean);
 		ArrayDataList1["Editor_column3"]=Condition;
+		console.log(Condition);
 		ArrayDataList1["Editor_column7"]=ReceiptOfWaste;
 		ArrayDataList1["Editor_column10"]=WasteTransfer;
 		ArrayDataList1["Editor_column14"]=DirectionOfTheWaste;
@@ -96,6 +99,8 @@ let ArrayDataList1=new Array();
 		ArrayDataList1["Editor_column18"]=Dump;
 		ArrayDataList1["Editor_column21"]=WasteStorage;
 		ArrayDataList1["Editor_column4"]=Danger;
+		console.log(Danger);
+
 
 
 	let ArrayDataList2=new Array();

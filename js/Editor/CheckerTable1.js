@@ -8,6 +8,7 @@ function CheckerTable1(ErorsContainer)
 
 	let ArrayDataList=new Array();
 	
+	ArrayDataList["column2"]=WasteCodClean;
 	ArrayDataList["column4"]=Danger;
 	ArrayDataList["column3"]=Condition;
 	ArrayDataList["column7"]=ReceiptOfWaste;
@@ -19,8 +20,8 @@ function CheckerTable1(ErorsContainer)
 
    self.Handler=function(inp)
    {
-   	console.log("hhhaannddlleerrCheckkkkkkkk");
-   		console.log("handler");
+   //	console.log("hhhaannddlleerrCheckkkkkkkk");
+   	//	console.log("handler");
    		console.log(inp);
    		self.inp= inp; 	
    		self.nameColumn=self.inp.classList[0];

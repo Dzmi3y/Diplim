@@ -102,6 +102,7 @@ self.isNumeric =function(n)
 	self.Unhighlight=function()
 	{
 		$("#"+self.IdCells).css('background', 'transparent');
+
    		ErorsContainer.ObjMessageErrorManager.RemoveMessage(self.inp.id);
 
    		let item =ErorsContainer.ArrayIdErrorsElement.indexOf(self.inp.id);		

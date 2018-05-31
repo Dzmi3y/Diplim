@@ -76,10 +76,10 @@ function MessageErrorManager(idTable,idMessagelist)
 	self.RemoveMessageWithClass = function(className)
 	{	
 		console.log("Kill all "+className);
-		if($("p ."+className).length)
+		if($("p."+className).length)
 		{		
 			console.log("/////////==");
-			$("p ."+className).remove(); 
+			$("p."+className).remove(); 
 			let RowNumber = className.replace("line","");
 
 			let ArrayIdForDeleted=new Array();
