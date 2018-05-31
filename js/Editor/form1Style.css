@@ -1,0 +1,82 @@
+	table 
+   {
+    border-collapse: collapse ; /* Убираем двойные границы между ячейками */
+    border: 4px solid #000; /* Рамка вокруг таблицы */
+   }
+
+    th 
+   {
+    padding: 0px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+    font-size:10px;
+    text-align:center;
+   }
+
+
+   td 
+   { 
+    padding: 1px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+    font-size:10px;
+   }
+
+    
+
+   	#ErrorMessages
+   {
+   		color:red;
+
+   }
+   
+
+  
+
+   input
+   {
+   	width: 50px;
+   }
+
+	.column0
+   {
+   	width: 20px;
+   }
+   .column1
+   {
+   	width: 100px;
+   }
+
+   datalist
+   {
+   		width: 1000px;
+
+   }
+
+    option
+   {
+   		width: 1000px;
+
+   }
+
+  
+    body
+    {
+      min-width:1300px;
+    }
+
+    nav
+    {
+      min-width:1300px;
+    }
+
+    footer
+    {
+      min-width:1300px;
+    }
+
+    .inputEditor2
+    {
+      width: 100px;
+    }
+
+   /*input {display: block; padding: 0; margin: 0; border: 0; width: 100%; }*/
+/*td {margin: 0; padding: 0;}*/

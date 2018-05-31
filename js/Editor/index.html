@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form1</title>
+	<meta charset="utf-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="form1Style.css">
+</head>
+<body>
+
+<datalist id="ConditionList"></datalist>
+<datalist id="ReceiptOfWasteList"></datalist>
+<datalist id="WasteTransferList"></datalist>
+<datalist id="DirectionOfTheWasteList"></datalist>
+<datalist id="WasteDisposalList"></datalist>
+<datalist id="DumpList"></datalist>
+<datalist id="WasteStorageList"></datalist>
+<datalist id="DangerList"></datalist>
+
+
+<table id="Editor">	
+</table>
+
+<div id="ErrorMessages">	
+
+</div>
+
+
+<input type="button" class="button" id="DeleteButton" value="Delete Selected Rows"/>
+
+
+
+<!-- поменять версию jquery -->
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="jquery.js" > </script>
+<script type="text/javascript" src="HeadersForTable.js"></script>
+<script type="text/javascript" src="DataLists.js"></script>   
+<script type="text/javascript" src="PhysicCondition.js"></script>
+<script type="text/javascript" src="CheckerBalances.js"></script>
+<script type="text/javascript" src='MessageError.js'></script>
+<script type="text/javascript" src="DataListManager.js"></script>
+<script type="text/javascript" src="Binding.js"></script>
+<script type="text/javascript" src="Checker.js"></script>
+<script type="text/javascript" src="HeadersManager.js"></script>
+<script type="text/javascript" src="EditRowsManager.js"></script>
+<script type="text/javascript" src="TableManager.js"></script>
+<script type="text/javascript" src="Main.js"></script>
+
+
+
+
+
+
+
+
+
+<!--script for autoreload-->
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+
+
+</body>
+</html>
