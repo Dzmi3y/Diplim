@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="/js/Editor/form1Style.css">
 
+<datalist id="Editor_column2"></datalist>
 <datalist id="Editor_column3"></datalist>
 <datalist id="Editor_column7"></datalist>
 <datalist id="Editor_column10"></datalist>
@@ -10,6 +11,8 @@
 <datalist id="Editor_column18"></datalist>
 <datalist id="Editor_column21"></datalist>
 <datalist id="Editor_column4"></datalist>
+
+<datalist id="Editor2_column2"></datalist>
 
 <datalist id="YearList"></datalist>
 <datalist id="CompanyList"></datalist>
@@ -106,7 +109,7 @@
 
 
 
-$('#t1').bind('click',function(){fn("lol");});
+/*$('#t1').bind('click',function(){fn("lol");});
 $b=true;
 
 function fn(text)
@@ -117,7 +120,7 @@ function fn(text)
 		$b=false;
 	}
 
-}
+}*/
 
 
 
@@ -128,13 +131,17 @@ function fn(text)
 <script type="text/javascript" src="/js/Editor/Data/Table1/HeadersForTable.js"></script>
 <script type="text/javascript" src="/js/Editor/Data/Table1/DataLists.js"></script>   
 <script type="text/javascript" src="/js/Editor/Data/Table1/PhysicCondition.js"></script>
+<script type="text/javascript" src="/js/Editor/Data/Table1/WasteCod.js"></script>
+
 
 <script type="text/javascript" src="/js/Editor/Data/Table2/HeadersForTable2.js"></script>
 
 <script type="text/javascript" src="/js/Editor/CheckerBalances.js"></script>
 <script type="text/javascript" src="/js/Editor/Checker.js"></script>
 <script type="text/javascript" src="/js/Editor/CheckerBalancesTable1.js"></script>
+<script type="text/javascript" src="/js/Editor/CheckerBalancesTable2.js"></script>
 <script type="text/javascript" src="/js/Editor/CheckerTable1.js"></script>
+<script type="text/javascript" src="/js/Editor/CheckerTable2.js"></script>
 
 <script type="text/javascript" src='/js/Editor/MessageError.js'></script>
 <script type="text/javascript" src="/js/Editor/DataListManager.js"></script>

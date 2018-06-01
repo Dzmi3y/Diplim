@@ -56,9 +56,11 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 				$('#li'+idSubTab).bind('click',function(){self.LoadTables(LaadedArray[i]["IDReport"],'['+LaadedArray[i]["Year"]+'] '+LaadedArray[i]["NameCompany"],LaadedArray[i]["IDCompany"]);});
 
 			}
-			
-			self.LoadTables(LaadedArray[0]["IDReport"],'['+LaadedArray[0]["Year"]+'] '+LaadedArray[0]["NameCompany"],LaadedArray[0]["IDCompany"]);
-
+			console.log("GetArrayYearId2222222222222222222222222222222222");	
+			if(window.location.hash=="")
+			{
+				self.LoadTables(LaadedArray[0]["IDReport"],'['+LaadedArray[0]["Year"]+'] '+LaadedArray[0]["NameCompany"],LaadedArray[0]["IDCompany"]);
+			}
 			
 		}
 		else
@@ -72,6 +74,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	self.LoadTables=function(IDReport,nameReport,CompanyID)
 	{
+		console.log("GetArrayYearId33333333333");
 		self.CurrentIDCompany=CompanyID;
 		self.CurrentIDReport=IDReport;
 		console.log("Loooogg");
@@ -97,6 +100,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	self.GetArrayYearId=function(SetArrayYearId)
 	{
+		console.log("GetArrayYearId111111111111111111111111111111111111111111111111111111111111111111111111111");	
 		self.ArrayYearId=JSON.parse(SetArrayYearId);
 		self.CreateNavTab(self.ArrayYearId);
 		
@@ -120,7 +124,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 		 Editor1 =  new LoaderEditor(Table1,Del1,Msg1,1);
 
-		 Editor2 =  new LoaderEditor(Table2,Del2,Msg2);
+		 Editor2 =  new LoaderEditor(Table2,Del2,Msg2,2);
 
 		$('#SearchButton').bind('click',self.Search);
 		$('#SendReport').bind('click',self.Save);
@@ -149,6 +153,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 		let ArrayDataList=new Array();
 	
+		ArrayDataList["Editor_column2"]=WasteCodClean;
 		ArrayDataList["Editor_column3"]=Condition;
 		ArrayDataList["Editor_column7"]=ReceiptOfWaste;
 		ArrayDataList["Editor_column10"]=WasteTransfer;
@@ -158,11 +163,13 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 		ArrayDataList["Editor_column21"]=WasteStorage;
 		ArrayDataList["Editor_column4"]=Danger;
 
+		let ArrayDataList2=new Array();
+		ArrayDataList2["Editor2_column2"]=EventGroupCode;
 
 		DataForLoadingInTables= JSON.parse($report);
 		console.log(DataForLoadingInTables["Table1"]);
 		Editor1.Load(HeadrRows,ConvertColumn,DataForLoadingInTables["Table1"],ArrayDataList);
-		Editor2.Load(HeadrRowsTable2,Convert2Column,DataForLoadingInTables["Table2"]);
+		Editor2.Load(HeadrRowsTable2,Convert2Column,DataForLoadingInTables["Table2"],ArrayDataList2);
 
 
 		
@@ -193,8 +200,12 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 		let Year=$("#YearInput")[0].value;
 		let NameCompany=$("#CompanyNameInput")[0].value;
 		let result=Array();
-		if((Year!="")||(NameCompany!=""))
-		{
+		console.log("пппоисккккккккккк");
+		console.log(Year);
+		console.log(NameCompany);
+		console.log((Year=="")&&(NameCompany==""));
+
+		
 			for(let i in self.ArrayYearId)
 			{
 				
@@ -205,6 +216,14 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 						result.push(self.ArrayYearId[i]);
 					}
 				}
+
+				if((Year=="")&&(NameCompany==""))
+				{
+					
+					result.push(self.ArrayYearId[i]);
+					
+				}
+
 
 				if((Year=="")&&(NameCompany!=""))
 				{
@@ -226,7 +245,9 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 			}
 
 		
-		}
+		
+		console.log("Result");
+		console.log(result);
 
 		self.CreateNavTab(result);
 		

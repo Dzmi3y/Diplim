@@ -175,12 +175,23 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 		let SearchKey=$("#"+IDSearcKey)[0].value;
 		let result=Array();
 		console.log("Поиск");
+		console.log(SearchKey);
 		for(let i in self.AllCompanies)
 		{
-			if(self.AllCompanies[i][self.CurrentSearchField]==SearchKey)
+
+			if(SearchKey=="")
 			{
-				
 				result.push(self.AllCompanies[i]);
+
+			}
+			else
+			{
+
+				if(self.AllCompanies[i][self.CurrentSearchField]==SearchKey)
+				{
+					
+					result.push(self.AllCompanies[i]);
+				}
 			}
 
 		}
