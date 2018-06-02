@@ -1,3 +1,4 @@
+
   <li class="nav-item <?php echo $active["main"]?>">
     <a class="nav-link" href="/main">Главная</a>
   </li>
@@ -16,6 +17,7 @@
   <li>
     <button type="submit" onclick="exit()" class="btn col-md-12 btn-secondary">Выход</button>
   </li>
+
 
   <script type="text/javascript">
   

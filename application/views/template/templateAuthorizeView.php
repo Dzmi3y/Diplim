@@ -26,11 +26,11 @@
 
 
 <nav class="navbar navbar-expand  navbar-light navbar-dark " style="background-color: #309804FF; ">
+     <div class="container">
       <a class="navbar-brand" href="#">
         <img  src="/images/logo.png" width="60" height="60"/>
       	<!--<img src="/images/logo.png" width="80" height="80"/>-->
       </a>
-
       <div class="collapse navbar-collapse" id="navbarHeadr">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item <?php echo $active["main"]?>">
@@ -54,6 +54,7 @@
 
         </ul>
       </div>
+    </div>
     </nav>
 
 <a href="ReportEditor">ReportEditorView.php</a>

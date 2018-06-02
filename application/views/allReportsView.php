@@ -81,6 +81,10 @@ function fn(text)
 <script type="text/javascript" src="/js/Editor/Data/Table2/HeadersForTable2.js"></script>
 <script type="text/javascript" src="/js/Editor/HeadersManager.js"></script>
 <script type="text/javascript" src="/js/Editor/Viewer.js"></script>
+<script type="text/javascript" src="/js/pdfmake-master/build/pdfmake.min.js"></script> 
+<script type="text/javascript" src="/js/pdfmake-master/build/vfs_fonts.js"></script> 
+
+
 
 
 <script type="text/javascript">
@@ -92,3 +96,6 @@ function fn(text)
 	objViewer.Start();
 
 </script>
+
+
+<!-- <script type="text/javascript" src="js/pdfManager.js"></script>  -->
