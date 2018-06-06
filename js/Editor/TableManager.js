@@ -36,13 +36,16 @@ function TableManager(idTable,loadArray,ErorsContainer,ArgConvertColumn=null,Che
 	self.Check();
 
 
-	self.CreateTable= function(HeaderContent)
+	self.CreateTable= function(HeaderContent,DataForList)
 	{
+		//self.DataForList=DataForList;
 
 		var ObjHeadersManager =new HeadersManager(self.idTable,HeaderContent);
 		ObjHeadersManager.FillInTheTableHeader();
 		self.countColumns = ObjHeadersManager.GetCountColumn();
-		self.ObjEditRowsManager= new EditRowsManager(self.idTable,self.countColumns,self.loadArray,self.ObjCheckerBalances,ConvertColumn);
+		self.ObjEditRowsManager= new EditRowsManager(self.idTable,self.countColumns,self.loadArray,self.ObjCheckerBalances,ConvertColumn,DataForList);
+		
+
 		//self.ObjChecker=new CheckerTable1(ErorsContainer);
 
 		self.ObjEditRowsManager.DeleteHandler=function(ClassForDelete)
@@ -50,7 +53,7 @@ function TableManager(idTable,loadArray,ErorsContainer,ArgConvertColumn=null,Che
 			ErorsContainer.ObjMessageErrorManager.RemoveMessageWithClass(ClassForDelete);
 		}
 		
-
+		//console.log(self.DataForList);
 		console.log("create header");
 
 		self.ObjEditRowsManager.Handler=function(inputObj)

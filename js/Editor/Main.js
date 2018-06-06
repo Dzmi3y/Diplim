@@ -104,6 +104,7 @@ let ArrayDataList1=new Array();
 
 
 	let ArrayDataList2=new Array();
+	ArrayDataList2["Editor2_column1"]=EventGroupName;
 	ArrayDataList2["Editor2_column2"]=EventGroupCode;
 
 
@@ -140,6 +141,7 @@ var callbackLoader= function(report)
 
 	}
 
+	console.log("looo");
 	Editor1.Load(HeadrRows,ConvertColumn,loadDataForTable1,ArrayDataList1);
 	Editor2.Load(HeadrRowsTable2,Convert2Column,loadDataForTable2,ArrayDataList2);
 

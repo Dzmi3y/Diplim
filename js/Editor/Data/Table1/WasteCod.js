@@ -12115,7 +12115,11 @@ var WasteCod=
 
 
 
+
+
+
 var WasteCodClean= Array();
+var WasteName=Array();
 
 
 
@@ -12128,6 +12132,13 @@ function WasteCodeArrayProcessing()
     if(WasteCod[i]["name"]!="")
     {
       WasteCodClean.push(WasteCod[i]);
+      WasteName.push({'id':WasteCod[i]["name"]});
+      if (WasteCodClean[WasteCodClean.length-1]["name"]=="none")
+      {
+        WasteCodClean[WasteCodClean.length-1]["name"]="";
+        WasteName[WasteName.length-1]["id"]="";
+      }
+
     }
   }
 

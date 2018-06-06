@@ -1,7 +1,13 @@
 <div>
 
+
+
+
+
 <link rel="stylesheet" type="text/css" href="/js/Editor/form1Style.css">
 
+
+<datalist id="Editor_column1"></datalist>
 <datalist id="Editor_column2"></datalist>
 <datalist id="Editor_column3"></datalist>
 <datalist id="Editor_column7"></datalist>
@@ -12,6 +18,7 @@
 <datalist id="Editor_column21"></datalist>
 <datalist id="Editor_column4"></datalist>
 
+<datalist id="Editor2_column1"></datalist>
 <datalist id="Editor2_column2"></datalist>
 
 
@@ -42,7 +49,7 @@
 	<table id="Editor2" class="my-1 mx-1">	
 	</table>
 	
-<button id="DeleteButton2"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
+	<button id="DeleteButton2"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
 
 	<div id="ErrorMessages2" class="border  border-danger my-1 mx-1" style="height: 100px; width: 500px; overflow-y: scroll; border-radius: 10px;" >	
 
@@ -101,6 +108,8 @@
 <script type="text/javascript" src="/js/Editor/EditRowsManager.js"></script>
 <script type="text/javascript" src="/js/Editor/TableManager.js"></script>
 <script type="text/javascript" src="/js/Editor/LoaderEditor.js"></script>
+
+
 <script type="text/javascript" src="/js/Editor/Main.js"></script> 
 
 

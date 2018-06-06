@@ -23,7 +23,8 @@ function LoaderEditor(idEditor,idButtonDelete,idMessageErrorlist=null,TableNumbe
 
 	self.Load= function (HeaderRowsData,ConvertColumn,DataForCells=null,DataForColumn=null)
 	{
-		
+		console.log("lloooaaddds");
+
 		if(TableNumber==1)
 		{
 			self.LoadCheckers(new CheckerTable1(ErorsContainer),new CheckerBalancesTable1(idEditor,ErorsContainer));
@@ -37,10 +38,12 @@ function LoaderEditor(idEditor,idButtonDelete,idMessageErrorlist=null,TableNumbe
 			self.ObjTableManager = new TableManager("#"+idEditor,DataForCells,ErorsContainer,ConvertColumn,CheckerContainer);
 
 								
-		
+		let DataForList = DataListManager(idEditor,DataForColumn);
 
-		self.ObjTableManager.CreateTable(HeaderRowsData);
-		DataListManager(idEditor,DataForColumn);
+		self.ObjTableManager.CreateTable(HeaderRowsData,DataForList);
+
+	 	
+
 		$('#'+idButtonDelete).bind('click',self.ObjTableManager.ObjEditRowsManager.DeleteRows);
 
 

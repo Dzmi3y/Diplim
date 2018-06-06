@@ -43,7 +43,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		metadataAboutColumns["17"]="16";		  
 		metadataAboutColumns["19"]="18";
 		metadataAboutColumns["22"]="23";
-		//metadataAboutColumns["23"]="21";
+		metadataAboutColumns["22"]="21";
 
 
 		metadataAboutCodeColumns["7"]="8";
@@ -327,7 +327,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		let empty_2_3_4= empty_2 && empty_3 && empty_4;*/
 
 		let ThisRowEmpty=true;
-		for(let i=2;i<=23;i++)
+		for(let i=1;i<=23;i++)
 		{
 			if(self.GetValueInp(i)!="")
 			{
@@ -345,7 +345,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		}
 		
 
-		for(let i=2;i<=4;i++)
+		for(let i=1;i<=4;i++)
 		{		
 
 			if((self.GetValueInp(i)=="")&&(!ThisRowEmpty))

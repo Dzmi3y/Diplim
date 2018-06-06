@@ -1,6 +1,6 @@
 
 
-function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,ConvertColumn)
+function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,ConvertColumn,DataForList)
 {
 	
 	let self=this;
@@ -9,8 +9,9 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 	self.IDArrayForDelete=Array();
 	let CurrentFocus=Array();
 
-	console.log(ArrayCellsValue);
-		self.idTable = idTable;
+	self.DataForList=DataForList;
+	//console.log(ArrayCellsValue);
+	self.idTable = idTable;
 	let idTableText = self.idTable.replace("#","");
 
 	let ObjCheckerBalances=  ParObjCheckerBalances;
@@ -22,6 +23,80 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 	self.selectedRows=new Array(); 
 	self.Handler=null;
 	self.DeleteHandler=null;
+
+
+	self.BindingList=function(InpID,ColumnName)
+	{
+		if(self.DataForList[ColumnName])
+		{
+			var widthVar=100;
+
+			switch (ColumnName) 
+			{
+		   	  case "Editor2_column1":
+			    widthVar=900;
+			    break;
+			  case "Editor_column1":
+			    widthVar=1000;
+			    break;
+			  case "Editor_column2":
+			    widthVar=100;
+			    break;
+			  case "Editor_column3":
+			   widthVar=100;
+			    break;
+			   case "Editor_column4":
+			   widthVar=200;
+			    break;
+			   case "Editor_column7":
+			   widthVar=100;
+			    break;
+			    case "Editor_column10":
+			   widthVar=300;
+			    break;
+			    case "Editor_column12":
+			   widthVar=400;
+			    break;
+			    case "Editor_column14":
+			   widthVar=450;
+			    break;
+			    case "Editor_column16":
+			   widthVar=500;
+			    break;
+			    case "Editor_column18":
+			   widthVar=500;
+			    break;
+			    case "Editor_column21":
+			   widthVar=500;
+			    break;
+			  default:
+			   widthVar=100;
+			}
+
+
+
+			$("#"+InpID).autocomplete({
+			    lookup: self.DataForList[ColumnName],
+			    minChars: 0,
+			    width: widthVar,
+			    maxHeight:150,
+
+			    onSelect: function(data, value)
+			    {
+			    	//value="lol";
+			    	$("#"+InpID)[0].value=data.id;
+			    	//console.log(typeof data.id);
+			    	//console.log("#"+InpID);
+
+			    	value=data.id;
+
+			    	self.OnChangeCell($("#"+InpID)[0]);
+			    }
+			});
+		}
+
+	}
+
 
 
 	self.GetList=function(columnName)
@@ -84,11 +159,13 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 				let inputID= idTableText+'Inpr'+self.numberLastRow+'c'+i ;
 				let cellID= idTableText+'Tdr'+self.numberLastRow+'c'+i ;
 				
-				$('#'+nameRow).append('<td id="'+cellID+'"> <input id="'+inputID+'" class="'+columnName+' line'+self.numberLastRow+' input'+idTableText+' '+idTableText+'" list="'+idTableText+'_'+self.GetList(columnName)+'" value="'+value+'"/> </td>');
+				$('#'+nameRow).append('<td id="'+cellID+'"> <input id="'+inputID+'" class="'+columnName+' line'+self.numberLastRow+' input'+idTableText+' '+idTableText/*+'" list="'+idTableText+'_'+self.GetList(columnName)*/+'" value="'+value+'"/> </td>');
 				//$('#'+inputID).bind('change',function(){ self.Handler(this);});
+				
+
 				let cn=i;
 				let ln=self.numberLastRow;
-				$('#'+inputID).bind('focus',function(){ CurrentFocus["cn"]= cn; CurrentFocus["ln"]=ln; console.log(CurrentFocus);  });
+				$('#'+inputID).bind('focus',function(){ CurrentFocus["cn"]= cn; CurrentFocus["ln"]=ln;  });
 
 				$('#'+inputID).bind('change',function(){  self.OnChangeCell(this);});
 				
@@ -97,6 +174,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 					$('#'+inputID).bind('keyup',function(event) {return self.KeyDownHandler(event,this);});
 				}
 					
+				self.BindingList(inputID,idTableText+'_'+self.GetList(columnName));
 			}
 
 	};
@@ -248,7 +326,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 			}
 			self.AddRow();
 			console.log("ffooocckkuusss");
-			$('#EditorInpr1c1').focus();
+			//$('#EditorInpr1c1').focus();
 		//}
 	}
 

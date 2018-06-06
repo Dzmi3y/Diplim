@@ -5,9 +5,12 @@ function CheckerTable2(ErorsContainer,ConvertColumn)
 	self.nameColumn=null;
 	self.IdCells=null;
 	self.AllCorrect=true;
+	self.nameRow=null;
+	self.numberRow= null;
 
 	let ArrayDataList=new Array();
 	
+	ArrayDataList["column1"]=EventGroupName;
 	ArrayDataList["column2"]=EventGroupCode;
 
 
@@ -17,8 +20,9 @@ function CheckerTable2(ErorsContainer,ConvertColumn)
    		
    		self.inp= inp; 	
    		self.nameColumn=self.inp.classList[0];
+   		self.nameRow=self.inp.classList[1];
    		self.IdCells=self.GetIdCells();
-   		self.AllCorrect=self.CheckCorrectEdit()
+   		self.AllCorrect=self.CheckCorrectEdit();
    		
 
    		if(self.AllCorrect) 
@@ -48,13 +52,31 @@ self.isNumeric =function(n)
 
 	self.CheckCorrectEdit=function()
 	{
+		self.numberRow=self.nameRow.replace('line','');
 		var isCorrect=false;
 		if(ArrayDataList[self.nameColumn])
 		{	
+			console.log(self.nameColumn);
+			console.log(ArrayDataList[self.nameColumn]);
 			for( var i in ArrayDataList[self.nameColumn])
 			{
 				if(self.inp.value==ArrayDataList[self.nameColumn][i].id)
 				{
+
+					if(self.nameColumn=="column1") 
+					{
+
+						$("#Editor2Inpr"+self.numberRow+"c2")[0].value=ArrayDataList["column2"][i].id;
+
+					}
+
+					if(self.nameColumn=="column2") 
+					{
+						$("#Editor2Inpr"+self.numberRow+"c1")[0].value=ArrayDataList["column1"][i].id;
+
+					}
+
+
 					isCorrect=true;
 					break;
 				}

@@ -4,10 +4,13 @@ function CheckerTable1(ErorsContainer)
 	self.inp=null;
 	self.nameColumn=null;
 	self.IdCells=null;
+	self.nameRow=null;
+	self.numberRow= null;
 	self.AllCorrect=true;
 
 	let ArrayDataList=new Array();
 	
+	ArrayDataList["column1"]=WasteName;
 	ArrayDataList["column2"]=WasteCodClean;
 	ArrayDataList["column4"]=Danger;
 	ArrayDataList["column3"]=Condition;
@@ -20,13 +23,15 @@ function CheckerTable1(ErorsContainer)
 
    self.Handler=function(inp)
    {
-   //	console.log("hhhaannddlleerrCheckkkkkkkk");
-   	//	console.log("handler");
+   		console.log("hhhaannddlleerrCheckkkkkkkk");
+   		console.log("handler");
    		console.log(inp);
    		self.inp= inp; 	
    		self.nameColumn=self.inp.classList[0];
+   		self.nameRow=self.inp.classList[1];
    		self.IdCells=self.GetIdCells();
    		self.AllCorrect=self.CheckCorrectEdit()
+   		
    		//console.log(" i checkernax");
    		//console.log(inp);
    		//console.log(self.AllCorrect);
@@ -47,14 +52,39 @@ function CheckerTable1(ErorsContainer)
 
 	self.CheckCorrectEdit=function()
 	{
+		self.numberRow=self.nameRow.replace('line','');
 		var isCorrect=false;
+
+		console.log("&&&&&&&");
+		console.log(ArrayDataList);
+		console.log(self.nameColumn);
+		console.log(self.inp.value);
 		if(ArrayDataList[self.nameColumn])
 		{	
+			console.log("!!!!!!!!!!!!!!!!!!!!!!!!1");
 			for( var i in ArrayDataList[self.nameColumn])
 			{
 
+
 				if(self.inp.value==ArrayDataList[self.nameColumn][i].id)
 				{
+
+
+					if(self.nameColumn=="column1") 
+					{
+						console.log(self.nameRow);
+						console.log(self.numberRow);
+						console.log("#EditorInpr"+self.numberRow+"c2");
+						$("#EditorInpr"+self.numberRow+"c2")[0].value=ArrayDataList["column2"][i].id;
+						$("#EditorInpr"+self.numberRow+"c4")[0].value=ArrayDataList["column2"][i].hazardClass;
+					}
+
+					if(self.nameColumn=="column2") 
+					{
+						$("#EditorInpr"+self.numberRow+"c1")[0].value=ArrayDataList["column1"][i].id;
+						$("#EditorInpr"+self.numberRow+"c4")[0].value=ArrayDataList["column2"][i].hazardClass;
+					}
+
 					isCorrect=true;
 					break;
 				}
