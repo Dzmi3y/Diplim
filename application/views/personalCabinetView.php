@@ -1,5 +1,6 @@
 <?php 
-if ($_SESSION['IsAdmin'])
+
+if ( !empty($_SESSION['IsAdmin']))
 {
 	header("Location: http://".$_SERVER['HTTP_HOST']."/adminPersonalCabinet/searchReport");
 }

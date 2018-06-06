@@ -7,9 +7,9 @@ class ControllerPersonalCabinet extends Controller
 	
 	public function actionIndex()
 	{
-		$this->view->title="Личный кабинет";
-		$this->view->nameCurrentPage="personalCabinet";
-		$this->view->generate('personalCabinetView.php','templatePersonalCabinet.php');
+		//$this->view->title="Личный кабинет";
+		//$this->view->nameCurrentPage="personalCabinet";
+		$this->view->generate('personalCabinetView.php');
 	} 
 
 	public function actionNewReport()
