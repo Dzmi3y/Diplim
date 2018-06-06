@@ -43,7 +43,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		metadataAboutColumns["17"]="16";		  
 		metadataAboutColumns["19"]="18";
 		metadataAboutColumns["22"]="23";
-		metadataAboutColumns["23"]="21";
+		//metadataAboutColumns["23"]="21";
 
 
 		metadataAboutCodeColumns["7"]="8";
@@ -112,7 +112,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 
 				}
 							
-				if(FailedInputs[i].code==lastInpObj.id)
+				/*if(FailedInputs[i].code==lastInpObj.id)
 				{
 					if(lastInpObj.value!="") 
 					{
@@ -121,7 +121,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 					}		
 
 					break;					
-				}
+				}*/
 			
 
 		}
@@ -158,7 +158,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 
 					if(AllCorrect)
 					{
-
+						console.log("!!!!!!!!AllCorrect");
 						self.Unhighlight();
 						ErorsContainer.ObjMessageErrorManager.RemoveMessageWithClass("line"+currentRow);
 					}
@@ -236,6 +236,12 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 				FailedInputs[FailedInputs.length]={"code":inpId,"field":""};
 				ErorsContainer.ObjMessageErrorManager.AddMessage(inpId,"Поле '"+self.GetNameField(9)+"' должно быть не более чем поле '"+self.GetNameField(8)+"'  (строка: "+currentRow+").");
 			}
+			else
+			{
+				let inpId= idTableText+"Inpr"+currentRow+"c9";
+				ErorsContainer.ObjMessageErrorManager.RemoveMessage(inpId);
+			}
+
 
 			for(let i in metadataAboutColumns )
 			{
@@ -266,7 +272,8 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 			}
 
 
-			 if((self.GetNumber(22)==summ)||(summ<0))
+
+			if((self.GetNumber(22)==summ)||(summ<0))
 			{
 				Correct22=true;
 			}
@@ -286,7 +293,10 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		}
 		else
 		{
+			console.log("eeelllooooolllllllll!");
+			
 			AllCorrect*=false;
+			
 		}
 
 	}
@@ -321,7 +331,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		{
 			if(self.GetValueInp(i)!="")
 			{
-				ThisRowEmpty=false;
+				ThisRowEmpty*=false;
 			}
 
 		}
@@ -330,6 +340,7 @@ function CheckerBalancesTable1(idTable,rErorsContainer)
 		if(ThisRowEmpty)
 		{
 			console.log(lastLineValue);
+
 			ErorsContainer.ObjMessageErrorManager.RemoveMessageWithClass("lastLineValue");
 		}
 		

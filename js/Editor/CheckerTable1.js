@@ -27,9 +27,9 @@ function CheckerTable1(ErorsContainer)
    		self.nameColumn=self.inp.classList[0];
    		self.IdCells=self.GetIdCells();
    		self.AllCorrect=self.CheckCorrectEdit()
-   		console.log(" i checkernax");
-   		console.log(inp);
-   		console.log(self.AllCorrect);
+   		//console.log(" i checkernax");
+   		//console.log(inp);
+   		//console.log(self.AllCorrect);
 
    		if(self.AllCorrect) 
    		{
@@ -107,12 +107,14 @@ function CheckerTable1(ErorsContainer)
 		$("#"+self.IdCells).css('background', 'red');
    		ErorsContainer.ArrayIdErrorsElement[ErorsContainer.ArrayIdErrorsElement.length]=self.inp.id;
    		ErorsContainer.ObjMessageErrorManager.AddMessage(self.inp.id,"Неверное значение! Строка "+TitleRow+" столбец "+TitleColumn+".",0);
+   		
 	}
 
 
 	self.Unhighlight=function()
 	{
 		$("#"+self.IdCells).css('background', 'transparent');
+		console.log("remove checktable1");
    		ErorsContainer.ObjMessageErrorManager.RemoveMessage(self.inp.id);
 
    		let item =ErorsContainer.ArrayIdErrorsElement.indexOf(self.inp.id);		

@@ -13,7 +13,8 @@ function MessageErrorManager(idTable,idMessagelist)
 	{
 		let idMessage= "Error"+idErrorElement;
 		console.log("eerrrooorr");
-		console.log(this);
+		console.log("add"+idMessage);
+		//console.log(this);
 		//NumberRowError++;
 
 		if(!($('#'+idMessage).length))
@@ -55,11 +56,59 @@ function MessageErrorManager(idTable,idMessagelist)
 
 			$('#'+idMessagelist).append('<p id="'+idMessage+'" '+className+' >'+ErrorMessag+'</p>');		
 		}
+		else
+		{
+			console.log("Ошибка уже отражена");
+			self.RemoveMessage(idErrorElement);
+
+
+
+			let className="";
+			
+			if(idErrorElement.indexOf("input5_6_8")>=0)
+			{
+				className='class="'+idErrorElement.replace("input5_6_8","")+' '+idTable+'"';
+			}
+
+
+			let currentElement =$("#"+idErrorElement)[0];
+			if (currentElement)
+			{
+				if(currentElement.nodeName=="INPUT")
+				{
+					className='class="'+currentElement.classList[1]+' '+idTable+'"';
+				}
+
+				if(currentElement.nodeName=="TR")
+				{
+					className='class="'+currentElement.classList[0]+' '+idTable+'"';
+				}
+			}
+
+			/*if(ArrayErrorMessages[idMessage].length==0) 
+			{
+				ArrayErrorMessages[idMessage]= new Array();
+				
+
+			}*/
+
+			ArrayErrorMessages[idMessage]= {"NumberRow":NumberRowError,"ErrorText":ErrorMessag};
+
+			//ArrayErrorMessages[NumberRowError][idMessage]=ErrorMessag;
+			self.AddTitleRow(idMessage,NumberRowError);
+
+
+			$('#'+idMessagelist).append('<p id="'+idMessage+'" '+className+' >'+ErrorMessag+'</p>');	
+
+		}
 
 	}
 
 	self.RemoveMessage = function(idErrorElement)
 	{	
+		console.log("RemoveMessage");
+		//console.log(this);
+		console.log(idErrorElement);
 		
 		let idMessage= "Error"+idErrorElement;
 		if($('#'+idMessage).length)
@@ -125,6 +174,8 @@ function MessageErrorManager(idTable,idMessagelist)
 
 	self.RemoveTitleRow = function(idMessage)
 	{
+		console.log("RemoveTitleRow");
+		console.log(idMessage);
 		
 		let NumberRow= ArrayErrorMessages[idMessage].NumberRow;
 

@@ -85,7 +85,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 				let cellID= idTableText+'Tdr'+self.numberLastRow+'c'+i ;
 				
 				$('#'+nameRow).append('<td id="'+cellID+'"> <input id="'+inputID+'" class="'+columnName+' line'+self.numberLastRow+' input'+idTableText+' '+idTableText+'" list="'+idTableText+'_'+self.GetList(columnName)+'" value="'+value+'"/> </td>');
-				$('#'+inputID).bind('change',function(){ self.Handler(this);});
+				//$('#'+inputID).bind('change',function(){ self.Handler(this);});
 				let cn=i;
 				let ln=self.numberLastRow;
 				$('#'+inputID).bind('focus',function(){ CurrentFocus["cn"]= cn; CurrentFocus["ln"]=ln; console.log(CurrentFocus);  });
@@ -214,6 +214,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 	{
 
 		//console.log(Data);
+		self.Handler(ObjectChanged);
 		let value=ObjectChanged.value;
 		let row =ObjectChanged.classList[1].replace("line","");
 		let column= ObjectChanged.classList[0].replace("column","");
