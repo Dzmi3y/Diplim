@@ -1,4 +1,4 @@
-function CheckerTable1(ErorsContainer)
+function CheckerTable1(ErorsContainer,ConvertColumn)
 {
 	var self = this;
 	self.inp=null;
@@ -7,6 +7,8 @@ function CheckerTable1(ErorsContainer)
 	self.nameRow=null;
 	self.numberRow= null;
 	self.AllCorrect=true;
+	
+	self.ConvertColumn =ConvertColumn;
 
 	let ArrayDataList=new Array();
 	
@@ -21,8 +23,9 @@ function CheckerTable1(ErorsContainer)
 	ArrayDataList["column18"]=Dump;
 	ArrayDataList["column21"]=WasteStorage;
 
-   self.Handler=function(inp)
+   self.Handler=function(inp,containerCellsValue,AddRow)
    {
+   	 	
    		console.log("hhhaannddlleerrCheckkkkkkkk");
    		console.log("handler");
    		console.log(inp);
@@ -30,7 +33,8 @@ function CheckerTable1(ErorsContainer)
    		self.nameColumn=self.inp.classList[0];
    		self.nameRow=self.inp.classList[1];
    		self.IdCells=self.GetIdCells();
-   		self.AllCorrect=self.CheckCorrectEdit()
+
+   		self.AllCorrect=self.CheckCorrectEdit(containerCellsValue,AddRow)
    		
    		//console.log(" i checkernax");
    		//console.log(inp);
@@ -50,8 +54,10 @@ function CheckerTable1(ErorsContainer)
    };
 
 
-	self.CheckCorrectEdit=function()
+	self.CheckCorrectEdit=function(containerCellsValue,AddRow)
 	{
+		console.log("eeeeeeeeeeeoooooeeeeeeeee");
+		console.log(containerCellsValue);
 		self.numberRow=self.nameRow.replace('line','');
 		var isCorrect=false;
 
@@ -77,12 +83,37 @@ function CheckerTable1(ErorsContainer)
 						console.log("#EditorInpr"+self.numberRow+"c2");
 						$("#EditorInpr"+self.numberRow+"c2")[0].value=ArrayDataList["column2"][i].id;
 						$("#EditorInpr"+self.numberRow+"c4")[0].value=ArrayDataList["column2"][i].hazardClass;
+
+
+						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
+						{
+							containerCellsValue.ArrayCellsValue[self.numberRow-1]=new Object();
+							AddRow();
+
+						}
+						
+						containerCellsValue.ArrayCellsValue[self.numberRow-1][self.ConvertColumn[1]]=ArrayDataList["column2"][i].id;
+						containerCellsValue.ArrayCellsValue[self.numberRow-1][self.ConvertColumn[3]]=ArrayDataList["column2"][i].hazardClass;
+
+
 					}
 
 					if(self.nameColumn=="column2") 
 					{
 						$("#EditorInpr"+self.numberRow+"c1")[0].value=ArrayDataList["column1"][i].id;
 						$("#EditorInpr"+self.numberRow+"c4")[0].value=ArrayDataList["column2"][i].hazardClass;
+
+						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
+						{
+							containerCellsValue.ArrayCellsValue[self.numberRow-1]=new Object();
+							
+							AddRow();
+						}
+						
+						containerCellsValue.ArrayCellsValue[self.numberRow-1][self.ConvertColumn[0]]=ArrayDataList["column1"][i].id;
+						containerCellsValue.ArrayCellsValue[self.numberRow-1][self.ConvertColumn[3]]=ArrayDataList["column2"][i].hazardClass;
+						
+
 					}
 
 					isCorrect=true;

@@ -3,11 +3,11 @@
 class ProcessingSentReports
 {
 	
-	public static function SaveReports($report)
+	public static function SaveReports($year,$report)
 	{
 
 
-		$currentYear = date('Y');
+	/*	$currentYear = date('Y');
 		$currentMonth=date('m');
 		$currentDay=date('d');
 
@@ -22,15 +22,15 @@ class ProcessingSentReports
 		{
 			$insertYear=$currentYear-1;
 			
-		}
+		}*/
 
 
 
 
 
 		$CurrentDate=str_replace(' ','',date('Y-m-d'));
-		$queryAddReport= "INSERT INTO Reports (CompanyID,Year,Date_change) VALUES(".$_SESSION['ID'].",". $insertYear.",'".$CurrentDate."');";
-		$queryGetIdReport= "SELECT ID FROM Reports WHERE  CompanyID = ".$_SESSION['ID']." AND Year=".$insertYear;
+		$queryAddReport= "INSERT INTO Reports (CompanyID,Year,Date_change) VALUES(".$_SESSION['ID'].",". $year.",'".$CurrentDate."');";
+		$queryGetIdReport= "SELECT ID FROM Reports WHERE  CompanyID = ".$_SESSION['ID']." AND Year=".$year;
 
 		$ID=ConnectDB::SendQuery($queryGetIdReport);
 
@@ -51,7 +51,7 @@ class ProcessingSentReports
 			self::DeleteRows("WasteTable2",$report['table2']["Delete"]);
 
 
-		$st= self::SaveTablesInDB("WasteTable1",$report['table1']["Add"],$ID[0]["ID"]);
+		$st1= self::SaveTablesInDB("WasteTable1",$report['table1']["Add"],$ID[0]["ID"]);
 
 		$st= self::SaveTablesInDB("WasteTable2",$report['table2']["Add"],$ID[0]["ID"]);
 
@@ -61,7 +61,7 @@ class ProcessingSentReports
 		//return json_encode($ID[0]["ID"]);  
 
 		//return json_encode($report['table1']['1']['c3']);
-		return $st;
+		return $st1;
 		//return "yo";
 	}
 
@@ -143,7 +143,7 @@ public static function SaveReportsAdmin($reportAdmin)
 
 						if($flagIsNewRow)
 						{
-							if(empty($value2)) $value2="null";
+							if(empty($value2)&&(($value2!=0)||($value2!='0'))) $value2="null";
 
 							if($nameColumn=="")
 							{
@@ -175,7 +175,7 @@ public static function SaveReportsAdmin($reportAdmin)
 						else
 						{
 
-							if(empty($value2)) $value2="null";
+							if(empty($value2)&&(($value2!=0)||($value2!='0'))) $value2="null";
 
 							if($valueForUpdate=="")
 							{

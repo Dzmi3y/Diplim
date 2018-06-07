@@ -21,58 +21,105 @@
 <datalist id="Editor2_column1"></datalist>
 <datalist id="Editor2_column2"></datalist>
 
-
+<datalist id="YearListDropDown"></datalist>
 
 <ul id="myTab" class="nav nav-tabs">
-<li class="nav-item"><a class="nav-link active" href="#firstTable" data-toggle="tab">Таблица 1</a></li>
+<li class="nav-item"><a class="nav-link active" href="#selectReport" data-toggle="tab">Выбор отчета</a></li>
+<li class="nav-item"><a class="nav-link" href="#firstTable" data-toggle="tab">Таблица 1</a></li>
 <li class="nav-item"><a class="nav-link" href="#secondTable" data-toggle="tab">Таблица 2</a></li>
 <li class="nav-item" ><a class="nav-link" id="SendReportTab"  href="#sendReport" data-toggle="tab">Отправить отчет</a></li>
 </ul>
 
 <div class="tab-content" id="tabContent">
-<div  class="tab-pane fade show active" id="firstTable" >
 
-	<table id="Editor" class="my-1 mx-1">	
-	</table>
+	<div  class="tab-pane fade show active" id="selectReport">
+		<div class="row">
+			<div class="col-4"></div>
+			<div class="col-4">
 
-	<button id="DeleteButton"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
+				<div id="CreateReport" class="my-1 mx-1 ">
+					<p> <strong> Создание нового отчета </strong></p>
+					<input id="YearInputNewReport" type="number" min="2008" max="3000" class="col-7" placeholder="Год"> 
+					<button id="CreateReportButton" class="btn btn-default col-4" >Создать</button>
+				</div>
+					
 
+				<div id="ChangedReports" class="my-1 mx-1" >
+					
+					<div >
+						<p> <strong> Поиск отчетов</strong> </p>
+						<input id="YearInput" type="text" class="col-7" placeholder="Год" list="YearListDropDown"> 
+						<button id="SearchButton" class="btn btn-default col-4" >Найти</button>
+					</div>
+					<p> Список отчетов</p>
+					<div id="MessageListForSearch" class="alert alert-danger" role="alert"></div>
+					<div id="YearList"  class="col-12 border border-dark"  style="overflow-y: scroll;">
+						<ul id="ListReport" class="nav nav-pills flex-column mb-3" role="tablist">
 
-	<div id="ErrorMessages" class="border  border-danger my-1 mx-1" style="height: 100px; width: 500px; overflow-y: scroll; border-radius: 10px;" >	
-
+						</ul>
+					</div>
+				
+				</div>
+			</div>
+		</div>
 	</div>
 
-</div>
 
-<div class="tab-pane fade" id="secondTable">
+	<div  class="tab-pane fade " id="firstTable" >
+		<dir class="contentForReport">
+			<div ><p class="nameReport"></p></div>
+			<table id="Editor" class="my-1 mx-1">	
+			</table>
 
-	<table id="Editor2" class="my-1 mx-1">	
-	</table>
-	
-	<button id="DeleteButton2"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
+			<button id="DeleteButton"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
 
-	<div id="ErrorMessages2" class="border  border-danger my-1 mx-1" style="height: 100px; width: 500px; overflow-y: scroll; border-radius: 10px;" >	
 
+			<div id="ErrorMessages" class="border  border-danger my-1 mx-1" style="height: 100px; width: 500px; overflow-y: scroll; border-radius: 10px;" >	
+
+			</div>
+		</dir>
 	</div>
 
-</div>
+	<div class="tab-pane fade" id="secondTable">
+		<dir class="contentForReport">
+			<div ><p class="nameReport"></p></div>
+			<table id="Editor2" class="my-1 mx-1">	
+			</table>
+			
+			<button id="DeleteButton2"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
 
-<div class="tab-pane fade" id="sendReport">
-	<div id="MessageSuccessSend" class="alert alert-success" role="alert">
-	</div>
-	<div id="MessageSendError" class="alert alert-danger" role="alert">
-	</div>
-	Отправить отчет
-	<button id="SendReport"  class="btn btn-secondary  my-1 mx-1"  >Отправить отчет</button>
+			<div id="ErrorMessages2" class="border  border-danger my-1 mx-1" style="height: 100px; width: 500px; overflow-y: scroll; border-radius: 10px;" >	
 
-</div>
+			</div>
+		</dir>
+	</div>
+
+	<div class="tab-pane fade" id="sendReport">
+		<dir class="contentForReport">
+			<div ><p class="nameReport"></p></div>
+			<div id="MessageSuccessSend" class="alert alert-success" role="alert">
+			</div>
+			<div id="MessageSendError" class="alert alert-danger" role="alert">
+			</div>
+			Отправить отчет
+			<button id="SendReport"  class="btn btn-secondary  my-1 mx-1"  >Отправить отчет</button>
+		</dir>
+	</div>
 
 </div>
 
 <!--<script type="text/javascript" src="js/Editor/jsBootstrap.js"></script>-->
 
 
+
+
 <script type="text/javascript">
+
+	//$("#ChangedReports")[0].prop("disabled", true);
+
+	//$("#ChangedReports").hide();
+	$("#MessageListForSearch").hide();
+
 	 $(window).on('beforeunload', function(){
         return "В случае подтверждения закрытия окна браузера, все несохраненные данные будут утеряны.";
     });
@@ -82,7 +129,23 @@
         $(window).off('beforeunload');
     });
 
+
+
+
+
+    /*var objReportEditorForUser = new ReportEditorForUser("ListReport","Editor","Editor2");
+	objReportEditorForUser.Start(); //("DeleteButton","DeleteButton2","ErrorMessages","ErrorMessages2");*/
+
+		
+
 </script>
+
+
+
+
+
+
+
 
 
 <script type="text/javascript" src="/js/Editor/Data/Table1/HeadersForTable.js"></script>
@@ -110,7 +173,49 @@
 <script type="text/javascript" src="/js/Editor/LoaderEditor.js"></script>
 
 
-<script type="text/javascript" src="/js/Editor/Main.js"></script> 
+<script type="text/javascript" src="/js/Editor/ReportEditorForUser.js"></script>
+
+<!-- <script type="text/javascript" src="/js/Editor/Main.js"></script>  -->
+
+
+<script type="text/javascript">
+	var objReportEditorForUser = new ReportEditorForUser("ListReport","Editor","Editor2");
+	objReportEditorForUser.Start("DeleteButton","DeleteButton2","ErrorMessages","ErrorMessages2");
+
+
+
+	$.ajax(
+		{
+		  type: 'POST',
+		  url: '/ajax.php',
+		  data: "GetListDataSearchUser",
+		  dataType: 'html',
+		  success: CallBackListData
+		});
+
+	function CallBackListData(jsonDataForLists)
+	{
+
+		let DataForLists= JSON.parse(jsonDataForLists);
+		for(let i in DataForLists["Year"])
+		{
+			$('#YearListDropDown').append('<option value="'+ DataForLists["Year"][i]["Year"]+'"></option>');
+		}
+			
+	}
+
+
+	function CreateNewReport()
+	{
+		let year=$("#YearInputNewReport")[0].value;
+
+		objReportEditorForUser.NewReport(year);
+	}
+
+	$('#CreateReportButton').bind('click',function(){CreateNewReport();});
+
+
+</script>
 
 
 

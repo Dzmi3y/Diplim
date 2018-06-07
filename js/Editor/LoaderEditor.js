@@ -27,7 +27,7 @@ function LoaderEditor(idEditor,idButtonDelete,idMessageErrorlist=null,TableNumbe
 
 		if(TableNumber==1)
 		{
-			self.LoadCheckers(new CheckerTable1(ErorsContainer),new CheckerBalancesTable1(idEditor,ErorsContainer));
+			self.LoadCheckers(new CheckerTable1(ErorsContainer,ConvertColumn),new CheckerBalancesTable1(idEditor,ErorsContainer));
 		}
 
 		if(TableNumber==2)

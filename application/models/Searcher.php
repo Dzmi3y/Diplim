@@ -60,14 +60,26 @@ class Searcher
 
 
 
-	public static function GetAllArrayYearId()
+	public static function GetAllArrayYearId($CompanyID)
 	{
+		if($CompanyID!="")
+		{
+			$query= "select ID ,Year  from Reports where  CompanyID= ".$CompanyID.";"; 
+
+		}
+		else
+		{
+			$query= "select C.ID as IDCompany,  C.NameCompany, R.ID as IDReport , R.Year  from Companies as C INNER JOIN Reports as R on C.ID = R.CompanyID;"; 
+		}
 		
-		$query= "select C.ID as IDCompany,  C.NameCompany, R.ID as IDReport , R.Year  from Companies as C INNER JOIN Reports as R on C.ID = R.CompanyID;"; 
+		
+		//return   $query;
 
 		//return $query;
 		return ConnectDB::SendQuery($query);
 	}
+
+
 
 
 }

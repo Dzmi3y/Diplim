@@ -56,10 +56,10 @@ function TableManager(idTable,loadArray,ErorsContainer,ArgConvertColumn=null,Che
 		//console.log(self.DataForList);
 		console.log("create header");
 
-		self.ObjEditRowsManager.Handler=function(inputObj)
+		self.ObjEditRowsManager.Handler=function(inputObj,containerCellsValue,AddRow)
 		{
 			console.log("handler1");
-			self.ObjChecker.Handler(inputObj);
+			self.ObjChecker.Handler(inputObj,containerCellsValue,AddRow);
 		};
 		console.log(self.ObjEditRowsManager.Handler);
 		//self.ObjEditRowsManager.AddRow();

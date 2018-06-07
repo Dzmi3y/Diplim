@@ -7,6 +7,7 @@ function CheckerTable2(ErorsContainer,ConvertColumn)
 	self.AllCorrect=true;
 	self.nameRow=null;
 	self.numberRow= null;
+	self.ConvertColumn=ConvertColumn;
 
 	let ArrayDataList=new Array();
 	
@@ -14,7 +15,7 @@ function CheckerTable2(ErorsContainer,ConvertColumn)
 	ArrayDataList["column2"]=EventGroupCode;
 
 
-   self.Handler=function(inp)
+   self.Handler=function(inp,containerCellsValue,AddRow)
    {
    		console.log("Работаю");
    		
@@ -22,7 +23,7 @@ function CheckerTable2(ErorsContainer,ConvertColumn)
    		self.nameColumn=self.inp.classList[0];
    		self.nameRow=self.inp.classList[1];
    		self.IdCells=self.GetIdCells();
-   		self.AllCorrect=self.CheckCorrectEdit();
+   		self.AllCorrect=self.CheckCorrectEdit(containerCellsValue,AddRow);
    		
 
    		if(self.AllCorrect) 
@@ -50,7 +51,7 @@ self.isNumeric =function(n)
   		}
 	};
 
-	self.CheckCorrectEdit=function()
+	self.CheckCorrectEdit=function(containerCellsValue,AddRow)
 	{
 		self.numberRow=self.nameRow.replace('line','');
 		var isCorrect=false;
@@ -68,11 +69,31 @@ self.isNumeric =function(n)
 
 						$("#Editor2Inpr"+self.numberRow+"c2")[0].value=ArrayDataList["column2"][i].id;
 
+
+						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
+						{
+							containerCellsValue.ArrayCellsValue[self.numberRow-1]=new Object();
+							AddRow();
+
+						}
+						
+						containerCellsValue.ArrayCellsValue[self.numberRow-1][self.ConvertColumn[1]]=ArrayDataList["column2"][i].id;
+
+
 					}
 
 					if(self.nameColumn=="column2") 
 					{
 						$("#Editor2Inpr"+self.numberRow+"c1")[0].value=ArrayDataList["column1"][i].id;
+
+						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
+						{
+							containerCellsValue.ArrayCellsValue[self.numberRow-1]=new Object();
+							
+							AddRow();
+						}
+						
+						containerCellsValue.ArrayCellsValue[self.numberRow-1][self.ConvertColumn[0]]=ArrayDataList["column1"][i].id;
 
 					}
 

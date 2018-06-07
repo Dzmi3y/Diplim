@@ -1,7 +1,7 @@
 <?php
 	
-/*	
-ini_set('error_reporting', E_ALL);
+	
+/*ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);*/
 
@@ -15,7 +15,7 @@ ini_set('display_startup_errors', 1);*/
 	include 'application/models/NewPasswordGenerator.php';
 
 
-
+   
 	if(isset($_POST['registration'])) 
 	{
 		
@@ -33,9 +33,9 @@ ini_set('display_startup_errors', 1);*/
 	if(isset($_POST['authorize'])) 
 	{
 		
-		 error_reporting(E_ALL);
+		//error_reporting(E_ALL);
 			$auth= $_POST['authorize']; 
-
+			//echo "fuuu";
 			//echo json_decode($auth);
 			echo Authorization::SignIn($auth);
 				
@@ -51,15 +51,17 @@ ini_set('display_startup_errors', 1);*/
 	}
 
 
-	if(isset($_POST['report'])) 
+	if(isset($_POST['ReportOfUser'])) 
 	{
 		
-		$report= $_POST['report']; 
+		$reportArray= $_POST['ReportOfUser']; 
+		$year=$reportArray['year'];
+		$report=$reportArray['report'];
 		
 		//echo  json_encode($report["table1"]["Add"]) ;
+		//echo json_encode($report) ;
 
-
-		echo ProcessingSentReports::SaveReports($report);
+		echo ProcessingSentReports::SaveReports($year,$report);
 				
 	
 
@@ -117,6 +119,7 @@ ini_set('display_startup_errors', 1);*/
 		//echo  json_encode( $report["table1"][1]);
 		//echo $CompanyID;
 		echo  json_encode( Searcher::GetArrayYearId($CompanyID));
+
 		//echo $ReportID;
 		//echo LoaderReports::Load($ReportID);
 				
@@ -124,6 +127,8 @@ ini_set('display_startup_errors', 1);*/
 
 
 	}
+
+
 
 
 
@@ -171,8 +176,12 @@ if(isset($_POST['GetArrayYearIdForAdmin']))
 		
 		
 		//echo  json_encode( $report["table1"][1]);
+		$CompanyID= $_SESSION['ID']; 
 		//echo $CompanyID;
-		echo  json_encode(Searcher::GetAllArrayYearId());
+
+		echo  json_encode(Searcher::GetAllArrayYearId($CompanyID));
+		//echo Searcher::GetAllArrayYearId($CompanyID);
+
 		//echo $ReportID;
 		//echo LoaderReports::Load($ReportID);
 				
@@ -209,6 +218,8 @@ if(isset($_POST['GetArrayYearIdForAdmin']))
 		
 		//echo  json_encode( $report["table1"][1]);
 		//echo $CompanyID;
+
+
 		$queryGetAllNameCompanies = "SELECT NameCompany FROM Companies";
 		$queryGetAllYears ="SELECT DISTINCT Year FROM Reports";
 
@@ -223,6 +234,28 @@ if(isset($_POST['GetArrayYearIdForAdmin']))
 
 	}
 
+
+	if(isset($_POST['GetListDataSearchUser'])) 
+	{
+		
+		//$CompanyID= $_POST['AdminIDCompanyForLoadCurrentReport'];
+		
+		//echo  json_encode( $report["table1"][1]);
+		//echo $CompanyID;
+
+
+		
+		$queryGetAllYears ="SELECT DISTINCT Year FROM Reports where  CompanyID= ".$_SESSION['ID'].";";
+
+		$getData["Year"]= ConnectDB::SendQuery($queryGetAllYears);
+
+		//echo $ReportID;
+		echo json_encode($getData);
+				
+	///echo "im is loaded!";
+
+
+	}
 
 
 	if(isset($_POST['GetAllCompanies'])) 
@@ -297,6 +330,7 @@ if(isset($_POST['GetArrayYearIdForAdmin']))
 	}
 
 
+	
 	
 
 ?>

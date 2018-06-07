@@ -27,6 +27,7 @@
 	var callback= function (data) 
 	{//возвращаемый результат от сервера
 
+		console.log(data);
 		if(data==true)
 		{
 			console.log("reload");

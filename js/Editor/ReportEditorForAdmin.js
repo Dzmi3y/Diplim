@@ -200,11 +200,11 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 		let Year=$("#YearInput")[0].value;
 		let NameCompany=$("#CompanyNameInput")[0].value;
 		let result=Array();
-		console.log("пппоисккккккккккк");
+		/*console.log("пппоисккккккккккк");
 		console.log(Year);
 		console.log(NameCompany);
 		console.log((Year=="")&&(NameCompany==""));
-
+*/
 		
 			for(let i in self.ArrayYearId)
 			{
@@ -263,16 +263,12 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	self.Save = function ()
 	{
-		console.log("-------------------");
-		/*console.log(Editor1.GetData());
-		console.log(Editor2.GetData());*/
+		//console.log("-------------------");
+
 		
 		let table1 = Editor1.GetData();
 		let table2 = Editor2.GetData();
-		//console.log({'report':{'table1':table1,"table2":table2}});
-		/*console.log(table1);
-		console.log("###################");
-		console.log(table2);*/
+	
 
 
 	    let str =  {'reportAdmin':{'table1':{"Add":table1["Add"],"Delete":table1["Delete"]},'table2':{"Add":table2["Add"],"Delete":table2["Delete"]},'IDCompany':self.CurrentIDCompany,'IDReport':self.CurrentIDReport}};
@@ -292,19 +288,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 
  self.callback= function (data) 
-	{//возвращаемый результат от сервера
-
-		/*if(data=="true")
-		{
-			location.reload();
-
-		}
-		else
-		{
-			$("#ErrorMessages").empty();
-			$("#ErrorMessages").append('<p> Ошибка! </p>');
-		}*/
-		//et m= JSON.parse(data);
+	{
 		console.log("Вернулся!");
 		console.log(data);
 		console.log("end");
@@ -312,6 +296,9 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	};
 
+
+
+	
 
 
 

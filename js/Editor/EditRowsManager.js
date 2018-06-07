@@ -4,13 +4,18 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 {
 	
 	let self=this;
-	//let ArrayCellsValue= (typeof loadArray==="undefined")? new Array():loadArray;
-	let ArrayCellsValue= (loaderArray==null)? new Object() :loaderArray;
+	let containerCellsValue={ArrayCellsValue:null};
+	containerCellsValue.ArrayCellsValue=(loaderArray==null)? new Object() :loaderArray;
+
+	//containerCellsValue.containerCellsValue.ArrayCellsValue
+	//let containerCellsValue.ArrayCellsValue= (typeof loadArray==="undefined")? new Array():loadArray;
+
+	//let containerCellsValue.ArrayCellsValue= (loaderArray==null)? new Object() :loaderArray;
 	self.IDArrayForDelete=Array();
 	let CurrentFocus=Array();
 
 	self.DataForList=DataForList;
-	//console.log(ArrayCellsValue);
+	//console.log(containerCellsValue.ArrayCellsValue);
 	self.idTable = idTable;
 	let idTableText = self.idTable.replace("#","");
 
@@ -43,16 +48,16 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 			    widthVar=100;
 			    break;
 			  case "Editor_column3":
-			   widthVar=100;
-			    break;
-			   case "Editor_column4":
 			   widthVar=200;
 			    break;
-			   case "Editor_column7":
+			   case "Editor_column4":
 			   widthVar=100;
 			    break;
+			   case "Editor_column7":
+			   widthVar=200;
+			    break;
 			    case "Editor_column10":
-			   widthVar=300;
+			   widthVar=310;
 			    break;
 			    case "Editor_column12":
 			   widthVar=400;
@@ -61,10 +66,10 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 			   widthVar=450;
 			    break;
 			    case "Editor_column16":
-			   widthVar=500;
+			   widthVar=260;
 			    break;
 			    case "Editor_column18":
-			   widthVar=500;
+			   widthVar=450;
 			    break;
 			    case "Editor_column21":
 			   widthVar=500;
@@ -183,7 +188,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 	self.DeleteRows=function()
 	{
 		console.log("Удоляю");
-		console.log(ArrayCellsValue);
+		console.log(containerCellsValue.ArrayCellsValue);
 		if(self.selectedRows.length>0)
 		{
 			for( var i = 0;i< self.selectedRows.length;i++ )
@@ -199,14 +204,14 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 		  		let n=numberRow;
 		  		console.log(n);
 
-		  		if (typeof ArrayCellsValue[numberRow-1] !="undefined")
+		  		if (typeof containerCellsValue.ArrayCellsValue[numberRow-1] !="undefined")
 		  		{
-			  		if(typeof ArrayCellsValue[numberRow-1]["ID"]!="undefined") self.IDArrayForDelete.push(ArrayCellsValue[numberRow-1]["ID"]);
+			  		if(typeof containerCellsValue.ArrayCellsValue[numberRow-1]["ID"]!="undefined") self.IDArrayForDelete.push(containerCellsValue.ArrayCellsValue[numberRow-1]["ID"]);
 
-			  		delete ArrayCellsValue[numberRow-1];
-			  		//let f = in ArrayCellsValue;
-			  		//console.log(in ArrayCellsValue[2]);
-			  		//ArrayCellsValue.splice(n,1);
+			  		delete containerCellsValue.ArrayCellsValue[numberRow-1];
+			  		//let f = in containerCellsValue.ArrayCellsValue;
+			  		//console.log(in containerCellsValue.ArrayCellsValue[2]);
+			  		//containerCellsValue.ArrayCellsValue.splice(n,1);
 			  		console.log(self.IDArrayForDelete);
 		  		}
 		  		else
@@ -216,7 +221,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 			}
 			self.selectedRows.splice(0, self.selectedRows.length);
 			
-			//if(ArrayCellsValue.length=0) self.AddRow();
+			//if(containerCellsValue.ArrayCellsValue.length=0) self.AddRow();
 		}
 
 	};
@@ -292,23 +297,23 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 	{
 
 		//console.log(Data);
-		self.Handler(ObjectChanged);
+		self.Handler(ObjectChanged,containerCellsValue,self.AddRow);
 		let value=ObjectChanged.value;
 		let row =ObjectChanged.classList[1].replace("line","");
 		let column= ObjectChanged.classList[0].replace("column","");
 
 		console.log("Change r"+row+" c"+column+" v"+value);
 		self.CheckThisRow(ObjectChanged);
-
-		if (typeof ArrayCellsValue[row-1]==="undefined" )
+/*---------------------------------------------------------------------------------------------*/
+		if (typeof containerCellsValue.ArrayCellsValue[row-1]==="undefined" )
 		{
-			ArrayCellsValue[row-1]=new Object();
+			containerCellsValue.ArrayCellsValue[row-1]=new Object();
 			self.AddRow();
 
 		}
 		
-		ArrayCellsValue[row-1][ConvertColumn[column-1]]=value;
-		console.log(ArrayCellsValue);
+		containerCellsValue.ArrayCellsValue[row-1][ConvertColumn[column-1]]=value;
+		console.log(containerCellsValue.ArrayCellsValue);
 	}
 
 	self.LoadData = function()
@@ -317,12 +322,12 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 		//if (!(typeof loadArray==="undefined"))
 		//{
 			console.log("load data");
-			console.log(ArrayCellsValue);
-			for(let i in ArrayCellsValue)
+			console.log(containerCellsValue.ArrayCellsValue);
+			for(let i in containerCellsValue.ArrayCellsValue)
 			{
 				console.log("LoadData");
-				console.log(ArrayCellsValue[i]);
-				self.AddRow(ArrayCellsValue[i]);
+				console.log(containerCellsValue.ArrayCellsValue[i]);
+				self.AddRow(containerCellsValue.ArrayCellsValue[i]);
 			}
 			self.AddRow();
 			console.log("ffooocckkuusss");
@@ -334,7 +339,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 
 	self.GetData = function()
 	{
-		return(ArrayCellsValue);
+		return(containerCellsValue.ArrayCellsValue);
 	}
 
 
