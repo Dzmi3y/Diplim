@@ -25,7 +25,7 @@
 
 <ul id="myTab" class="nav nav-tabs">
 <li class="nav-item"><a class="nav-link active" href="#selectReport" data-toggle="tab">Выбор отчета</a></li>
-<li class="nav-item"><a class="nav-link" href="#firstTable" data-toggle="tab">Таблица 1</a></li>
+<li class="nav-item"><a id="tabFirstTable" class="nav-link" href="#firstTable" data-toggle="tab">Таблица 1</a></li>
 <li class="nav-item"><a class="nav-link" href="#secondTable" data-toggle="tab">Таблица 2</a></li>
 <li class="nav-item" ><a class="nav-link" id="SendReportTab"  href="#sendReport" data-toggle="tab">Отправить отчет</a></li>
 </ul>
@@ -35,25 +35,28 @@
 	<div  class="tab-pane fade show active" id="selectReport">
 		<div class="row">
 			<div class="col-4"></div>
-			<div class="col-4">
+			<div class="col-4 text-center">
 
 				<div id="CreateReport" class="my-1 mx-1 ">
 					<p> <strong> Создание нового отчета </strong></p>
-					<input id="YearInputNewReport" type="number" min="2008" max="3000" class="col-7" placeholder="Год"> 
-					<button id="CreateReportButton" class="btn btn-default col-4" >Создать</button>
+					<input id="YearInputNewReport" type="number" min="2008" max="3000" class="col-5" placeholder="Год"> 
+					
+					<button id="CreateReportButton" class="btn btn-default col-4" >Создать</button>			
+					<div id="ErrorCreateReport" class=" alert alert-danger col-10" role="alert"></div>
 				</div>
 					
 
-				<div id="ChangedReports" class="my-1 mx-1" >
+				<div id="ChangedReports" class="my-1 mx-1 align-items-cente" >
 					
 					<div >
 						<p> <strong> Поиск отчетов</strong> </p>
 						<input id="YearInput" type="text" class="col-7" placeholder="Год" list="YearListDropDown"> 
+				
 						<button id="SearchButton" class="btn btn-default col-4" >Найти</button>
 					</div>
 					<p> Список отчетов</p>
-					<div id="MessageListForSearch" class="alert alert-danger" role="alert"></div>
-					<div id="YearList"  class="col-12 border border-dark"  style="overflow-y: scroll;">
+					<div id="MessageListForSearch" class="alert alert-danger col-10" role="alert"></div>
+					<div id="YearList"  class="col-7 border border-dark  text-center center-block"   style="overflow-y: scroll;">
 						<ul id="ListReport" class="nav nav-pills flex-column mb-3" role="tablist">
 
 						</ul>
@@ -118,7 +121,9 @@
 	//$("#ChangedReports")[0].prop("disabled", true);
 
 	//$("#ChangedReports").hide();
+	$("#ErrorCreateReport").hide();
 	$("#MessageListForSearch").hide();
+	
 
 	 $(window).on('beforeunload', function(){
         return "В случае подтверждения закрытия окна браузера, все несохраненные данные будут утеряны.";
@@ -193,10 +198,12 @@
 		  success: CallBackListData
 		});
 
+	let DataForLists;
+
 	function CallBackListData(jsonDataForLists)
 	{
 
-		let DataForLists= JSON.parse(jsonDataForLists);
+		 DataForLists= JSON.parse(jsonDataForLists);
 		for(let i in DataForLists["Year"])
 		{
 			$('#YearListDropDown').append('<option value="'+ DataForLists["Year"][i]["Year"]+'"></option>');
@@ -207,9 +214,51 @@
 
 	function CreateNewReport()
 	{
-		let year=$("#YearInputNewReport")[0].value;
+		//$("#ErrorCreateReport").hide();
 
-		objReportEditorForUser.NewReport(year);
+		$("#ErrorCreateReport p").remove();
+		let valueInp = $("#YearInputNewReport")[0].value;
+		if((Number(valueInp))&& (Number.isInteger(Number(valueInp))))
+		{
+			if((2008<=valueInp)&&(valueInp<=3000))
+			{
+				let flagCorrect=true;
+				for(let i in DataForLists["Year"])
+				{
+					if(DataForLists["Year"][i]["Year"]==valueInp)
+					{
+						flagCorrect=false;
+						break;
+					}
+				}
+
+				if(flagCorrect)
+				{
+					$("#ErrorCreateReport").hide();
+					objReportEditorForUser.NewReport(valueInp);
+					$("#tabFirstTable")[0].click();
+				}
+				else
+				{
+					$("#ErrorCreateReport").append("<p>Отчет за "+valueInp+" существует.</p>");
+					$("#ErrorCreateReport").show();	
+				}
+			}
+			else
+			{
+				$("#ErrorCreateReport").append("<p>Значение должно находится в интервале от 2008 до 3000 включительно.</p>");
+				$("#ErrorCreateReport").show();
+			}
+		}
+		else
+		{
+			$("#ErrorCreateReport").append("<p>Введены неверные данные</p>");
+			$("#ErrorCreateReport").show();
+		}
+
+		
+
+	
 	}
 
 	$('#CreateReportButton').bind('click',function(){CreateNewReport();});

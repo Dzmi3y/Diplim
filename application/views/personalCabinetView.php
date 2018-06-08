@@ -6,6 +6,6 @@ if ( !empty($_SESSION['IsAdmin']))
 }
 else
 {
-	header("Location: http://".$_SERVER['HTTP_HOST']."/personalCabinet/allReports");
+	header("Location: http://".$_SERVER['HTTP_HOST']."/personalCabinet/reportEditor");
 }
 ?>

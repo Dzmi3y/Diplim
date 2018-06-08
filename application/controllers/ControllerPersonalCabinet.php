@@ -12,12 +12,12 @@ class ControllerPersonalCabinet extends Controller
 		$this->view->generate('personalCabinetView.php');
 	} 
 
-	public function actionNewReport()
+	public function actionReportEditor()
 	{
 
-		$this->view->title="Новый отчет";
-		$this->view->nameCurrentPage="newReport";
-		$this->view->generate('newReportView.php','templatePersonalCabinet.php');
+		$this->view->title="Редактор отчетов";
+		$this->view->nameCurrentPage="reportEditor";
+		$this->view->generate('reportEditorView.php','templatePersonalCabinet.php');
 	} 
 	public function actionSettings()
 	{

@@ -61,7 +61,7 @@ let self = this;
 					classes="nav-link tab";
 				}
 
-				$('#'+NavTabID).append('<li id="li'+idSubTab+'" class="nav-item "><a  id="a'+idSubTab+'" class="'+classes+'"  data-toggle="tab">['+CurrentYear+']</a></li>');
+				$('#'+NavTabID).append('<li id="li'+idSubTab+'" class="nav-item "><a  id="a'+idSubTab+'" class="'+classes+'"  data-toggle="tab">Отчет за '+CurrentYear+' год</a></li>');
 
 				$('#li'+idSubTab).bind('click',function(){self.LoadTables(LaadedArray[i]["ID"],LaadedArray[i]["Year"]);});
 
@@ -93,7 +93,7 @@ let self = this;
 	self.LoadTables=function(IDReport,year)
 	{
 
-		let nameReport="["+year+"]";
+		let nameReport="Отчет за "+year+" год";
 		yearCurrentReport=year;
 
 		console.log("GetArrayYearId33333333333");
@@ -352,7 +352,7 @@ let self = this;
 	self.NewReport= function(year)
 	{
 		yearCurrentReport=year;
-		let nameReport="["+year+"]";
+		let nameReport="Отчет за "+year+" год";
 		self.CleanAll();
 		$(".nameReport")[0].innerHTML=nameReport;
 		$(".nameReport")[1].innerHTML=nameReport;

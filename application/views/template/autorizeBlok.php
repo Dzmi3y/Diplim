@@ -30,8 +30,9 @@
 		console.log(data);
 		if(data==true)
 		{
-			console.log("reload");
-			location.reload();
+			//console.log("reload");
+			//location.reload();
+			window.location.pathname="/personalCabinet";
 
 		}
 		else
