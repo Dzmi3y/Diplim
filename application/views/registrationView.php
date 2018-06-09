@@ -97,9 +97,7 @@
 
 
 	var callbackRegistration= function (data) 
-	{//возвращаемый результат от сервера
-		console.log("callback");
-		console.log(data);
+	{
 
 		if(data==true)
 		{
@@ -117,8 +115,6 @@
 			$("#ErrorMessagesRegistration").append(ErrorMessage["Error"]);
 			$("#ErrorMessagesRegistration").show();
 		}
-		
-	console.log(data);
 
 	};
 	$("#ErrorMessagesRegistration").hide();
@@ -164,7 +160,7 @@
 			  dataType: 'html',
 			  success: callbackRegistration
 			});
-			console.log("kek");
+
 			
 		}
 	};
@@ -173,7 +169,6 @@
 	{	
 		let result= true;
 		$("#ErrorMessagesRegistration").empty();
-		console.log(RegistrationData);
 
 		for(let i in RegistrationData)
 		{
@@ -298,9 +293,7 @@
 
 	function CheckPassword(key,ValueForCheck)
 	{
-		console.log("ppppppppppppp");
-		console.log(ValueForCheck);
-		console.log(ValueForCheck.length);
+
 		if(ValueForCheck.length>=6)
 		{
 			if(ValueForCheck==$("#InputPassword3")[0].value)

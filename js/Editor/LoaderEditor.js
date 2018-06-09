@@ -23,7 +23,7 @@ function LoaderEditor(idEditor,idButtonDelete,idMessageErrorlist=null,TableNumbe
 
 	self.Load= function (HeaderRowsData,ConvertColumn,DataForCells=null,DataForColumn=null)
 	{
-		console.log("lloooaaddds");
+
 
 		if(TableNumber==1)
 		{

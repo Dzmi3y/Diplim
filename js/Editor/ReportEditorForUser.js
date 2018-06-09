@@ -4,6 +4,11 @@ function ReportEditorForUser(NavTabID,Table1,Table2)
 let self = this;
 	self.ArrayYearId=Array();
 	self.CurrentIDReport;
+	self.ConvertColumn=["CA","CB","CV","CG","C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19"];
+	self.Convert2Column=["CA","CB","C1","C2","C3","C4"];
+
+
+
 
 	let Editor1;
 	let Editor2;
@@ -26,7 +31,8 @@ let self = this;
 		/*$("#firstTable").show();
 		$("#secondTable").show();*/
 		$(".contentForReport").show();
-		$("#YearList").show();
+		$("#ListReportBlock").show();
+		$("#DownloadPDF").show();
 		console.log("CreateNavTab");
 		console.log(NavTabID);
 		$("#MessageListForSearch").hide();
@@ -80,7 +86,8 @@ let self = this;
 			/*$("#firstTable").hide();
 			$("#secondTable").hide();*/
 			$(".contentForReport").hide();
-			$("#YearList").hide();
+			$("#ListReportBlock").hide();
+			$("#DownloadPDF").hide();
 
 			$("#MessageListForSearch").show();
 			console.log("++++++++++++");
@@ -155,7 +162,16 @@ let self = this;
 		$('#SendReport').bind('click',self.Save);
 
 
+		self.UpdateListData();
 
+		
+
+
+	}
+
+
+	self.UpdateListData = function()
+	{
 		$.ajax(
 		{
 		  type: 'POST',
@@ -163,10 +179,10 @@ let self = this;
 		  data: "GetArrayYearIdForAdmin",
 		  dataType: 'html',
 		  success: self.GetArrayYearId
-		});
-
-
+		});	
 	}
+
+
 
 
 	self.callbackLoader= function($report)
@@ -174,8 +190,7 @@ let self = this;
 		console.log("hello");
 
 
-		let ConvertColumn=["CA","CB","CV","CG","C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19"];
-		let Convert2Column=["CA","CB","C1","C2","C3","C4"];
+		
 
 
 		let ArrayDataList=new Array();
@@ -196,10 +211,10 @@ let self = this;
 
 		DataForLoadingInTables= JSON.parse($report);
 		//console.log(DataForLoadingInTables["Table1"]);
-		Editor1.Load(HeadrRows,ConvertColumn,DataForLoadingInTables["Table1"],ArrayDataList);
-		Editor2.Load(HeadrRowsTable2,Convert2Column,DataForLoadingInTables["Table2"],ArrayDataList2);
+		Editor1.Load(HeadrRows,self.ConvertColumn,DataForLoadingInTables["Table1"],ArrayDataList);
+		Editor2.Load(HeadrRowsTable2,self.Convert2Column,DataForLoadingInTables["Table2"],ArrayDataList2);
 
-
+	
 		
 
 	}
@@ -265,7 +280,25 @@ let self = this;
 
 	}
 
+	self.dataForSaveAsPDF= function()
+	{
 
+		let obj = new Object();
+		obj.table1=Editor1.GetData;
+		obj.table2=Editor2.GetData;
+		obj.ConvertColumn =self.ConvertColumn;
+		obj.Convert2Column =self.Convert2Column;
+
+		return obj;
+	/*	"DataForPDF":
+		{
+			"table1" :,
+			"table2" :Editor2.GetData
+
+		}*/
+
+
+	}
 
 
 
@@ -273,7 +306,7 @@ let self = this;
 
 	self.Save = function ()
 	{
-		console.log("-------------------");
+		//console.log("-------------------");
 
 		
 		let table1 = Editor1.GetData();
@@ -293,6 +326,8 @@ let self = this;
 			  dataType: 'html',
 			  success: self.callback
 			});
+
+		
 	}
 
 
@@ -358,8 +393,7 @@ let self = this;
 		$(".nameReport")[1].innerHTML=nameReport;
 		$(".nameReport")[2].innerHTML=nameReport;
 
-		let ConvertColumn=["CA","CB","CV","CG","C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19"];
-		let Convert2Column=["CA","CB","C1","C2","C3","C4"];
+
 
 
 		let ArrayDataList=new Array();
@@ -380,8 +414,8 @@ let self = this;
 
 
 
-		Editor1.Load(HeadrRows,ConvertColumn,null,ArrayDataList);
-		Editor2.Load(HeadrRowsTable2,Convert2Column,null,ArrayDataList2);
+		Editor1.Load(HeadrRows,self.ConvertColumn,null,ArrayDataList);
+		Editor2.Load(HeadrRowsTable2,self.Convert2Column,null,ArrayDataList2);
 
 	}
 

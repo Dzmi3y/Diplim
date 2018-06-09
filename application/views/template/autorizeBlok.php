@@ -25,13 +25,10 @@
 <script type="text/javascript">
 
 	var callback= function (data) 
-	{//возвращаемый результат от сервера
+	{
 
-		console.log(data);
 		if(data==true)
 		{
-			//console.log("reload");
-			//location.reload();
 			window.location.pathname="/personalCabinet";
 
 		}
@@ -40,8 +37,6 @@
 			$("#ErrorMessagesAuth").empty();
 			$("#ErrorMessagesAuth").append('<p> Неверный Email или пароль</p>');
 		}
-		console.log(data);
-
 	};
 
 	function SendAuthorizeData() 
@@ -49,10 +44,6 @@
 
 		var emailAuth=$("#InputEmailAuth")[0].value;
 		var passAuth=$("#InputPasswordAuth")[0].value;
-		console.log("Auth");
-		console.log(emailAuth);
-		console.log(passAuth);
-
 		$.ajax(
 		{
 		  type: 'POST',

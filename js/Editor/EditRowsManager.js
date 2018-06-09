@@ -187,8 +187,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 
 	self.DeleteRows=function()
 	{
-		console.log("Удоляю");
-		console.log(containerCellsValue.ArrayCellsValue);
+
 		if(self.selectedRows.length>0)
 		{
 			for( var i = 0;i< self.selectedRows.length;i++ )
@@ -202,7 +201,8 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 		  		$("."+classForDelete+"."+idTableText).remove();
 
 		  		let n=numberRow;
-		  		console.log(n);
+		  	
+
 
 		  		if (typeof containerCellsValue.ArrayCellsValue[numberRow-1] !="undefined")
 		  		{
@@ -212,7 +212,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 			  		//let f = in containerCellsValue.ArrayCellsValue;
 			  		//console.log(in containerCellsValue.ArrayCellsValue[2]);
 			  		//containerCellsValue.ArrayCellsValue.splice(n,1);
-			  		console.log(self.IDArrayForDelete);
+			  	
 		  		}
 		  		else
 		  		{
@@ -242,7 +242,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 
 	self.ChangeAllCheckBox= function()
 	{
-		console.log("Изменён");
+		
 		let classes =$(this).prop("classList"); 
 		if(this.checked)
 		{	
@@ -268,7 +268,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 
 	self.CheckThisRow=function(ObjectInput)
 	{
-		console.log("check check");
+		
 		ObjCheckerBalances.NewFocus(ObjectInput);
 		ObjCheckerBalances.CheckRow();
 
@@ -302,7 +302,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 		let row =ObjectChanged.classList[1].replace("line","");
 		let column= ObjectChanged.classList[0].replace("column","");
 
-		console.log("Change r"+row+" c"+column+" v"+value);
+		//console.log("Change r"+row+" c"+column+" v"+value);
 		self.CheckThisRow(ObjectChanged);
 /*---------------------------------------------------------------------------------------------*/
 		if (typeof containerCellsValue.ArrayCellsValue[row-1]==="undefined" )
@@ -313,7 +313,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 		}
 		
 		containerCellsValue.ArrayCellsValue[row-1][ConvertColumn[column-1]]=value;
-		console.log(containerCellsValue.ArrayCellsValue);
+		//console.log(containerCellsValue.ArrayCellsValue);
 	}
 
 	self.LoadData = function()
@@ -321,16 +321,16 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 		//console.log("ololo");
 		//if (!(typeof loadArray==="undefined"))
 		//{
-			console.log("load data");
-			console.log(containerCellsValue.ArrayCellsValue);
+			// console.log("load data");
+			// console.log(containerCellsValue.ArrayCellsValue);
 			for(let i in containerCellsValue.ArrayCellsValue)
 			{
-				console.log("LoadData");
-				console.log(containerCellsValue.ArrayCellsValue[i]);
+				// console.log("LoadData");
+				// console.log(containerCellsValue.ArrayCellsValue[i]);
 				self.AddRow(containerCellsValue.ArrayCellsValue[i]);
 			}
 			self.AddRow();
-			console.log("ffooocckkuusss");
+			//console.log("ffooocckkuusss");
 			//$('#EditorInpr1c1').focus();
 		//}
 	}

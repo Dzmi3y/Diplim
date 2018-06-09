@@ -50,18 +50,6 @@
 		</div>
 	</div>
 
-
-
-	<!-- "NameCompany"//
-		"Phone"//
-		"Email" //
-		"UNP"//
-		"Region"//
-		"District"
-		"Address"// -->
-
-
-
 		
 	<div>
 
@@ -94,8 +82,5 @@
 	
 var objLoaderCompaniesInfo= new	LoaderCompaniesInfo("myTab","CompanyNameInput","SearchButton");
 objLoaderCompaniesInfo.Start();
-
-
-	
 
 </script>

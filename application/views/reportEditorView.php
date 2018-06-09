@@ -24,7 +24,7 @@
 <datalist id="YearListDropDown"></datalist>
 
 <ul id="myTab" class="nav nav-tabs">
-<li class="nav-item"><a class="nav-link active" href="#selectReport" data-toggle="tab">Выбор отчета</a></li>
+<li class="nav-item"><a class="nav-link active" id="SelectReportTab" href="#selectReport" data-toggle="tab">Выбор отчета</a></li>
 <li class="nav-item"><a id="tabFirstTable" class="nav-link" href="#firstTable" data-toggle="tab">Таблица 1</a></li>
 <li class="nav-item"><a class="nav-link" href="#secondTable" data-toggle="tab">Таблица 2</a></li>
 <li class="nav-item" ><a class="nav-link" id="SendReportTab"  href="#sendReport" data-toggle="tab">Отправить отчет</a></li>
@@ -33,38 +33,56 @@
 <div class="tab-content" id="tabContent">
 
 	<div  class="tab-pane fade show active" id="selectReport">
+		<br/>
 		<div class="row">
-			<div class="col-4"></div>
-			<div class="col-4 text-center">
+			<div class="col-3"></div>
+			<div class="col-8 text-center row" >
 
-				<div id="CreateReport" class="my-1 mx-1 ">
-					<p> <strong> Создание нового отчета </strong></p>
-					<input id="YearInputNewReport" type="number" min="2008" max="3000" class="col-5" placeholder="Год"> 
-					
-					<button id="CreateReportButton" class="btn btn-default col-4" >Создать</button>			
-					<div id="ErrorCreateReport" class=" alert alert-danger col-10" role="alert"></div>
-				</div>
-					
 
-				<div id="ChangedReports" class="my-1 mx-1 align-items-cente" >
-					
-					<div >
-						<p> <strong> Поиск отчетов</strong> </p>
-						<input id="YearInput" type="text" class="col-7" placeholder="Год" list="YearListDropDown"> 
-				
-						<button id="SearchButton" class="btn btn-default col-4" >Найти</button>
+				<div class="col-7">
+					<div id="CreateReport" class="my-1 mx-1 ">
+						
+						<strong> Создание нового отчета </strong> <br/>
+						<input id="YearInputNewReport" type="number" min="2008" max="3000" class="col-5" placeholder="Год"> 
+						<button id="CreateReportButton" class="btn btn-default col-3" >Создать</button>	
+						<div class="col-4" ></div>
+						<div id="ErrorCreateReport" class=" alert alert-danger col-8 container " role="alert"></div>
 					</div>
-					<p> Список отчетов</p>
-					<div id="MessageListForSearch" class="alert alert-danger col-10" role="alert"></div>
-					<div id="YearList"  class="col-7 border border-dark  text-center center-block"   style="overflow-y: scroll;">
-						<ul id="ListReport" class="nav nav-pills flex-column mb-3" role="tablist">
+						
+					<div id="ChangedReports" class="my-1 mx-1 align-items-centre" >
 
-						</ul>
+						<br/>
+						<strong> Поиск отчетов</strong> 
+						<br/>
+						<input id="YearInput" type="text" class="col-5" placeholder="Год" list="YearListDropDown"> 
+						<button id="SearchButton" class="btn btn-default col-3" >Найти</button>
+						
+						<br/>
+						<div id="MessageListForSearch" class="alert alert-danger col-8 container" role="alert"></div>
+						<br/>
+						<button id="DownloadPDF" type="button" class="btn btn-success">Скачать выбранный отчет в формате PDF</button>
 					</div>
-				
 				</div>
+
+
+
+				<div id="ListReportBlock" class="col-4">
+
+					<strong> Список отчетов </strong>  <br/>
+					<button type="button" id="UpdateListDataBtn" class=" btn btn-success col-12">Обновить список</button>
+					<div id="YearList"  class=" container border border-dark  text-center center-block col-12"   style="height: 300px; overflow-y: scroll;">
+						<ul id="ListReport" class="nav nav-pills flex-column mb-3 col-12" role="tablist"></ul>
+					</div>
+				</div>
+				<div class="col-1"></div>
+
+
+
 			</div>
+
+			<div class="col-1"></div>
 		</div>
+		<br/>
 	</div>
 
 
@@ -180,16 +198,25 @@
 
 <script type="text/javascript" src="/js/Editor/ReportEditorForUser.js"></script>
 
+<script type="text/javascript" src="/js/pdfmake-master/build/pdfmake.min.js"></script> 
+<script type="text/javascript" src="/js/pdfmake-master/build/vfs_fonts.js"></script> 
+
+
+<script type="text/javascript" src="/js/pdfManager.js"></script>
+
 <!-- <script type="text/javascript" src="/js/Editor/Main.js"></script>  -->
 
 
 <script type="text/javascript">
 	var objReportEditorForUser = new ReportEditorForUser("ListReport","Editor","Editor2");
 	objReportEditorForUser.Start("DeleteButton","DeleteButton2","ErrorMessages","ErrorMessages2");
+	var dataForPdf = objReportEditorForUser.dataForSaveAsPDF();
 
+		
 
+ 
 
-	$.ajax(
+		$.ajax(
 		{
 		  type: 'POST',
 		  url: '/ajax.php',
@@ -197,19 +224,51 @@
 		  dataType: 'html',
 		  success: CallBackListData
 		});
+	
+
+
+	
+
 
 	let DataForLists;
 
 	function CallBackListData(jsonDataForLists)
 	{
 
+
 		 DataForLists= JSON.parse(jsonDataForLists);
 		for(let i in DataForLists["Year"])
 		{
 			$('#YearListDropDown').append('<option value="'+ DataForLists["Year"][i]["Year"]+'"></option>');
 		}
+
+		
 			
 	}
+
+	function createPdf()
+	{
+		console.log("createPdf");
+		tables=new Array();
+		dataConvert=new Array();
+
+		tables[0] = dataForPdf.table1()["Add"];
+		tables[1] =dataForPdf.table2()["Add"];
+		dataConvert[0]=dataForPdf.ConvertColumn;
+		dataConvert[1]=dataForPdf.Convert2Column;
+
+/*
+		console.log(table1[0][ConvertColumn[0]]);
+		console.log(table1[0]);
+		console.log();*/
+
+
+		console.log(tables[0]);
+		let PDF = new PDFManager();
+		PDF.DownloadPDF(tables,dataConvert);
+
+	}
+
 
 
 	function CreateNewReport()
@@ -235,6 +294,7 @@
 				if(flagCorrect)
 				{
 					$("#ErrorCreateReport").hide();
+					//////////////////////////////////////////////////////////////////////
 					objReportEditorForUser.NewReport(valueInp);
 					$("#tabFirstTable")[0].click();
 				}
@@ -262,7 +322,16 @@
 	}
 
 	$('#CreateReportButton').bind('click',function(){CreateNewReport();});
+	$('#DownloadPDF').bind('click',function(){createPdf();});
+	$('#UpdateListDataBtn').bind('click',function()
+	{
+		objReportEditorForUser.UpdateListData(); 
+		$("#YearInputNewReport")[0].value="";
+		$("#YearInput")[0].value="";
+		$("#ErrorCreateReport").hide();
+		$("#MessageListForSearch").hide();
 
+	});
 
 </script>
 

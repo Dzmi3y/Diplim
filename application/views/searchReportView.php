@@ -82,50 +82,12 @@
 	</div>
 
 </div>
-<!-- --------------------------------------------------------- -->
-
 
 <div class="row my-1 mx-1" >
-
-
-
-
-
-	
-
-
 
 </div>
 
 
-
-
-<script type="text/javascript"> 
-
-
-
-
-
-
-
-
-/*$('#t1').bind('click',function(){fn("lol");});
-$b=true;
-
-function fn(text)
-{
-	if($b)
-	{
-		console.log(text);
-		$b=false;
-	}
-
-}*/
-
-
-
-
-</script>
 
 
 <script type="text/javascript" src="/js/Editor/Data/Table1/HeadersForTable.js"></script>

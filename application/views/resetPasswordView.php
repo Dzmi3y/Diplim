@@ -40,11 +40,7 @@
 
 
 	var callbackResetPassword= function (data) 
-	{//возвращаемый результат от сервера
-		//console.log("callback");
-		
-		console.log("callback");
-		console.log(data);
+	{
 
 		if(data==true)
 		{
@@ -61,8 +57,7 @@
 			$("#ErrorMessagesResetPassword").append(ErrorMessage["Error"]);
 			$("#ErrorMessagesResetPassword").show();
 		}
-		
-	//console.log(data);
+
 
 	};
 
@@ -91,9 +86,6 @@
 	function Check(Email)
 	{
 		$("#ErrorEmailMessage p").remove();
-
-
-		
 
 		if(Email.trim()!="")
 		{
