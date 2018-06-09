@@ -24,7 +24,7 @@ function CheckerTable2(ErorsContainer,ConvertColumn)
    		self.nameRow=self.inp.classList[1];
    		self.IdCells=self.GetIdCells();
    		self.AllCorrect=self.CheckCorrectEdit(containerCellsValue,AddRow);
-   		
+   		console.log(self.AllCorrect);
 
    		if(self.AllCorrect) 
    		{
@@ -138,7 +138,7 @@ self.isNumeric =function(n)
 		$("#"+self.IdCells).css('background', 'red');
    		ErorsContainer.ArrayIdErrorsElement[ErorsContainer.ArrayIdErrorsElement.length]=self.inp.id;
    		ErorsContainer.ObjMessageErrorManager.AddMessage(self.inp.id,"Неверное значение! Строка "+TitleRow+" столбец "+TitleColumn+".",TitleRow);
-   		console.log(TitleColumn+"   "+TitleRow);
+   		console.log(TitleColumn+" ееерррооооррр  "+TitleRow);
 	}
 
 

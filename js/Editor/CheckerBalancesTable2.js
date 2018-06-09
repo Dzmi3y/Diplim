@@ -15,8 +15,6 @@ function CheckerBalancesTable2(idTable,rErorsContainer)
 	self.CheckRow=function()
 	{
 
-
-
    		let indexRemove="";
 			
 		for(let i in FailedInputs)
@@ -57,17 +55,21 @@ function CheckerBalancesTable2(idTable,rErorsContainer)
 
 
 
-	
+		
 		
 			if($("#"+trId).length)
 			{
-				
-
 					self.Checking();
+
+
+				/*if($("#ErrorMessages2 p").length==0)
+				{*/
+						
+					
+
 
 					if(AllCorrect)
 					{
-
 						self.Unhighlight();
 						ErorsContainer.ObjMessageErrorManager.RemoveMessageWithClass("line"+currentRow);
 					}
@@ -78,10 +80,14 @@ function CheckerBalancesTable2(idTable,rErorsContainer)
 			
 
 					isNewRow=true;
+			/*	}
+				else
+				{
+					self.Highlight();
+				}*/
 		
 			}
 
-			
 		
 
 
@@ -95,8 +101,8 @@ function CheckerBalancesTable2(idTable,rErorsContainer)
 	self.Checking=function()
 	{
 		//console.log("checking");
-		//if(true/*self.CheckTisRowInArrayIdErrorsElement()*/)
-		//{
+		if(self.CheckTisRowInArrayIdErrorsElement())
+		{
 			//console.log("checking2");
 			let rowVoid1=true;
 			let rowVoid2=true;
@@ -135,7 +141,7 @@ function CheckerBalancesTable2(idTable,rErorsContainer)
 
 			if(!rowIsCorrect)
 			{
-				AllCorrect*=false;
+				AllCorrect=false;
 				ErorsContainer.ObjMessageErrorManager.AddMessage(trId,"Заполнены не все поля в строке: "+currentRow+".",currentRow);
 			}
 			else
@@ -143,11 +149,11 @@ function CheckerBalancesTable2(idTable,rErorsContainer)
 				ErorsContainer.ObjMessageErrorManager.RemoveMessage(trId);
 			}
 				
-		/*}
+		}
 		else
 		{
-			AllCorrect*=false;
-		}*/
+			AllCorrect=false;
+		}
 			
 
 	}
@@ -158,8 +164,14 @@ function CheckerBalancesTable2(idTable,rErorsContainer)
 
 		for(let i in ErorsContainer.ArrayIdErrorsElement)
 			{
-   				let item =ErorsContainer.ArrayIdErrorsElement.indexOf("r"+currentRow);
-   				if(item<0)
+				console.log(ErorsContainer.ArrayIdErrorsElement);
+
+				console.log(currentRow);
+				console.log("r"+currentRow);
+   				let item =ErorsContainer.ArrayIdErrorsElement[i].indexOf("r"+currentRow);
+
+   				console.log(item);
+   				if(item>=0)
    				{
    					return false;
    				}

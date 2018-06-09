@@ -56,18 +56,18 @@ function CheckerTable1(ErorsContainer,ConvertColumn)
 
 	self.CheckCorrectEdit=function(containerCellsValue,AddRow)
 	{
-		console.log("eeeeeeeeeeeoooooeeeeeeeee");
-		console.log(containerCellsValue);
+	//	console.log("eeeeeeeeeeeoooooeeeeeeeee");
+	//	console.log(containerCellsValue);
 		self.numberRow=self.nameRow.replace('line','');
 		var isCorrect=false;
 
-		console.log("&&&&&&&");
-		console.log(ArrayDataList);
-		console.log(self.nameColumn);
-		console.log(self.inp.value);
+		// console.log("&&&&&&&");
+		// console.log(ArrayDataList);
+		// console.log(self.nameColumn);
+		// console.log(self.inp.value);
 		if(ArrayDataList[self.nameColumn])
 		{	
-			console.log("!!!!!!!!!!!!!!!!!!!!!!!!1");
+			//console.log("!!!!!!!!!!!!!!!!!!!!!!!!1");
 			for( var i in ArrayDataList[self.nameColumn])
 			{
 
