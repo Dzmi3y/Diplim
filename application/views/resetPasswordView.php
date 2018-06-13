@@ -1,6 +1,6 @@
 
 <div class=" container py-3" >
-<div id="TitleReset " class=" col-6 bg-info text-primary rounded container text-center"><h4><strong>Сброс пароля</strong></h4></div>
+<div id="TitleReset " class=" col-8 bg-primary text-light rounded container text-center"><strong>Сброс пароля</strong></div>
     <div  id="RegistrationBlock " class=" container center-block col-4"> 
   	
     	<form method="POST" id="formx" action="javascript:void(null);" onsubmit="Send()">
@@ -16,7 +16,7 @@
 			<div id="ErrorMessagesResetPassword" class="alert alert-danger" role="alert"></div>
 			<div id="MessageSuccessResetPassword" class="alert alert-success" role="alert"></div>
 			<br/>
-			<button type="submit"  class="btn col-12 btn-secondary">Сбросить пароль</button>		
+			<button type="submit"  class="btn col-12 btn-dark">Сбросить пароль</button>		
 		</form>
 	</div>
 </div>

@@ -44,7 +44,7 @@
 						
 						<strong> Создание нового отчета </strong> <br/>
 						<input id="YearInputNewReport" type="number" min="2008" max="3000" class="col-5" placeholder="Год"> 
-						<button id="CreateReportButton" class="btn btn-default col-3" >Создать</button>	
+						<button id="CreateReportButton" class="btn btn-secondary col-3" >Создать</button>	
 						<div class="col-4" ></div>
 						<div id="ErrorCreateReport" class=" alert alert-danger col-8 container " role="alert"></div>
 					</div>
@@ -55,7 +55,7 @@
 						<strong> Поиск отчетов</strong> 
 						<br/>
 						<input id="YearInput" type="text" class="col-5" placeholder="Год" list="YearListDropDown"> 
-						<button id="SearchButton" class="btn btn-default col-3" >Найти</button>
+						<button id="SearchButton" class="btn btn-secondary col-3" >Найти</button>
 						
 						<br/>
 						<div id="MessageListForSearch" class="alert alert-danger col-8 container" role="alert"></div>

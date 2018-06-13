@@ -12,7 +12,7 @@
 
   </li>
   <li>
-    <button type="submit" onclick="exit()" class="btn col-md-12 btn-secondary">Выход</button>
+    <button type="submit" onclick="exit()" class="btn col-md-12 btn-dark">Выход</button>
   </li>
 
 

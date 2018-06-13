@@ -16,10 +16,172 @@ var docPDF=
 	    verticalRatio: 0.2, // the ratio of space used vertically in this document (excluding margins)
 	    horizontalRatio: 0.0  // the ratio of space used horizontally in this document (excluding margins)
 	},
-	pageOrientation: 'portrait',
+	pageOrientation: 'landscape',
 	content: 
 	[
-		{text: 'Титульник'},
+		{
+			table:
+			{
+				widths:[800],
+				body:[
+	          [ 
+	          {
+	          	text: "ГОСУДАРСТВЕННАЯ СТАТИСТИЧЕСКАЯ ОТЧЕТНОСТЬ ",
+	          	bold: true,
+	          	alignment:"center"
+	          } 
+	          ]
+	         
+	        ]
+
+
+
+			}
+
+
+
+
+		},
+		{text:"\n"},
+
+		{
+			table:
+			{
+				widths:[800],
+				body:[
+	          [ 
+		          {
+		          	text: "Представление искаженных данных государственной статистической отчетности, несвоевременное представление или непредставление такой отчетности влекут применение мер административной или уголовной ответственности в порядке, установленном законодательством Республики Беларусь",
+		          	//bold: true,
+		          	//alignment:"center"
+		          	fontSize: 10
+		          } 
+	          ]
+	         
+	        ]
+
+			}
+
+		},
+		{text:"\n"},
+
+		{
+
+		columns: 
+		[
+	        { width: '*', text: '' },
+	        {
+	            width: 'auto',
+
+
+
+				table:
+				{
+					widths:[350],
+					body:[
+		          [ 
+		          {
+		          	text:"ОТЧЕТ\nоб обращении с отходами производства\nза  20___год",
+		          	//bold: true,
+		          	alignment:"center"
+		          } 
+		          ]
+		         
+		        ]
+		        
+
+
+
+				}
+			},
+	        { width: '*', text: '' },
+    	]
+    	},
+    	{text:"\n"},
+		{
+    	columns: 
+		[
+	        
+	        {
+	            width: 'auto',
+
+
+
+				table:
+				{
+					widths:[586],
+					alignment:"center",
+					body:[
+		          [ 
+		          {
+		          	text:"ttttt",
+		          	//bold: true,
+		          	alignment:"center"
+		          } 
+		          ]
+		         
+		        ]
+		        
+
+
+
+				}
+			},
+	        { width: '*', text: '' },
+	        {
+	            width: 'auto',
+	           	
+	            
+						table:
+						{
+							widths:[180],
+							body:[
+		          			[ 
+					          {
+					          	text: "xxx",
+					          			          	//bold: true,
+					          	alignment:"center"
+					          } 
+					         ]
+		         
+		        			]
+		    			}
+		    		
+				
+					/*{text:"\n"},*/
+				
+					/*{
+						table:
+						{
+							widths:[180],
+							alignment:"center",
+							body:[
+			          				[ 
+							          {
+							          	text: "Готовая",
+							          			          	//bold: true,
+							          	alignment:"center"
+							          } 
+			         				]
+		        				]
+		        
+						}
+					}*/
+
+				
+			},
+			{ width: '*', text: '' }
+
+    	]
+
+
+
+
+
+		},
+
+
+
 	    {text: 'Таблица1', pageOrientation: 'landscape',   pageBreak: 'before'},
 	    {
 	    	table: 
@@ -137,14 +299,14 @@ function PDFManager()
 		//console.log(Table2);
 
 		//console.log(HeaderTable2);
-		DocumentPDF["content"][2]["table"]["body"]=Table1;
-		DocumentPDF["content"][2]["table"]["widths"]=self.getWidths(23);
+		DocumentPDF["content"][8]["table"]["body"]=Table1;
+		DocumentPDF["content"][8]["table"]["widths"]=self.getWidths(23);
 		//console.log(DocumentPDF);
-		DocumentPDF["content"][4]["table"]["body"]=Table2;
-		DocumentPDF["content"][4]["table"]["widths"]=self.getWidths(6);
+		DocumentPDF["content"][10]["table"]["body"]=Table2;
+		DocumentPDF["content"][10]["table"]["widths"]=self.getWidths(6);
 
 
-		pdfMake.createPdf(DocumentPDF).download();
+		pdfMake.createPdf(DocumentPDF).download('Otchet.pdf');
 	}
 
 

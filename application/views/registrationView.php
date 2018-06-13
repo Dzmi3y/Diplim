@@ -1,13 +1,13 @@
 
 <div class="py-3 container text-center  ">
 
-<div id="TitleRegistration" class=" container col-9 bg-primary text-light rounded text-center"">  <strong><p>  Регистрация </p> </strong> </div>
+<div id="TitleRegistration" class=" container col-8 bg-primary text-light rounded text-center"">  <strong><p>  Регистрация </p> </strong> </div>
 
     <!-- <div  id="RegistrationBlock" class=" container center-block">  -->
 
     	<form method="POST" id="formx" action="javascript:void(null);" onsubmit="Send()">
     <div class=" container col-8">
-    	<div class="row container border  " >
+    	<div class="row container   " >
     		<div class="container  col-6">
 		    	<div class="text-dark"  class="form-group">
 		    		<label class="text-dark" for="InputEmail"> <b>Email адрес:</b></label>
@@ -74,7 +74,7 @@
 		<br/>
 		
 			
-			<button type="submit"  class="btn col-3  btn-secondary ">Отправить</button>	
+			<button type="submit"  class="btn col-3  btn-dark ">Отправить</button>	
 
 		
 		</form>

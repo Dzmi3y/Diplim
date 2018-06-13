@@ -17,7 +17,7 @@
 		</div>
 		<div id="ErrorMessagesAuth" class="bg-danger text-white"></div>
   		<p><strong><a href="/resetPassword" class="text-danger">Забыли пароль</a></strong></p>
-		<button type="submit" class="btn col-md-12 btn-secondary">Войти</button>
+		<button type="submit" class="btn col-md-12 btn-dark">Войти</button>
 
 	</div>
 </form>

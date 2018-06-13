@@ -1,5 +1,5 @@
 <div class="container  py-3 ">
-	<div id="BlockOfInformationTitle" class="container col-9 bg-primary text-light rounded text-center"" ><p><strong>Информация</strong> </p></div>
+	<div id="BlockOfInformationTitle" class="container col-8 bg-primary text-light rounded text-center"" ><p><strong>Информация</strong> </p></div>
 	<div id="BlockOfInformation" class="container ">
 
 		
@@ -8,14 +8,14 @@
 	</div>
 
 
-	<div id="TitleInstructionBlock " class="container col-9 bg-info text-light rounded  text-center"><p><strong>Инструкция</strong></p></div>
+	<div id="TitleInstructionBlock " class="container col-8 bg-primary text-light rounded  text-center"><p><strong>Инструкция</strong></p></div>
 	<div id="InstructionBlock" class="container ">
 
 	</div>
 
 
 
-	<div id="TitleDocumentationBlock" class="container col-9 bg-info text-light rounded text-center"">  <strong><p>  Документация  </p> </strong> </div>
+	<div id="TitleDocumentationBlock" class="container col-8 bg-primary text-light rounded text-center"">  <strong><p>  Документация  </p> </strong> </div>
 	<div id="DocumentationBlock" class="container ">
 		<p class="text-justify">
 			Госстатотчетность 1-отходы (Минприроды) «Отчет об обращении с отходами производства» должен быть представлен в РУП «Бел НИЦ «Экология» до 20 января года, следующего за отчетным в одном экземпляре на бумажном носителе.
