@@ -241,7 +241,28 @@
 				
 				return  IsEmail(key,ValueForCheck);
 			}
+
+
+			if(key=="Phone")
+			{
+				if($('#InputPhone')[0].value.length!=9)
+				{
+					$("#ErrorPhoneMessage").append('<p> Телефонный номер должен состоять из девати цифор! </p>');
+					return false;
+				}
+			}
 			
+
+			if(key=="UNP")
+			{
+				if($('#InputUNP')[0].value.length!=9)
+				{
+					$("#ErrorUNPMessage").append('<p> УНП должен состоять из девати цифор!  </p>');
+					return false;
+				}
+			}
+
+
 
 
 			if(key=="Password3")

@@ -31,7 +31,7 @@ let self = this;
 		/*$("#firstTable").show();
 		$("#secondTable").show();*/
 		$(".contentForReport").show();
-		$("#ListReportBlock").show();
+		//$("#ListReportBlock").show();
 		$("#DownloadPDF").show();
 		console.log("CreateNavTab");
 		console.log(NavTabID);
@@ -86,7 +86,7 @@ let self = this;
 			/*$("#firstTable").hide();
 			$("#secondTable").hide();*/
 			$(".contentForReport").hide();
-			$("#ListReportBlock").hide();
+			//$("#ListReportBlock").hide();
 			$("#DownloadPDF").hide();
 
 			$("#MessageListForSearch").show();

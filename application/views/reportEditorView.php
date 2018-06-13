@@ -274,7 +274,9 @@
 	function CreateNewReport()
 	{
 		//$("#ErrorCreateReport").hide();
+		
 
+		$(".contentForReport").show();
 		$("#ErrorCreateReport p").remove();
 		let valueInp = $("#YearInputNewReport")[0].value;
 		if((Number(valueInp))&& (Number.isInteger(Number(valueInp))))
