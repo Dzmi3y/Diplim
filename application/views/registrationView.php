@@ -1,15 +1,14 @@
 
+<div class="py-3 container text-center  ">
 
-<div class="row">
-<div  class="px-5  py-1 col-3 border-dark center-block"> </div>
-    <div  id="RegistrationBlock" class=" center-block"> 
-    	<div class="text-light text-center">
-    		<b>Регистрация</b>
+<div id="TitleRegistration" class=" container col-9 bg-primary text-light rounded text-center"">  <strong><p>  Регистрация </p> </strong> </div>
 
-    	</div>
+    <!-- <div  id="RegistrationBlock" class=" container center-block">  -->
+
     	<form method="POST" id="formx" action="javascript:void(null);" onsubmit="Send()">
-    	<div class="row" >
-    		<div class="col-6">
+    <div class=" container col-8">
+    	<div class="row container border  " >
+    		<div class="container  col-6">
 		    	<div class="text-dark"  class="form-group">
 		    		<label class="text-dark" for="InputEmail"> <b>Email адрес:</b></label>
 		    		<input type="email" class="form-control" id="InputEmail"  placeholder="Введите email">
@@ -34,7 +33,7 @@
 				</div>
 			</div>
 
-			<div class="col-6">
+			<div class="container col-6">
 
 				<div class="text-dark" class="form-group">
 					<label for="InputUNP"><b>УНП</b></label>
@@ -66,15 +65,22 @@
 					<div id="ErrorAddressMessage" class="bg-danger text-white"></div>
 				</div>
 			</div>
+			
 		</div>
-	
-		<div id="ErrorMessagesRegistration" class="alert alert-danger" role="alert"></div>
-		<br/>
-		<button type="submit"  class="btn col-12 btn-secondary">Отправить</button>		
-</form>
-	
 
 	</div>
+	
+		<div id="ErrorMessagesRegistration" class="container alert col-9 alert-danger" role="alert"></div>
+		<br/>
+		
+			
+			<button type="submit"  class="btn col-3  btn-secondary ">Отправить</button>	
+
+		
+		</form>
+	
+
+
 </div>
 
 

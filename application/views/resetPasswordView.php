@@ -1,29 +1,20 @@
 
-
-<div class="row">
-<div  class="px-5  py-1 col-4 border-dark center-block"> </div>
-    <div  id="RegistrationBlock" class=" center-block"> 
-    	<div class="text-light text-center">
-    		<b>Сброс пароля</b>
-
-    	</div>
+<div class=" container py-3" >
+<div id="TitleReset " class=" col-6 bg-info text-primary rounded container text-center"><h4><strong>Сброс пароля</strong></h4></div>
+    <div  id="RegistrationBlock " class=" container center-block col-4"> 
+  	
     	<form method="POST" id="formx" action="javascript:void(null);" onsubmit="Send()">
 	    	
 	    		
 			    	<div class="text-dark"  class="form-group">
-			    		<p><h2><strong>Сброс пароля</strong></h2></p>
 			    		</br>
 			    		<label class="text-dark" for="InputEmail"> <b>Введите email адрес:</b></label>
 			    		<input type="email" class="form-control" id="InputEmail"  placeholder="Введите email">
 			    		<div id="ErrorEmailMessage" class="bg-danger text-white"></div>
 			    	</div>
-				
 
-				
-			
 			<div id="ErrorMessagesResetPassword" class="alert alert-danger" role="alert"></div>
 			<div id="MessageSuccessResetPassword" class="alert alert-success" role="alert"></div>
-			<br/>
 			<br/>
 			<button type="submit"  class="btn col-12 btn-secondary">Сбросить пароль</button>		
 		</form>

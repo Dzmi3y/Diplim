@@ -1,6 +1,6 @@
 <form method="POST" id="formAuthorize" action="javascript:void(null);" onsubmit="SendAuthorizeData()">
-	<div  id="authorize" class="px-1 py-1 border-dark  " style="background-color: #83B994FF;">
-       			
+	<div  id="authorize" class="px-1 py-1 border-dark rounded-right  bg-info">
+       			 <!-- " style="background-color: #83B994FF; -->
     	<div class="text-light text-center">
     		<b>Авторизация</b>
 
@@ -16,7 +16,7 @@
 			<input type="password" class="form-control" id="InputPasswordAuth" placeholder="Введите пароль">
 		</div>
 		<div id="ErrorMessagesAuth" class="bg-danger text-white"></div>
-  		<a href="/resetPassword">Забыли пароль или логин</a>
+  		<p><strong><a href="/resetPassword" class="text-danger">Забыли пароль</a></strong></p>
 		<button type="submit" class="btn col-md-12 btn-secondary">Войти</button>
 
 	</div>

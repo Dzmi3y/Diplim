@@ -176,7 +176,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 				
 				if(i!=1)
 				{
-					$('#'+inputID).bind('keyup',function(event) {return self.KeyDownHandler(event,this);});
+				//	$('#'+inputID).bind('keyup',function(event) {return self.KeyDownHandler(event,this);});
 				}
 					
 				self.BindingList(inputID,idTableText+'_'+self.GetList(columnName));
