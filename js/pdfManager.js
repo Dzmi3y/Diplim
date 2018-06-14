@@ -19,6 +19,15 @@ var docPDF=
 	pageOrientation: 'landscape',
 	content: 
 	[
+
+		{
+			columns:
+			[
+				{ width: 600, text: '' },
+				{ text:'УТВЕРЖДЕНО\nПостановление\nНационального\nстатистического комитета\nРеспублики Беларусь\n19.09.2013 № 208',fontSize: 10}
+			]
+		},
+		{text:"\n"},
 		{
 			table:
 			{
@@ -101,6 +110,7 @@ var docPDF=
 		{
     	columns: 
 		[
+
 	        
 	        {
 	            width: 'auto',
@@ -131,10 +141,12 @@ var docPDF=
 	        {
 	            width: 'auto',
 	           	
-	            
+	            stack: [
+	            	{
 						table:
 						{
 							widths:[180],
+							height:[180],
 							body:[
 		          			[ 
 					          {
@@ -146,11 +158,13 @@ var docPDF=
 		         
 		        			]
 		    			}
-		    		
+		    		},
 				
-					/*{text:"\n"},*/
+					{text:"\n"},
+					{text:"\n"},
+					{text:"\n"},
 				
-					/*{
+					{
 						table:
 						{
 							widths:[180],
@@ -166,7 +180,8 @@ var docPDF=
 		        				]
 		        
 						}
-					}*/
+					}
+				]
 
 				
 			},
@@ -179,6 +194,53 @@ var docPDF=
 
 
 		},
+		{text:"\n"},
+		{
+
+			table:
+			{
+				widths:[800],
+				body:[
+	          [ 
+	          {
+	          	text: "Полное наименование юридического лица",
+	          	//bold: true,
+	          	//alignment:"center"
+	          } 
+	          ]
+	         
+	        ]
+
+
+
+			}
+
+
+		},
+		{
+
+			table:
+			{
+				widths:[450],
+				body:[
+	          [ 
+	          {
+	          	text: "Регистрационный номер респондента в статистическом регистре  (ОКПО)",
+	          	//bold: true,
+	          	//alignment:"center"
+	          } 
+	          ]
+	         
+	        ]
+
+
+
+			}
+
+
+		},
+
+
 
 
 
@@ -199,7 +261,54 @@ var docPDF=
 
 		    }
 		},
-		{text: 'Таблица 4', pageOrientation: 'portrait', pageBreak: 'before'}
+		
+		{text:"\n"},
+
+		{
+			table:
+			{
+				widths:[400],
+				body:[
+	          [ 
+	          {
+	          	text: "Руководитель (уполномоченный заместитель руководителя) юридического лица, обособленного подразделения (нужное подчеркнуть)",
+	          //bold: true,
+	          	//alignment:"center"
+	          } 
+	          ]
+	         
+	        ]
+
+
+
+			}
+
+		},
+
+		{text:"\n"},
+		{
+			table:
+			{
+				widths:[400],
+				body:[
+	          [ 
+	          {
+	          	text: "(фамилия, собственное имя, отчество контактного лица, номер телефона, адрес электронной почты)",
+	          	//bold: true,
+	          	//alignment:"center"
+	          } 
+	          ]
+	         
+	        ]
+
+
+
+			}
+
+		}
+
+
+
 	    
 	],
 
@@ -299,11 +408,11 @@ function PDFManager()
 		//console.log(Table2);
 
 		//console.log(HeaderTable2);
-		DocumentPDF["content"][8]["table"]["body"]=Table1;
-		DocumentPDF["content"][8]["table"]["widths"]=self.getWidths(23);
+		DocumentPDF["content"][13]["table"]["body"]=Table1;
+		DocumentPDF["content"][13]["table"]["widths"]=self.getWidths(23);
 		//console.log(DocumentPDF);
-		DocumentPDF["content"][10]["table"]["body"]=Table2;
-		DocumentPDF["content"][10]["table"]["widths"]=self.getWidths(6);
+		DocumentPDF["content"][15]["table"]["body"]=Table2;
+		DocumentPDF["content"][15]["table"]["widths"]=self.getWidths(6);
 
 
 		pdfMake.createPdf(DocumentPDF).download('Otchet.pdf');
