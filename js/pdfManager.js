@@ -1,3 +1,6 @@
+
+
+
 var docPDF=
 {
 
@@ -119,18 +122,22 @@ var docPDF=
 
 				table:
 				{
-					widths:[586],
-					alignment:"center",
-					body:[
-		          [ 
-		          {
-		          	text:"ttttt",
-		          	//bold: true,
-		          	alignment:"center"
-		          } 
-		          ]
+					widths:[496,90], //586
+ 					alignment:"center",
+					body:
+					[
+			          [ {text:"Представляют",alignment:"center",fontSize: 10},   {text:"Срок\nпредставления",alignment:"center",fontSize: 10}  ],
+			          [ {text:"юридические лица, обособленные подразделения юридических лиц, осуществляющие деятельность, связанную с обращением с отходами производства (кроме юридических лиц, обособленных подразделений юридических лиц, у которых образуются только отходы производства, подобные отходам жизнедеятельности населения, отходы бумаги и картона от канцелярской деятельности и делопроизводства, отходы упаковки незагрязненные, отработанные люминесцентные трубки, отработанные ртутные лампы, при общем объеме таких отходов\n50 и менее тонн в год)\n       республиканскому научно-исследовательскому унитарному предприятию «Белорусский научно-\n      	 \u0009исследовательский центр «Экология»;\nреспубликанское научно-исследовательское унитарное предприятие «Белорусский научно-исследовательский центр «Экология» – агрегированные первичные статистические данные по республике, областям, г. Минску; административным районам, отдельным городам; по видам экономической деятельности; по группам и видам отходов производства"
+			          		,alignment:"justify",fontSize: 10},   
+			          	{text:"20 января\n\n\n\n\n\n\n\n\n20 апреля",alignment:"center",fontSize: 10}  ],
+			          
+
+			          [ {text:"       Министерству природных ресурсов и охраны окружающей среды Республики Беларусь;\n Министерство природных ресурсов и охраны окружающей среды Республики Беларусь – официальную статистическую информацию по республике, областям, г. Минску; административным районам, отдельным городам; по видам экономической деятельности; по группам и видам отходов производства\n       Национальному статистическому комитету Республики Беларусь"
+			          		,alignment:"justify",fontSize: 10},   
+			          	{text:"30 апреля",alignment:"center",fontSize: 10}  ]
 		         
-		        ]
+
+		       		]
 		        
 
 
@@ -145,16 +152,14 @@ var docPDF=
 	            	{
 						table:
 						{
-							widths:[180],
+							widths:[90,90],
 							height:[180],
 							body:[
-		          			[ 
-					          {
-					          	text: "xxx",
-					          			          	//bold: true,
-					          	alignment:"center"
-					          } 
-					         ]
+		          			
+					         
+         					  [ {text: 'Форма 1-отходы (Минприроды)', colSpan: 2, alignment: 'center'},  '' ],
+         					  [ 'Код формы по ОКУД', '0618503' ]
+					         
 		         
 		        			]
 		    			}
@@ -203,9 +208,10 @@ var docPDF=
 				body:[
 	          [ 
 	          {
-	          	text: "Полное наименование юридического лица",
+	          	text: "Полное наименование юридического лица \nПолное наименование обособленного подразделения юридического лица\nПочтовый адрес (фактический)\nЭлектронный адрес (www, e-mail)"
 	          	//bold: true,
 	          	//alignment:"center"
+	          	,fontSize: 10
 	          } 
 	          ]
 	         
@@ -221,15 +227,25 @@ var docPDF=
 
 			table:
 			{
-				widths:[450],
+				widths:[225,225],
 				body:[
 	          [ 
 	          {
-	          	text: "Регистрационный номер респондента в статистическом регистре  (ОКПО)",
+	          	text: "Регистрационный номер респондента\nв статистическом регистре  (ОКПО)",
 	          	//bold: true,
-	          	//alignment:"center"
-	          } 
-	          ]
+	          	alignment:"center"
+	          	,fontSize: 10
+	          },
+	           {
+	          	text: "Учетный номер плательщика\n(УНП) ",
+	          	//bold: true,
+	          	alignment:"center"
+	          	,fontSize: 10
+	          },
+	          ],
+	          [{text: "1",alignment:"center"},{text: "2",alignment:"center"}],
+	           [{text: " ",alignment:"center"},{text: " ",alignment:"center"}]
+
 	         
 	        ]
 
@@ -244,14 +260,16 @@ var docPDF=
 
 
 
-	    {text: 'Таблица1', pageOrientation: 'landscape',   pageBreak: 'before'},
+	    {text: 'Таблица1', pageOrientation: 'landscape',   pageBreak: 'before',alignment:"right"},
+	    {text: 'Обращение с отходами производства\n',alignment:"center"},
 	    {
 	    	table: 
 		    {
 		        body: [0]
 		    }
 		},
-	    {text: 'Таблица 2', pageOrientation: 'portrait', pageBreak: 'before'},	    
+	    {text: 'Таблица 2', pageOrientation: 'landscape', pageBreak: 'before',alignment:"right"},
+	    {text: 'Выполнения мероприятий по сокращению объемов образования\nи (или) накопления отходов производства\n',alignment:"center"},	    
 	    {
 	    	
 	    	table: 
@@ -267,13 +285,26 @@ var docPDF=
 		{
 			table:
 			{
-				widths:[400],
+				widths:[300,150,250],
 				body:[
 	          [ 
 	          {
-	          	text: "Руководитель (уполномоченный заместитель руководителя) юридического лица, обособленного подразделения (нужное подчеркнуть)",
+	          	text: "Руководитель (уполномоченный заместитель руководителя)\nюридического лица, обособленного подразделения\n(нужное подчеркнуть)",
 	          //bold: true,
-	          	//alignment:"center"
+	          	alignment:"center"
+	          	,fontSize: 10
+	          },
+	          {
+	          	text: "\n_____________________________\n(подпись)",
+	          //bold: true,
+	        	alignment:"center"
+	        	,fontSize: 10
+	          },
+	          {
+	          	text: "\n_____________________________\n(инициалы, фамилия)",
+	          //bold: true,
+	        	alignment:"center"
+	        	,fontSize: 10
 	          } 
 	          ]
 	         
@@ -289,14 +320,25 @@ var docPDF=
 		{
 			table:
 			{
-				widths:[400],
+				widths:[400,50,250],
 				body:[
 	          [ 
 	          {
-	          	text: "(фамилия, собственное имя, отчество контактного лица, номер телефона, адрес электронной почты)",
+	          	text: "_________________________________________________________________\n(фамилия, собственное имя, отчество контактного лица, номер телефона, адрес электронной почты)",
 	          	//bold: true,
 	          	//alignment:"center"
-	          } 
+	          } ,
+	          {
+	          	text: " ",
+	       
+	          },
+	          {
+	          	text: "«____» ____________________ 20 ___г.\n(дата составления государственной\nстатистической отчетности)",
+	          //bold: true,
+	        	alignment:"center"
+	        	,fontSize: 10
+	          },
+
 	          ]
 	         
 	        ]
@@ -318,6 +360,8 @@ var docPDF=
 		console.log(currentNode);
     	return currentNode.headlineLevel === 1 && followingNodesOnPage.length === 0;
 	}
+	
+
 
 };
 
@@ -408,11 +452,11 @@ function PDFManager()
 		//console.log(Table2);
 
 		//console.log(HeaderTable2);
-		DocumentPDF["content"][13]["table"]["body"]=Table1;
-		DocumentPDF["content"][13]["table"]["widths"]=self.getWidths(23);
+		DocumentPDF["content"][14]["table"]["body"]=Table1;
+		DocumentPDF["content"][14]["table"]["widths"]=self.getWidths(23);
 		//console.log(DocumentPDF);
-		DocumentPDF["content"][15]["table"]["body"]=Table2;
-		DocumentPDF["content"][15]["table"]["widths"]=self.getWidths(6);
+		DocumentPDF["content"][17]["table"]["body"]=Table2;
+		DocumentPDF["content"][17]["table"]["widths"]=self.getWidths(6);
 
 
 		pdfMake.createPdf(DocumentPDF).download('Otchet.pdf');
