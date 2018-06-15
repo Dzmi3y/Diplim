@@ -2,9 +2,9 @@
 
 <form method="POST" id="formx" action="javascript:void(null);" onsubmit="Send()">
 
-<div class="row  px-5  py-3" >
-			
-    		<div class="col-md-6">
+ <div class=" py-3 container col-8">
+	<div class="row container   " >		
+    		<div class="col-6">
 		    	<div class="text-dark"  class="form-group">
 		    		<label class="text-dark" for="InputEmail"> <b>Изменить email адрес:</b></label>
 		    		<input type="email" class="form-control" id="InputEmail"  placeholder="Введите email">
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-6">
 
 				<div class="text-dark" class="form-group">
 					<label for="InputUNP"><b>Изменить УНП</b></label>
@@ -69,10 +69,10 @@
 
 		<div class="text-center"><button type="submit"  class="btn btn-secondary">Сохранить изменения</button>		</div>
 
-	
+	</br>
 
 	</div>
-
+	
 </form>
 	<script type="text/javascript">
 
@@ -325,6 +325,27 @@
 				
 				return  IsEmail(key,ValueForCheck);
 			}
+
+			if(key=="Phone")
+			{
+				if($('#InputPhone')[0].value.length!=9)
+				{
+					$("#ErrorPhoneMessage").append('<p> Телефонный номер должен состоять из девати цифор! </p>');
+					return false;
+				}
+			}
+			
+
+			if(key=="UNP")
+			{
+				if($('#InputUNP')[0].value.length!=9)
+				{
+					$("#ErrorUNPMessage").append('<p> УНП должен состоять из девати цифор!  </p>');
+					return false;
+				}
+			}
+
+
 			
 
 
@@ -332,13 +353,17 @@
 			{
 				if($("#InputPassword2")[0].value==$("#InputPassword3")[0].value)
 				{
+					
+					$("#ErrorPassword3Message p").remove();
 					return true;
 				}
 				else
 				{
-					$("#ErrorPassword3Message p").remove();
-					$("#Error"+key+"Message").append('<p> Пароли не совподают </p>');
-					return false;
+
+					
+						$("#ErrorPassword3Message p").remove();
+						$("#Error"+key+"Message").append('<p> Пароли не совподают </p>');
+						return false;
 				}
 			}
 			
@@ -352,7 +377,7 @@
 				if(ValueForCheck.length>=6)
 				{
 					
-					if(ValueForCheck==$("#InputPassword3")[0].value)
+					if($("#InputPassword2")[0].value==$("#InputPassword3")[0].value)
 					{
 						$("#ErrorPassword3Message p").remove();
 						return true;
@@ -380,17 +405,18 @@
 
 
 
-						if($("#InputPassword3")[0].value!=$("#InputPassword2")[0].value)
-						{
-							$("#ErrorPassword3Message").append('<p> Пароли не совподают </p>');
-							
-							return false;
-						}
-						else
-						{
-							return true;	
-						}	
-
+						if($("#InputPassword2")[0].value==$("#InputPassword3")[0].value)
+					{
+						$("#ErrorPassword3Message p").remove();
+						return true;
+					}
+					else
+					{
+						$("#ErrorPassword3Message p").remove();
+						$("#ErrorPassword3Message").append('<p> Пароли не совподают </p>');
+						return false;
+					}
+					return true;
 					}
 				}
 			}

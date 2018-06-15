@@ -1,6 +1,6 @@
 <form method="POST" id="formAuthorize" action="javascript:void(null);" onsubmit="SendAuthorizeData()">
-	<div  id="authorize" class="px-1 py-1 border-dark rounded-right  bg-info">
-       			 <!-- " style="background-color: #83B994FF; -->
+	<div  id="authorize" class="px-1 py-1 border-dark bg-primary rounded-right  " >
+       			 <!-- " style="background-color: #83B994FF;" -->
     	<div class="text-light text-center">
     		<b>Авторизация</b>
 
@@ -21,6 +21,7 @@
 
 	</div>
 </form>
+
 
 <script type="text/javascript">
 

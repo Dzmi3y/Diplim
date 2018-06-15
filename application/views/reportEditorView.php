@@ -88,47 +88,72 @@
 
 	<div  class="tab-pane fade " id="firstTable" >
 		<dir class="contentForReport">
-			<div ><p class="nameReport"></p></div>
-			<table id="Editor" class="my-1 mx-1">	
+			
+				<div class="row">
+					<div class=" container py-3 col-6 " ><h2><strong><p  class="py-2 px-5 nameReport "></p></strong></h2> </div>
+					<div class="col-6">
+						<!-- <h3 class="ml-5">Список ошибок</h3> -->
+
+						<div id="ErrorMessages" class="border alert alert-danger  border-danger  mx-1" style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
+						</div>
+					
+					</div>
+				</div>
+			
+
+			<table id="Editor" class=" ">	
 			</table>
+			
+				<button id="DeleteButton"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
 
-			<button id="DeleteButton"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
-
-
-			<div id="ErrorMessages" class="border  border-danger my-1 mx-1" style="height: 100px; width: 500px; overflow-y: scroll; border-radius: 10px;" >	
-
-			</div>
+				
 		</dir>
 	</div>
 
 	<div class="tab-pane fade" id="secondTable">
 		<dir class="contentForReport">
-			<div ><p class="nameReport"></p></div>
-			<table id="Editor2" class="my-1 mx-1">	
-			</table>
 			
-			<button id="DeleteButton2"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
+			<div class="row">
+					<div class=" container py-3 col-6 " ><h2><strong><p  class="py-2 px-5 nameReport "></p></strong></h2> </div>
+					<div class="col-6">
+						<!-- <h3 class="ml-5">Список ошибок</h3> -->
 
-			<div id="ErrorMessages2" class="border  border-danger my-1 mx-1" style="height: 100px; width: 500px; overflow-y: scroll; border-radius: 10px;" >	
-
+						<div id="ErrorMessages2" class="border alert alert-danger  border-danger  mx-1" style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
+						</div>
+					
+					</div>
+				</div>
+			<div class="container row">
+				<div class="container">
+					<table id="Editor2" class="my-1 mx-1 ">	
+					</table>
+					
+					<button id="DeleteButton2"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
+				</div>
 			</div>
+
+
+			
 		</dir>
 	</div>
 
-	<div class="tab-pane fade" id="sendReport">
-		<dir class="contentForReport">
-			<div ><p class="nameReport"></p></div>
-			<div id="MessageSuccessSend" class="alert alert-success" role="alert">
-			</div>
-			<div id="MessageSendError" class="alert alert-danger" role="alert">
-			</div>
-			Отправить отчет
-			<button id="SendReport"  class="btn btn-secondary  my-1 mx-1"  >Отправить отчет</button>
-		</dir>
+	<div class="tab-pane fade " id="sendReport">
+		<div class="container">
+			<dir class="contentForReport container text-center col-5">
+				<div class="text-center" ><h2><p class="nameReport"></p></h2></div>
+				<div id="MessageSuccessSend" class="text-center alert alert-success" role="alert">
+				</div>
+				<div id="MessageSendError" class="text-center alert alert-danger" role="alert">
+				</div>
+				
+				<button id="SendReport"  class="btn btn-secondary  my-1 mx-1"  >Отправить отчет</button>
+			</dir>
+		</div>
+
 	</div>
 
 </div>
-
+<br/>
 <!--<script type="text/javascript" src="js/Editor/jsBootstrap.js"></script>-->
 
 

@@ -4,7 +4,7 @@
     border: 4px solid #000; /* Рамка вокруг таблицы */
    }
 
-    th 
+    th.Editor
    {
     padding: 0px; /* Поля вокруг содержимого ячеек */
     border: 1px solid black; /* Граница вокруг ячеек */
@@ -12,15 +12,32 @@
     text-align:center;
    }
 
+    th.Editor2
+   {
+    padding: 0px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+    font-size:14px;
+    text-align: center;
+   }
 
-   td 
+
+
+   td.Editor
    { 
     padding: 1px; /* Поля вокруг содержимого ячеек */
     border: 1px solid black; /* Граница вокруг ячеек */
-    font-size:10px;
+    font-size: 10px;
+     width: 50px;
    }
 
-    
+     td.Editor2
+   { 
+    padding: 1px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+    font-size: 14px;
+
+   }
+
 
    	#ErrorMessages
    {
@@ -28,10 +45,13 @@
 
    }
    
-
+   input.Editor2 :not(.column0)
+   {
+      width: 50px;
+   }
   
 
-   input
+   input.Editor 
    {
    	width: 50px;
    }
@@ -40,11 +60,11 @@
    {
    	width: 20px;
    }
-   .column1
+  
+    .column1.Editor
    {
-   	width: 100px;
+    width: 100px;
    }
-
    datalist
    {
    		width: 1000px;
@@ -73,10 +93,7 @@
       min-width:1300px;
     }
 
-    .inputEditor2
-    {
-      width: 100px;
-    }
+    
 
    /*input {display: block; padding: 0; margin: 0; border: 0; width: 100%; }*/
 /*td {margin: 0; padding: 0;}*/

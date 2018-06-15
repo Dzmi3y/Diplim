@@ -459,6 +459,7 @@ function PDFManager()
 		DocumentPDF["content"][17]["table"]["widths"]=self.getWidths(6);
 
 
+
 		pdfMake.createPdf(DocumentPDF).download('Otchet.pdf');
 	}
 

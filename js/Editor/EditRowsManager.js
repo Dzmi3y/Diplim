@@ -164,7 +164,7 @@ function EditRowsManager(idTable,countColumns,loaderArray,ParObjCheckerBalances,
 				let inputID= idTableText+'Inpr'+self.numberLastRow+'c'+i ;
 				let cellID= idTableText+'Tdr'+self.numberLastRow+'c'+i ;
 				
-				$('#'+nameRow).append('<td id="'+cellID+'"> <input id="'+inputID+'" class="'+columnName+' line'+self.numberLastRow+' input'+idTableText+' '+idTableText/*+'" list="'+idTableText+'_'+self.GetList(columnName)*/+'" value="'+value+'"/> </td>');
+				$('#'+nameRow).append('<td class="'+columnName+' '+idTableText+'" id="'+cellID+'"> <input id="'+inputID+'" class="'+columnName+'  line'+self.numberLastRow+' input'+idTableText+' '+idTableText/*+'" list="'+idTableText+'_'+self.GetList(columnName)*/+'" value="'+value+'"/> </td>');
 				//$('#'+inputID).bind('change',function(){ self.Handler(this);});
 				
 

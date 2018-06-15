@@ -29,7 +29,7 @@ function HeadersManager(idTable,headrRows)
 		
 			for (var i = 0; i <headrsContent.length; i++) 
 			{
-				$('#'+nameRow).append('<th id="'+nameRow+''+i+'Field" rowspan="'+headrsContent[i].rowspan+'" colspan="'+headrsContent[i].colspan+'" valign="top">'+headrsContent[i].text+'</th>');
+				$('#'+nameRow).append('<th class="'+self.idTable.replace("#","")+'" id="'+nameRow+''+i+'Field" rowspan="'+headrsContent[i].rowspan+'" colspan="'+headrsContent[i].colspan+'" valign="top">'+headrsContent[i].text+'</th>');
 			}			
 	};
 
