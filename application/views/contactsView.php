@@ -1,11 +1,33 @@
 <div class="container  py-3 ">
-	<div id="TitleContacts" class="container col-8 bg-primary text-light rounded text-center"">  <strong><p>  Контакты </p> </strong> </div>
+	<div id="TitleContacts" class="container col-8 bg-success text-light rounded text-center"">  <strong><p>  Контакты </p> </strong> </div>
 </div>
 
-	<div class="container text-center"><h1>Республиканское научно-исследовательское унитарное предприятие </h1></div>
+	<!-- <div class="container text-center"><h5>Республиканское научно-исследовательское унитарное предприятие </h5></div> -->
 
-<div class="container text-center">
+<!-- <div class="container text-center"> -->
+<div class="container">
+	<div class="col-8 container">
 
+		<b>Заведующий отделом обращения с отходами</b><br/>
+
+		Гавдель Александр Степанович т. <i>224-35-36</i><br/><br/>
+
+
+		<b>Регистрация объектов, представление сведений из реестров</b><br/>
+
+		т. <i>(017) 224-87-28; (017) 337-05-42</i><br/><br/>
+
+		<b>Обработка статотчётности 1-отходы (Минприроды)</b><br/>
+		т. <i>(017) 224-87-28; (017) 224-35-36</i><br/><br/>
+		 
+		<b>Факс –</b> <i>(017) 337-05-42</i><br/>
+		  
+		<b>Электронный ящик –</b>  promresource@tut.by<br/><br/>
+	</div>
+</div>
+
+
+<!-- 
 Бел НИЦ "ЭКОЛОГИЯ"</br>
 
 (РУП "Бел НИЦ "Экология")</br>
@@ -32,4 +54,4 @@ belnic@mail.belpak.by</br>
  
 суббота, воскресенье</br>
 выходной</br>
-</div>
+</div> -->

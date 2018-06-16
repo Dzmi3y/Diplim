@@ -34,6 +34,8 @@ let self = this;
 		$(".contentForReport").show();
 		//$("#ListReportBlock").show();
 		$("#DownloadPDF").show();
+		$("#ShowModalMessage").show();
+
 		console.log("CreateNavTab");
 		console.log(NavTabID);
 		$("#MessageListForSearch").hide();
@@ -83,12 +85,14 @@ let self = this;
 		else
 		{
 			$('#MessageListForSearch').append("<p>Отчеты не найдены!</p>");
-
+			$('#YearList a').remove();
+			
 			/*$("#firstTable").hide();
 			$("#secondTable").hide();*/
 			$(".contentForReport").hide();
 			//$("#ListReportBlock").hide();
 			$("#DownloadPDF").hide();
+			$("#ShowModalMessage").hide();
 
 			$("#MessageListForSearch").show();
 			console.log("++++++++++++");

@@ -1,6 +1,6 @@
 
 <div class=" container py-3" >
-<div id="TitleReset " class=" col-8 bg-primary text-light rounded container text-center"><strong>Сброс пароля</strong></div>
+<div id="TitleReset " class=" col-8 bg-success text-light rounded container text-center"><strong>Сброс пароля</strong></div>
     <div  id="RegistrationBlock " class=" container center-block col-4"> 
   	
     	<form method="POST" id="formx" action="javascript:void(null);" onsubmit="Send()">

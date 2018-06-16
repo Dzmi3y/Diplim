@@ -1,5 +1,5 @@
 <div class="container  py-3 ">
-	<div id="BlockOfInformationTitle" class="container col-8 bg-primary text-light rounded text-center"" ><p><strong>Информация</strong> </p></div>
+	<div id="BlockOfInformationTitle" class="container col-8 bg-success text-light rounded text-center"" ><p><strong>Информация</strong> </p></div>
 	<div id="BlockOfInformation" class="container ">
 
 			<p class="text-justify">
@@ -18,14 +18,25 @@
 	</div>
 
 
-	<div id="TitleInstructionBlock " class="container col-8 bg-primary text-light rounded  text-center"><p><strong>Инструкция</strong></p></div>
+	<div id="TitleInstructionBlock " class="container col-8 bg-success text-light rounded  text-center"><p><strong>Инструкция</strong></p></div>
 	<div id="InstructionBlock" class="container ">
-
+		<p>
+1) Пройти процедуру регистрации (Заполнить корректно все поля и нажать на кнопку отправить)
+2) Авторизироватся (Ввести e-mail и пароль указанные при регестрации)
+3) Личный кабинет(Войти на страницу личеый кабинет(Доступна только авторизированным пользователям))
+4) Создать новый отчет(В блоке "Создание нового отчета" в поле год ввести год, за готорый необходимо создать отчет, нажать кнопку создать)
+5) Заполнить таблицы (Заполнить таблицы отчета  без ошибок. Таблицы находятся во вкладках Табица 1 и Таблица 2.)
+	Работа с таблицами
+		добавить строку. для добовления строки, необходимо заполнить фотябы одну ячейку из последней строки 
+		удалить строку. для удаления строки необходимо отметить строки для удаления, а после нажать на кнопку удалить выбранные ячейки
+		отображение ошибк. поле для отображения ошибок находится под таблицей.
+6) Сохранить отчет. Для сохранения отчета необходимо зайти на вкладку Отправить отчет и нажать на кнопку Отправить отчет.
+		</p>
 	</div>
 
 
 
-	<div id="TitleDocumentationBlock" class="container col-8 bg-primary text-light rounded text-center"">  <strong><p>  Документация  </p> </strong> </div>
+	<div id="TitleDocumentationBlock" class="container col-8 bg-success text-light rounded text-center"">  <strong><p>  Документация  </p> </strong> </div>
 	<div id="DocumentationBlock" class="container ">
 
 

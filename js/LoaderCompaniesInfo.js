@@ -50,15 +50,15 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 
 	}
 
-
+	
 	
 	self.CreateNavTab =function(LoadedArray)
 	{
 		console.log("CreateNavTab");
 		console.log(LoadedArray);
 		console.log(NavTabID);
-		
-		$('#MessageListForSearch p').remove()
+		$('#MessageListForSearch').hide();
+		$('#MessageListForSearch p').remove();
 
 		if(LoadedArray.length>0)
 		{	
@@ -101,8 +101,9 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 		}
 		else
 		{
+			$('#MessageListForSearch').show();
 			$('#MessageListForSearch').append("<p>Предприятие не найдено!</p>");
-			console.log("++++++++++++");
+
 
 		}
 	}

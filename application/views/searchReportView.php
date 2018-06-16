@@ -41,9 +41,9 @@
 					<div class="col-1"></div>
 					<button type="button" id="ShowModalMessage" data-toggle="modal" data-target="#ModalMessage" class=" btn btn-danger col-6 ">Удалить выделенный отчет</button>
 				</div>
-				<p ><h3> <strong>Список отчетов:</strong></h3></p>
-				<strong><h3><div class="text-center alter alert-danger" id="MessageListForSearch"></div></h3></strong>
-				<div id="YearList"   style="overflow-y: scroll; height: 300; ">
+				<p ><h5> <strong>Список отчетов:</strong></h5></p>
+				<strong><h4><div class="text-center alter alert-danger" id="MessageListForSearch"></div></h4></strong>
+				<div id="YearList" class="alert alert-dark"   style="overflow-y: scroll; height: 60%; ">
 					<ul id="ListReport" class="nav nav-pills flex-column " role="tablist">
 					</ul>
 				</div>
@@ -57,44 +57,46 @@
 
 	<div  class="tab-pane fade" id="firstTable" >
 		<div class="px-2">
-		<div class="row">
-					<div class=" container py-3 col-6 " ><h2><strong><p  class="py-2 px-5 nameReport "></p></strong></h2> </div>
-					<div class="col-6">
-						<!-- <h3 class="ml-5">Список ошибок</h3> -->
-
-						<div id="ErrorMessages" class="border alert alert-danger  border-danger  mx-1" style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
-						</div>
+		
+					<div class=" container text-center py-3 col-6 " ><h5><strong><p  class="py-2 px-5 nameReport "></p></strong></h5> </div>
 					
-					</div>
-			</div>
+			
 			
 
 			<table id="Editor">	
 			</table>
 			
-				<button id="DeleteButton"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
+				<button id="DeleteButton"  class="btn btn-dark  my-1 mx-1">Удалить отмеченные строки</button>
+				<div class="col-6">
+						<h5>Список ошибок</h5>
+
+						<div id="ErrorMessages" class="border alert alert-danger  border-danger " style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
+						</div>
+					
+				</div>
 		</div>
 
 	</div>
 
 	<div class="tab-pane fade" id="secondTable">
 		<div class="px-2">
-			<div class="row">
-					<div class=" container py-3 col-6 " ><h2><strong><p  class="py-2 px-5 nameReport "></p></strong></h2> </div>
-					<div class="col-6">
-						<!-- <h3 class="ml-5">Список ошибок</h3> -->
-
-						<div id="ErrorMessages2" class="border alert alert-danger  border-danger  mx-1" style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
-						</div>
+			
+					<div class=" container text-center py-3 col-6 " ><h5><strong><p  class="py-2 px-5 nameReport "></p></strong></h5> </div>
 					
-					</div>
-				</div>
+				
 			<div class="container row">
 				<div class="container">
 					<table id="Editor2" class="my-1 mx-1 ">	
 					</table>
 					
-					<button id="DeleteButton2"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>
+					<button id="DeleteButton2"  class="btn btn-dark  my-1 mx-1">Удалить отмеченные строки</button>
+					<div class="col-6">
+						<h5 >Список ошибок</h5>
+
+						<div id="ErrorMessages2" class="border alert alert-danger  border-danger " style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
+						</div>
+					
+					</div>
 				</div>
 			</div>
 		</div>
@@ -104,13 +106,13 @@
 	<div class="tab-pane fade" id="sendReport">
 		<div class="container">
 			<dir class="contentForReport container text-center col-5">
-				<div class="text-center" ><h2><p class="nameReport"></p></h2></div>
+				<div class="text-center" ><h5><strong><p class="nameReport"></p></strong></h5></div>
 				<div id="MessageSuccessSend" class="text-center alert alert-success" role="alert">
 				</div>
 				<div id="MessageSendError" class="text-center alert alert-danger" role="alert">
 				</div>
 				
-				<button id="SendReport"  class="btn btn-secondary  my-1 mx-1"  >Отправить отчет</button>
+				<button id="SendReport"  class="btn btn-dark  my-1 mx-1"  >Отправить отчет</button>
 			</dir>
 		</div>
 	</div>
@@ -124,7 +126,7 @@
 	<div id="ModalMessage" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+				<div class="modal-header"><button class="close" type="button" data-dismiss="modal"></button>
 					
 				</div>
 				<div  id="ModalMessageDelete" class="modal-body text-center"></div>

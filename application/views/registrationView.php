@@ -1,7 +1,7 @@
 
 <div class="py-3 container text-center  ">
 
-<div id="TitleRegistration" class=" container col-8 bg-primary text-light rounded text-center"">  <strong><p>  Регистрация </p> </strong> </div>
+<div id="TitleRegistration" class=" container col-8 bg-success text-light rounded text-center"">  <strong><p>  Регистрация </p> </strong> </div>
 
     <!-- <div  id="RegistrationBlock" class=" container center-block">  -->
 
