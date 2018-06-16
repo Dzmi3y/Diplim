@@ -80,9 +80,28 @@ class Searcher
 	}
 
 
+	public static function DeleteReport($ReportID)
+	{
+
+		
+		$queryDeleteWasteTable1="DELETE FROM `WasteTable1`  WHERE ReportID=".$ReportID;
+		ConnectDB::SendQuery($queryDeleteWasteTable1);
+		$queryDeleteWasteTable2="DELETE FROM `WasteTable2`  WHERE ReportID=".$ReportID;
+		ConnectDB::SendQuery($queryDeleteWasteTable2);
+		$queryDeleteReports="DELETE FROM `Reports` WHERE ID=".$ReportID;
+		ConnectDB::SendQuery($queryDeleteReports);
+		return true;
+	}
 
 
 }
+
+
+
+
+
+
+
 
 
 

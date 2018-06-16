@@ -13,6 +13,7 @@ let self = this;
 	let Editor1;
 	let Editor2;
 	let yearCurrentReport;
+	let currentReportId;
 	//let CurrentYear;
 
 	IDDel1="";
@@ -102,6 +103,8 @@ let self = this;
 
 		let nameReport="Отчет за "+year+" год";
 		yearCurrentReport=year;
+		currentReportId=IDReport;
+
 
 		console.log("GetArrayYearId33333333333");
 		//self.CurrentIDCompany=CompanyID;
@@ -111,6 +114,7 @@ let self = this;
 		$(".nameReport")[0].innerHTML=nameReport;
 		$(".nameReport")[1].innerHTML=nameReport;
 		$(".nameReport")[2].innerHTML=nameReport;
+
 		$.ajax(
 		{
 		  type: 'POST',
@@ -124,6 +128,27 @@ let self = this;
 
 	}
 
+
+	self.DeleteReport=function()
+	{
+
+		$.ajax(
+		{
+		  type: 'POST',
+		  url: '/ajax.php',
+		  data: {"DeleteReport":currentReportId},
+		  dataType: 'html',
+		  success: self.callbackDeleteReport
+		});
+		  
+
+	}
+
+	self.callbackDeleteReport=function(data)
+	{
+
+		$("#UpdateListDataBtn")[0].click();
+	}
 
 
 
@@ -157,9 +182,11 @@ let self = this;
 		 Editor2 =  new LoaderEditor(Table2,Del2,Msg2,2);
 
 		$('#SearchButton').bind('click',self.Search);
-		$('#SendReportTab').bind('click',function(){console.log("lolppppppppp"); ShowMessageTables();});
-		$('#SendReport').bind('click',function(){console.log("lolppppppppp"); ShowMessageTables();});
+		$('#SendReportTab').bind('click',function(){ ShowMessageTables();});
+		$('#SendReport').bind('click',function(){ ShowMessageTables();});
 		$('#SendReport').bind('click',self.Save);
+		$('#DeleteReportBtn').bind('click',self.DeleteReport);
+
 
 
 		self.UpdateListData();

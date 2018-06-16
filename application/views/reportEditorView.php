@@ -73,6 +73,7 @@
 					<div id="YearList"  class=" container border border-dark  text-center center-block col-12"   style="height: 300px; overflow-y: scroll;">
 						<ul id="ListReport" class="nav nav-pills flex-column mb-3 col-12" role="tablist"></ul>
 					</div>
+					<button type="button" id="DeleteReportBtn" class=" btn btn-danger col-12">Удалить выделенный отчет</button>
 				</div>
 				<div class="col-1"></div>
 
@@ -101,7 +102,7 @@
 				</div>
 			
 
-			<table id="Editor" class=" ">	
+			<table id="Editor">	
 			</table>
 			
 				<button id="DeleteButton"  class="btn btn-secondary  my-1 mx-1">Удалить отмеченные строки</button>

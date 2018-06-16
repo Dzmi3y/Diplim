@@ -1,9 +1,9 @@
 <?php
 	
 	
-/*ini_set('error_reporting', E_ALL);
+ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);*/
+ini_set('display_startup_errors', 1);
 
 	session_start();
 	include "application/models/ConnectionDB/ConnectDB.php"; 
@@ -323,14 +323,18 @@ if(isset($_POST['GetArrayYearIdForAdmin']))
 		
 		//echo $ReportID;
 		echo json_encode($getData);
-				
+		
+
 	///echo "im is loaded!";
-
-
 	}
 
 
-	
+	if(isset($_POST['DeleteReport']))
+	{
+		$IDReport =	$_POST['DeleteReport'];
+		echo Searcher::DeleteReport($IDReport);
+	}
+
 	
 
 ?>

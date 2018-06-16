@@ -27,6 +27,7 @@
 
 	var callback= function (data) 
 	{
+		console.log(data);
 
 		if(data==true)
 		{
