@@ -27,7 +27,7 @@
     padding: 1px; /* Поля вокруг содержимого ячеек */
     border: 1px solid black; /* Граница вокруг ячеек */
     font-size: 10px;
-     width: 50px;
+     /*width: 50px;*/
    }
 
      td.Editor2
@@ -45,23 +45,23 @@
 
    }
    
-   input.Editor2 :not(.column0)
+   input.Editor2 :not(.column0 )
    {
       width: 50px;
    }
   
 
-   input.Editor 
+   input.Editor
    {
    	width: 50px;
    }
 
-	.column0
+	 input.column0.Editor
    {
-   	width: 20px;
+   	width: 10px;
    }
   
-    .column1.Editor
+    input.column1.Editor
    {
     width: 100px;
    }

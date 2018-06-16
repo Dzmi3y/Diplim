@@ -68,7 +68,7 @@ self.isNumeric =function(n)
 					{
 
 						$("#Editor2Inpr"+self.numberRow+"c2")[0].value=ArrayDataList["column2"][i].id;
-
+						self.Unhighlight("Editor2Inpr"+self.numberRow+"c2");
 
 						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
 						{
@@ -85,7 +85,7 @@ self.isNumeric =function(n)
 					if(self.nameColumn=="column2") 
 					{
 						$("#Editor2Inpr"+self.numberRow+"c1")[0].value=ArrayDataList["column1"][i].id;
-
+						self.Unhighlight("Editor2Inpr"+self.numberRow+"c2");
 						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
 						{
 							containerCellsValue.ArrayCellsValue[self.numberRow-1]=new Object();
@@ -141,7 +141,7 @@ self.isNumeric =function(n)
    		console.log(TitleColumn+" ееерррооооррр  "+TitleRow);
 	}
 
-
+/*
 	self.Unhighlight=function()
 	{
 		$("#"+self.IdCells).css('background', 'transparent');
@@ -153,7 +153,40 @@ self.isNumeric =function(n)
 		{
 			ErorsContainer.ArrayIdErrorsElement.splice(item, 1);	
    		}
+	}*/
+
+
+
+	self.Unhighlight=function(OtherInputId=null)
+	{
+		let	CurrentInput;
+
+
+		if(OtherInputId==null)
+		{
+			CurrentInput=self.inp.id;
+		}
+		else
+		{
+			CurrentInput=OtherInputId;
+		}
+
+			let idCell= CurrentInput.replace('Inp','Td');
+
+			$("#"+idCell).css('background', 'transparent');
+			console.log("remove checktable1");
+	   		ErorsContainer.ObjMessageErrorManager.RemoveMessage(CurrentInput);
+
+	   		let item =ErorsContainer.ArrayIdErrorsElement.indexOf(CurrentInput);		
+			if(item>=0)
+			{
+				ErorsContainer.ArrayIdErrorsElement.splice(item, 1);	
+	   		}
+   		
+
 	}
+
+
 
 //$(".line3 .inputEditor").filter(".Editor")[2].value
 

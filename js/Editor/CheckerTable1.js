@@ -23,7 +23,9 @@ function CheckerTable1(ErorsContainer,ConvertColumn)
 	ArrayDataList["column18"]=Dump;
 	ArrayDataList["column21"]=WasteStorage;
 
-   self.Handler=function(inp,containerCellsValue,AddRow)
+	
+
+   self.Handler=function(inp,containerCellsValue,AddRow=null)
    {
    	 	
    		console.log("hhhaannddlleerrCheckkkkkkkk");
@@ -83,6 +85,9 @@ function CheckerTable1(ErorsContainer,ConvertColumn)
 						console.log("#EditorInpr"+self.numberRow+"c2");
 						$("#EditorInpr"+self.numberRow+"c2")[0].value=ArrayDataList["column2"][i].id;
 						$("#EditorInpr"+self.numberRow+"c4")[0].value=ArrayDataList["column2"][i].hazardClass;
+						//$("#EditorInpr"+self.numberRow+"c2")[0].click();
+						self.Unhighlight("EditorInpr"+self.numberRow+"c2");
+
 
 
 						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
@@ -102,6 +107,8 @@ function CheckerTable1(ErorsContainer,ConvertColumn)
 					{
 						$("#EditorInpr"+self.numberRow+"c1")[0].value=ArrayDataList["column1"][i].id;
 						$("#EditorInpr"+self.numberRow+"c4")[0].value=ArrayDataList["column2"][i].hazardClass;
+						//$("#EditorInpr"+self.numberRow+"c1")[0].click();
+						self.Unhighlight("EditorInpr"+self.numberRow+"c1");
 
 						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
 						{
@@ -172,17 +179,33 @@ function CheckerTable1(ErorsContainer,ConvertColumn)
 	}
 
 
-	self.Unhighlight=function()
+	self.Unhighlight=function(OtherInputId=null)
 	{
-		$("#"+self.IdCells).css('background', 'transparent');
-		console.log("remove checktable1");
-   		ErorsContainer.ObjMessageErrorManager.RemoveMessage(self.inp.id);
+		let	CurrentInput;
 
-   		let item =ErorsContainer.ArrayIdErrorsElement.indexOf(self.inp.id);		
-		if(item>=0)
+
+		if(OtherInputId==null)
 		{
-			ErorsContainer.ArrayIdErrorsElement.splice(item, 1);	
-   		}
+			CurrentInput=self.inp.id;
+		}
+		else
+		{
+			CurrentInput=OtherInputId;
+		}
+
+			let idCell= CurrentInput.replace('Inp','Td');
+
+			$("#"+idCell).css('background', 'transparent');
+			console.log("remove checktable1");
+	   		ErorsContainer.ObjMessageErrorManager.RemoveMessage(CurrentInput);
+
+	   		let item =ErorsContainer.ArrayIdErrorsElement.indexOf(CurrentInput);		
+			if(item>=0)
+			{
+				ErorsContainer.ArrayIdErrorsElement.splice(item, 1);	
+	   		}
+   		
+
 	}
 
 

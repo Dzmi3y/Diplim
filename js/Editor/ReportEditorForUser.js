@@ -104,6 +104,8 @@ let self = this;
 		let nameReport="Отчет за "+year+" год";
 		yearCurrentReport=year;
 		currentReportId=IDReport;
+		$("#ModalMessageDelete strong").remove();
+		$("#ModalMessageDelete").append("<strong>Удалить отчет за "+year+" год?</strong>");
 
 
 		console.log("GetArrayYearId33333333333");
@@ -171,6 +173,8 @@ let self = this;
 
 	self.Start= function(Del1,Del2,Msg1,Msg2)
 	{
+
+
 
 		 IDDel1=Del1;
 		 IDDel2=Del2;
@@ -333,27 +337,32 @@ let self = this;
 
 	self.Save = function ()
 	{
-		//console.log("-------------------");
+		
+
+		let FlagCorrectTable1=Editor1.IsCorrect();
+		let FlagCorrectTable2=Editor2.IsCorrect();
+		if(FlagCorrectTable1&&FlagCorrectTable2)
+		{
 
 		
-		let table1 = Editor1.GetData();
-		let table2 = Editor2.GetData();
-	
+			let table1 = Editor1.GetData();
+			let table2 = Editor2.GetData();
+		
 
 
-	    let str = {'ReportOfUser': {'year':yearCurrentReport,'report':{'table1':{"Add":table1["Add"],"Delete":table1["Delete"]},'table2':{"Add":table2["Add"],"Delete":table2["Delete"]}}}};
+		    let str = {'ReportOfUser': {'year':yearCurrentReport,'report':{'table1':{"Add":table1["Add"],"Delete":table1["Delete"]},'table2':{"Add":table2["Add"],"Delete":table2["Delete"]}}}};
 
-		// str = JSON.stringify(str);   
-	    console.log(str);
-		$.ajax(
-			{
-			  type: 'POST',
-			  url: '/ajax.php',
-			  data: str,
-			  dataType: 'html',
-			  success: self.callback
-			});
-
+			// str = JSON.stringify(str);   
+		    console.log(str);
+			$.ajax(
+				{
+				  type: 'POST',
+				  url: '/ajax.php',
+				  data: str,
+				  dataType: 'html',
+				  success: self.callback
+				});
+		}
 		
 	}
 

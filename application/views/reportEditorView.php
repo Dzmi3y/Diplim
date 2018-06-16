@@ -1,5 +1,3 @@
-<div>
-
 
 
 
@@ -73,7 +71,7 @@
 					<div id="YearList"  class=" container border border-dark  text-center center-block col-12"   style="height: 300px; overflow-y: scroll;">
 						<ul id="ListReport" class="nav nav-pills flex-column mb-3 col-12" role="tablist"></ul>
 					</div>
-					<button type="button" id="DeleteReportBtn" class=" btn btn-danger col-12">Удалить выделенный отчет</button>
+					<button type="button" id="ShowModalMessage" data-toggle="modal" data-target="#ModalMessage" class=" btn btn-danger col-12">Удалить выделенный отчет</button>
 				</div>
 				<div class="col-1"></div>
 
@@ -85,6 +83,26 @@
 		</div>
 		<br/>
 	</div>
+
+
+	<div id="ModalMessage" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+					
+				</div>
+				<div  id="ModalMessageDelete" class="modal-body text-center"></div>
+				
+				<div class="modal-footer text-center">
+					<button id="DeleteReportBtn" class="btn btn-danger" type="button" data-dismiss="modal">Удалить</button>
+					<button class="btn btn-default" type="button" data-dismiss="modal">Отмена</button>
+				</div>
+					
+			
+			</div>
+		</div>
+	</div>
+
 
 
 	<div  class="tab-pane fade " id="firstTable" >
@@ -393,5 +411,3 @@ $('#Editor').on('mouseover',function(e){console.log("Hello, nah");});
 
 
 
-
-</div>

@@ -5,6 +5,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 	self.ArrayYearId=Array();
 	self.CurrentIDCompany;
 	self.CurrentIDReport;
+	let currentReportId;
 
 	let Editor1;
 	let Editor2;
@@ -53,35 +54,40 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 				$('#'+NavTabID).append('<li id="li'+idSubTab+'" class="nav-item "><a  id="a'+idSubTab+'" class="'+classes+'"  data-toggle="tab">['+CurrentYear+'] '+CurrentNameCompany+'</a></li>');
 
-				$('#li'+idSubTab).bind('click',function(){self.LoadTables(LaadedArray[i]["IDReport"],'['+LaadedArray[i]["Year"]+'] '+LaadedArray[i]["NameCompany"],LaadedArray[i]["IDCompany"]);});
+				$('#li'+idSubTab).bind('click',function(){self.LoadTables(LaadedArray[i]["IDReport"],LaadedArray[i]["Year"],LaadedArray[i]["NameCompany"],LaadedArray[i]["IDCompany"]);});
 
 			}
 			console.log("GetArrayYearId2222222222222222222222222222222222");	
 			if(window.location.hash=="")
 			{
-				self.LoadTables(LaadedArray[0]["IDReport"],'['+LaadedArray[0]["Year"]+'] '+LaadedArray[0]["NameCompany"],LaadedArray[0]["IDCompany"]);
+				self.LoadTables(LaadedArray[0]["IDReport"],LaadedArray[0]["Year"],LaadedArray[0]["NameCompany"],LaadedArray[0]["IDCompany"]);
 			}
 			
 		}
 		else
 		{
 			$('#MessageListForSearch').append("<p>Отчет не найден!</p>");
-			console.log("++++++++++++");
+			console.log("++++++++++++")
 
 		}
 	}
 
 
-	self.LoadTables=function(IDReport,nameReport,CompanyID)
+	self.LoadTables=function(IDReport,year,company,CompanyID)
 	{
-		console.log("GetArrayYearId33333333333");
+		//console.log("GetArrayYearId33333333333");
 		self.CurrentIDCompany=CompanyID;
 		self.CurrentIDReport=IDReport;
+		currentReportId=IDReport;
+		$("#ModalMessageDelete strong").remove();
+		$("#ModalMessageDelete").append("<strong>Удалить отчет компании '"+company+"' за "+year+" год?</strong>");
+
+
 		console.log("Loooogg");
 		self.CleanAll()
-		$(".nameReport")[0].innerHTML=nameReport;
-		$(".nameReport")[1].innerHTML=nameReport;
-		$(".nameReport")[2].innerHTML=nameReport;
+		$(".nameReport")[0].innerHTML="Отчет компании '"+company+"' за "+year+" год";
+		$(".nameReport")[1].innerHTML="Отчет компании '"+company+"' за "+year+" год";
+		$(".nameReport")[2].innerHTML="Отчет компании '"+company+"' за "+year+" год";
 		$.ajax(
 		{
 		  type: 'POST',
@@ -95,6 +101,66 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	}
 
+	self.DeleteReport=function()
+	{
+
+		$.ajax(
+		{
+		  type: 'POST',
+		  url: '/ajax.php',
+		  data: {"DeleteReport":currentReportId},
+		  dataType: 'html',
+		  success: self.callbackDeleteReport
+		});
+		  
+
+	}
+
+
+	$("#MessageSendError").hide() ;
+		$("#MessageSuccessSend").hide();
+
+		var ShowMessageTables =function()
+		{
+			$("#MessageSuccessSend").hide();
+			let FlagCorrectTable1=Editor1.IsCorrect();
+			let FlagCorrectTable2=Editor2.IsCorrect();
+			//console.log("dddlol");
+			let Message="";
+			if(!FlagCorrectTable1||!FlagCorrectTable2)
+			{
+
+		
+
+				 Message="<strong> ВНИМАНИЕ! </strong></br>";
+
+				if(!FlagCorrectTable1)
+				{
+					Message+="В <strong> таблице 1 </strong> обнаружены ошибки.</br>";
+				}
+
+				if(!FlagCorrectTable2)
+				{
+					Message+="В <strong> таблице 2 </strong> обнаружены ошибки.</br>";
+				}
+
+				$("#MessageSendError")[0].innerHTML=Message;
+				$("#MessageSendError").show() 
+			}
+			else
+			{
+				$("#MessageSendError").hide() 
+			}
+			$("#MessageSendError")[0].innerHTML=Message;
+		}
+
+
+
+	self.callbackDeleteReport=function(data)
+	{
+
+		$("#UpdateListDataBtn")[0].click();
+	}
 
 
 
@@ -127,20 +193,29 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 		 Editor2 =  new LoaderEditor(Table2,Del2,Msg2,2);
 
 		$('#SearchButton').bind('click',self.Search);
+		$('#SendReportTab').bind('click',function(){ ShowMessageTables();});
+		$('#SendReport').bind('click',function(){ ShowMessageTables();});
 		$('#SendReport').bind('click',self.Save);
 
-		$.ajax(
-		{
-		  type: 'POST',
-		  url: '/ajax.php',
-		  data: "GetArrayYearIdForAdmin",
-		  dataType: 'html',
-		  success: self.GetArrayYearId
-		});
+		$('#DeleteReportBtn').bind('click',self.DeleteReport);
+
+		self.UpdateListData();
 
 
 	}
 
+
+	self.UpdateListData = function()
+	{
+		$.ajax(
+			{
+			  type: 'POST',
+			  url: '/ajax.php',
+			  data: "GetArrayYearIdForAdmin",
+			  dataType: 'html',
+			  success: self.GetArrayYearId
+			});
+	}
 
 	self.callbackLoader= function($report)
 	{
@@ -263,26 +338,32 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	self.Save = function ()
 	{
-		//console.log("-------------------");
 
+		let FlagCorrectTable1=Editor1.IsCorrect();
+		let FlagCorrectTable2=Editor2.IsCorrect();
+		if(FlagCorrectTable1&&FlagCorrectTable2)
+		{
+			console.log("--ssssaaavvveee-----------------");
+
+			
+			let table1 = Editor1.GetData();
+			let table2 = Editor2.GetData();
 		
-		let table1 = Editor1.GetData();
-		let table2 = Editor2.GetData();
-	
 
 
-	    let str =  {'reportAdmin':{'table1':{"Add":table1["Add"],"Delete":table1["Delete"]},'table2':{"Add":table2["Add"],"Delete":table2["Delete"]},'IDCompany':self.CurrentIDCompany,'IDReport':self.CurrentIDReport}};
+		    let str =  {'reportAdmin':{'table1':{"Add":table1["Add"],"Delete":table1["Delete"]},'table2':{"Add":table2["Add"],"Delete":table2["Delete"]},'IDCompany':self.CurrentIDCompany,'IDReport':self.CurrentIDReport}};
 
-		// str = JSON.stringify(str);   
-	    console.log(str);
-		$.ajax(
-			{
-			  type: 'POST',
-			  url: '/ajax.php',
-			  data: str,
-			  dataType: 'html',
-			  success: self.callback
-			});
+			// str = JSON.stringify(str);   
+		    console.log(str);
+			$.ajax(
+				{
+				  type: 'POST',
+				  url: '/ajax.php',
+				  data: str,
+				  dataType: 'html',
+				  success: self.callback
+				});
+		}
 	}
 
 
