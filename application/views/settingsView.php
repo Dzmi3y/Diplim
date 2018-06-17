@@ -43,16 +43,17 @@
 					<div id="ErrorPhoneMessage" class="bg-danger text-white"></div>
 				</div>
 
-				<div class="text-dark" class="form-group">
-					<label for="InputDistrict"><b>Изменить район</b></label>
-					<input type="text" class="form-control" id="InputDistrict" placeholder="">	
-					<div id="ErrorDistrictMessage" class="bg-danger text-white"></div>
-				</div>
 
 				<div class="text-dark" class="form-group">
 					<label for="InputRegion"><b>Изменить область</b></label>
 					<input type="text" class="form-control" id="InputRegion" placeholder="">	
 					<div id="ErrorRegionMessage" class="bg-danger text-white"></div>
+				</div>
+
+				<div class="text-dark" class="form-group">
+					<label for="InputDistrict"><b>Изменить район</b></label>
+					<input type="text" class="form-control" id="InputDistrict" placeholder="">	
+					<div id="ErrorDistrictMessage" class="bg-danger text-white"></div>
 				</div>
 
 				<div class="text-dark" class="form-group">
@@ -62,14 +63,17 @@
 				</div>
 			</div>
 		</div>
-		<div id="ErrorMessagesSetting" class="alert alert-danger" role="alert"></div>
-		<div id="MessageSuccessSetting" class="alert alert-success" role="alert"></div>
 		<br/>
+		<div class="container col-6">
+			<div id="ErrorMessagesSetting" class="alert alert-danger  text-center" role="alert"></div>
+			<div id="MessageSuccessSetting" class="alert alert-success  text-center" role="alert"></div>
+		</div>
+		
 		
 
 		<div class="text-center"><button type="submit"  class="btn btn-secondary">Сохранить изменения</button>		</div>
 
-	</br>
+	
 
 	</div>
 	
@@ -326,14 +330,14 @@
 				return  IsEmail(key,ValueForCheck);
 			}
 
-			if(key=="Phone")
+			/*if(key=="Phone")
 			{
 				if($('#InputPhone')[0].value.length!=9)
 				{
 					$("#ErrorPhoneMessage").append('<p> Телефонный номер должен состоять из девати цифор! </p>');
 					return false;
 				}
-			}
+			}*/
 			
 
 			if(key=="UNP")

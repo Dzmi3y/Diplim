@@ -87,6 +87,7 @@ function CheckerTable1(ErorsContainer,ConvertColumn)
 						$("#EditorInpr"+self.numberRow+"c4")[0].value=ArrayDataList["column2"][i].hazardClass;
 						//$("#EditorInpr"+self.numberRow+"c2")[0].click();
 						self.Unhighlight("EditorInpr"+self.numberRow+"c2");
+						self.Unhighlight("EditorInpr"+self.numberRow+"c4");
 
 
 
@@ -109,6 +110,7 @@ function CheckerTable1(ErorsContainer,ConvertColumn)
 						$("#EditorInpr"+self.numberRow+"c4")[0].value=ArrayDataList["column2"][i].hazardClass;
 						//$("#EditorInpr"+self.numberRow+"c1")[0].click();
 						self.Unhighlight("EditorInpr"+self.numberRow+"c1");
+						self.Unhighlight("EditorInpr"+self.numberRow+"c4");
 
 						if (typeof containerCellsValue.ArrayCellsValue[self.numberRow-1]==="undefined" )
 						{

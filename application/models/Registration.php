@@ -46,7 +46,7 @@ class Registration
 			if($columnsDB=="")
 			{
 				//if(($key=="Email")||( $key=="Password")|| ($key=="NameCompany")|| ($key=="Address"))
-				if(($key!="UNP")&&($key!="Phone"))
+				if(($key!="UNP"))
 				{
 					$valuesDB="'".$value."'";	
 				}
@@ -61,7 +61,7 @@ class Registration
 			else
 			{
 				//if(($key=="Email")||( $key=="Password")|| ($key=="NameCompany")|| ($key=="Address"))
-				if(($key!="UNP")&&($key!="Phone"))
+				if(($key!="UNP"))
 				{
 					$valuesDB.=", '".$value."'";	
 				}
@@ -125,7 +125,7 @@ class Registration
 			//if(($key=="Email")||( $key=="Password")|| ($key=="NameCompany")|| ($key=="Address"))
 			if(!(($key=="Password")&&(empty($value))))
 			{
-				if(($key!="UNP")&&($key!="Phone"))
+				if(($key!="UNP"))
 				{
 					$valuesDB="'".$value."'";	
 				}

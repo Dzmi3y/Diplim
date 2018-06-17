@@ -47,16 +47,18 @@
 					<div id="ErrorPhoneMessage" class="bg-danger text-white"></div>
 				</div>
 
-				<div class="text-dark" class="form-group">
-					<label for="InputDistrict"><b>Район</b></label>
-					<input type="text" class="form-control" id="InputDistrict" placeholder="Район">	
-					<div id="ErrorDistrictMessage" class="bg-danger text-white"></div>
-				</div>
+
 
 				<div class="text-dark" class="form-group">
 					<label for="InputRegion"><b>Область</b></label>
 					<input type="text" class="form-control" id="InputRegion" placeholder="Область">	
 					<div id="ErrorRegionMessage" class="bg-danger text-white"></div>
+				</div>
+
+								<div class="text-dark" class="form-group">
+					<label for="InputDistrict"><b>Район</b></label>
+					<input type="text" class="form-control" id="InputDistrict" placeholder="Район">	
+					<div id="ErrorDistrictMessage" class="bg-danger text-white"></div>
 				</div>
 
 				<div class="text-dark" class="form-group">
@@ -104,6 +106,7 @@
 
 	var callbackRegistration= function (data) 
 	{
+		console.log(data);
 
 		if(data==true)
 		{
@@ -249,14 +252,13 @@
 			}
 
 
-			if(key=="Phone")
+		/*	if(key=="Phone")
 			{
 				if($('#InputPhone')[0].value.length!=9)
 				{
 					$("#ErrorPhoneMessage").append('<p> Телефонный номер должен состоять из девати цифор! </p>');
-					return false;
 				}
-			}
+			}*/
 			
 
 			if(key=="UNP")
