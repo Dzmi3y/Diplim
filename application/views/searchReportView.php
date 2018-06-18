@@ -43,7 +43,7 @@
 				</div>
 				<p ><h5> <strong>Список отчетов:</strong></h5></p>
 				<strong><h4><div class="text-center alter alert-danger" id="MessageListForSearch"></div></h4></strong>
-				<div id="YearList" class="alert alert-dark"   style="overflow-y: scroll; height: 60%; ">
+				<div id="YearList" class="alert alert-dark"   style="overflow-y: scroll; height: 300px; ">
 					<ul id="ListReport" class="nav nav-pills flex-column " role="tablist">
 					</ul>
 				</div>
@@ -199,14 +199,14 @@
 
 		for(let i in DataForLists["Year"])
 		{
-			$('#YearList').append('<option value="'+ DataForLists["Year"][i]["Year"]+'"></option>');
+			$('#YearList').append("<option value=\'"+ DataForLists["Year"][i]["Year"]+"\'></option>");
 		}
 
 
 			
 		for(let i in DataForLists["NameCompany"])
 		{
-			$('#CompanyList').append('<option value="'+DataForLists["NameCompany"][i]["NameCompany"]+'"></option>');	
+			$('#CompanyList').append("<option value=\'"+DataForLists["NameCompany"][i]["NameCompany"]+"\'></option>");	
 		}
 			
 	}

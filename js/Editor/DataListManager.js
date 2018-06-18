@@ -32,7 +32,8 @@ function DataListManager(IdTable,ArrayDataList)
 			{
 				$('#'+idDataList).append('<option value="'+list[i].id+'">'+list[i].id+'</option>');	
 			}
-			//$('#'+idDataList).append('<option value="'+list[i].id+'">'+list[i].id+'</option>');	
+			//$('#'+idDataList).append('<option value="'+list[i].id+'">'+list[i].id+'</option>
+			');	
 		}*/
 
 

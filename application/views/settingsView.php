@@ -1,4 +1,5 @@
-
+<datalist id="DistrictsList"></datalist>
+<datalist id="RegionsList"></datalist>
 
 <form method="POST" id="formx" action="javascript:void(null);" onsubmit="Send()">
 
@@ -78,6 +79,8 @@
 	</div>
 	
 </form>
+
+<script type="text/javascript" src="/js/RegionAndDistrict.js"></script>
 	<script type="text/javascript">
 
 		$("#ErrorMessagesSetting").hide();
@@ -94,6 +97,34 @@
 
 
 
+		function  FillDatalist(IdDatalist,DataForFill,MetaData=null)
+	{
+
+		$("#"+IdDatalist).empty();
+
+		if(MetaData==null)
+		{
+			for( let i in DataForFill)
+			{
+				$("#"+IdDatalist).append( '<option value="'+DataForFill[i].value+'">'+DataForFill[i].value+'</option>"');
+
+			}
+			
+		}
+		else
+		{
+			for( let i in DataForFill)
+			{
+				if(DataForFill[i].Region==MetaData)
+				$("#"+IdDatalist).append( '<option value="'+DataForFill[i].value+'">'+DataForFill[i].value+'</option>"');
+			}
+		}
+
+
+
+	}
+
+
 
 
 	$('#InputEmail').bind('change',function(){Checker("Email",$("#InputEmail")[0].value);});
@@ -108,6 +139,73 @@
 
 	$('#InputUNP').bind('keyup',function(event) {return KeyDownHandler(event,this);});
 	$('#InputPhone').bind('keyup',function(event) {return KeyDownHandler(event,this);});
+
+
+	function ChangeRegion()
+	{
+
+		let value=$("#InputRegion")[0].value;
+		let FlagCorrect=true;
+		$("#ErrorRegionMessage p").remove();
+		for(let i in Regions)
+		{
+
+			if(Regions[i].value==value)
+			{
+				$('#InputDistrict')[0].value="";
+				$("#ErrorDistrictMessage p").remove();
+				FillDatalist("DistrictsList",Districts,Regions[i].value);
+				FlagCorrect=true;
+				break;
+			}
+				else
+			{
+				FlagCorrect=false;
+				
+			}
+			
+
+
+		}
+
+		if(!FlagCorrect)
+		{
+			console.log("eerroor");
+			$("#ErrorRegionMessage").append('<p> Неверное название области! </p>');
+
+		}
+
+	}
+
+	function ChangeDistrict()
+	{
+		let flagCorrect =true;
+		let value =$("#InputDistrict")[0].value;
+		$("#ErrorDistrictMessage p").remove();
+		for(let i in Districts)
+		{
+			if(Districts[i].value==value)
+			{
+
+				if(Districts[i].Region!=$("#InputRegion")[0].value)
+				{
+					$("#ErrorDistrictMessage").append('<p> Область не соответствует району! </p>');
+				}
+				flagCorrect=true;
+				break;
+			}
+				else
+			{
+				flagCorrect=false;
+			}
+
+		}
+		if(!flagCorrect)
+		{
+			$("#ErrorDistrictMessage").append('<p> Неверное название района </p>');
+		}
+
+	}
 
 
 
@@ -238,6 +336,18 @@
 			console.log(result);*/
 
 
+			if(result)
+			{
+				if(key=="Region")
+				{
+					ChangeRegion();
+				}
+
+				if(key=="District")
+				{
+					ChangeDistrict();
+				}
+			}
 
 			
 			
@@ -708,7 +818,8 @@ KeyDownHandler=function(event,th)
 
 
 
-
+FillDatalist("DistrictsList",Districts)
+	FillDatalist("RegionsList",Regions)
 
 
 

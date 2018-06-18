@@ -114,10 +114,34 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 		$("#SearchList option").remove();
 		//console.log(NameField);
 		self.CurrentSearchField=NameField;
-		for(let i in self.AllCompanies)
+
+		if(NameField=="District")
 		{
-			$("#SearchList").append('<option value="'+self.AllCompanies[i][NameField]+'"></option>');
+			for( let i in Districts)
+			{
+				$("#SearchList").append( '<option value="'+Districts[i].value+'">'+Districts[i].value+'</option>"');
+
+			}
 		}
+		else
+			if(NameField=="Region")
+			{
+
+				for( let i in Regions)
+			{
+				$("#SearchList").append( '<option value="'+Regions[i].value+'">'+Regions[i].value+'</option>"');
+
+			}
+			}
+			else
+			{
+				for(let i in self.AllCompanies)
+				{
+
+
+					$("#SearchList").append("<option value=\'"+self.AllCompanies[i][NameField]+"\'></option>");
+				}
+			}
 
 		
 

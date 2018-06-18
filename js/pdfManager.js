@@ -27,7 +27,7 @@ var docPDF=
 			columns:
 			[
 				{ width: 600, text: '' },
-				{ text:'УТВЕРЖДЕНО\nПостановление\nНационального\nстатистического комитета\nРеспублики Беларусь\n19.09.2013 № 208',fontSize: 10}
+				{ text:'УТВЕРЖДЕНО\nПостановление\nНационального\nстатистического комитета\nРеспублики Беларусь\n19.09.2013 № 208',fontSize: 8}
 			]
 		},
 		{text:"\n"},
@@ -66,7 +66,7 @@ var docPDF=
 		          	text: "Представление искаженных данных государственной статистической отчетности, несвоевременное представление или непредставление такой отчетности влекут применение мер административной или уголовной ответственности в порядке, установленном законодательством Республики Беларусь",
 		          	//bold: true,
 		          	//alignment:"center"
-		          	fontSize: 10
+		          	fontSize: 8
 		          } 
 	          ]
 	         
@@ -96,6 +96,7 @@ var docPDF=
 		          	text:"ОТЧЕТ\nоб обращении с отходами производства\nза  20___год",
 		          	//bold: true,
 		          	alignment:"center"
+		          	,fontSize: 10
 		          } 
 		          ]
 		         
@@ -126,15 +127,15 @@ var docPDF=
  					alignment:"center",
 					body:
 					[
-			          [ {text:"Представляют",alignment:"center",fontSize: 10},   {text:"Срок\nпредставления",alignment:"center",fontSize: 10}  ],
+			          [ {text:"Представляют",alignment:"center",fontSize: 8},   {text:"Срок\nпредставления",alignment:"center",fontSize: 8}  ],
 			          [ {text:"юридические лица, обособленные подразделения юридических лиц, осуществляющие деятельность, связанную с обращением с отходами производства (кроме юридических лиц, обособленных подразделений юридических лиц, у которых образуются только отходы производства, подобные отходам жизнедеятельности населения, отходы бумаги и картона от канцелярской деятельности и делопроизводства, отходы упаковки незагрязненные, отработанные люминесцентные трубки, отработанные ртутные лампы, при общем объеме таких отходов\n50 и менее тонн в год)\n       республиканскому научно-исследовательскому унитарному предприятию «Белорусский научно-\n      	 \u0009исследовательский центр «Экология»;\nреспубликанское научно-исследовательское унитарное предприятие «Белорусский научно-исследовательский центр «Экология» – агрегированные первичные статистические данные по республике, областям, г. Минску; административным районам, отдельным городам; по видам экономической деятельности; по группам и видам отходов производства"
-			          		,alignment:"justify",fontSize: 10},   
-			          	{text:"20 января\n\n\n\n\n\n\n\n\n20 апреля",alignment:"center",fontSize: 10}  ],
+			          		,alignment:"justify",fontSize: 8},   
+			          	{text:"20 января\n\n\n\n\n\n\n\n\n20 апреля",alignment:"center",fontSize: 8}  ],
 			          
 
 			          [ {text:"       Министерству природных ресурсов и охраны окружающей среды Республики Беларусь;\n Министерство природных ресурсов и охраны окружающей среды Республики Беларусь – официальную статистическую информацию по республике, областям, г. Минску; административным районам, отдельным городам; по видам экономической деятельности; по группам и видам отходов производства\n       Национальному статистическому комитету Республики Беларусь"
-			          		,alignment:"justify",fontSize: 10},   
-			          	{text:"30 апреля",alignment:"center",fontSize: 10}  ]
+			          		,alignment:"justify",fontSize: 8},   
+			          	{text:"30 апреля",alignment:"center",fontSize: 8}  ]
 		         
 
 		       		]
@@ -208,10 +209,10 @@ var docPDF=
 				body:[
 	          [ 
 	          {
-	          	text: "Полное наименование юридического лица \nПолное наименование обособленного подразделения юридического лица\nПочтовый адрес (фактический)\nЭлектронный адрес (www, e-mail)"
+	          	text: "Полное наименование юридического лица ________________________________________________________________________________________________________________________________________________________________________________ ______________________________________________________________________________________________________________________________________________________________________________________________________________________________ \nПолное наименование обособленного подразделения юридического лица _______________________________________________________________________________________________________________________________________________ ______________________________________________________________________________________________________________________________________________________________________________________________________________________________  \nПочтовый адрес (фактический) ____________________________________________________________________________________________________________________________________________________________________________________________ ______________________________________________________________________________________________________________________________________________________________________________________________________________________________   \nЭлектронный адрес (www, e-mail)"
 	          	//bold: true,
 	          	//alignment:"center"
-	          	,fontSize: 10
+	          	,fontSize: 8
 	          } 
 	          ]
 	         
@@ -234,17 +235,17 @@ var docPDF=
 	          	text: "Регистрационный номер респондента\nв статистическом регистре  (ОКПО)",
 	          	//bold: true,
 	          	alignment:"center"
-	          	,fontSize: 10
+	          	,fontSize: 8
 	          },
 	           {
 	          	text: "Учетный номер плательщика\n(УНП) ",
 	          	//bold: true,
 	          	alignment:"center"
-	          	,fontSize: 10
+	          	,fontSize: 8
 	          },
 	          ],
-	          [{text: "1",alignment:"center"},{text: "2",alignment:"center"}],
-	           [{text: " ",alignment:"center"},{text: " ",alignment:"center"}]
+	          [{text: "1",alignment:"center",fontSize: 8},{text: "2",alignment:"center",fontSize: 8}],
+	           [{text: " ",alignment:"center",fontSize: 8},{text: " ",alignment:"center",fontSize: 8}]
 
 	         
 	        ]
@@ -292,19 +293,19 @@ var docPDF=
 	          	text: "Руководитель (уполномоченный заместитель руководителя)\nюридического лица, обособленного подразделения\n(нужное подчеркнуть)",
 	          //bold: true,
 	          	alignment:"center"
-	          	,fontSize: 10
+	          	,fontSize: 8
 	          },
 	          {
 	          	text: "\n_____________________________\n(подпись)",
 	          //bold: true,
 	        	alignment:"center"
-	        	,fontSize: 10
+	        	,fontSize: 8
 	          },
 	          {
 	          	text: "\n_____________________________\n(инициалы, фамилия)",
 	          //bold: true,
 	        	alignment:"center"
-	        	,fontSize: 10
+	        	,fontSize: 8
 	          } 
 	          ]
 	         
@@ -336,7 +337,7 @@ var docPDF=
 	          	text: "«____» ____________________ 20 ___г.\n(дата составления государственной\nстатистической отчетности)",
 	          //bold: true,
 	        	alignment:"center"
-	        	,fontSize: 10
+	        	,fontSize: 8
 	          },
 
 	          ]
@@ -442,10 +443,10 @@ function PDFManager()
 	{
 
 
-		let HeaderTable1=self.addHeader(HeadrRows);
-		let HeaderTable2=self.addHeader(HeadrRowsTable2);
-		let Table1=self.createRows(tables[0],dataConvert[0],HeaderTable1);
-		let Table2=self.createRows(tables[1],dataConvert[1],HeaderTable2);
+		let HeaderTable1=self.addHeader(HeadrRows,7);
+		let HeaderTable2=self.addHeader(HeadrRowsTable2,10);
+		let Table1=self.createRows(tables[0],dataConvert[0],HeaderTable1,7);
+		let Table2=self.createRows(tables[1],dataConvert[1],HeaderTable2,10);
 
 		//console.log(Table1);
 		//console.log("---------------------");
@@ -453,10 +454,10 @@ function PDFManager()
 
 		//console.log(HeaderTable2);
 		DocumentPDF["content"][14]["table"]["body"]=Table1;
-		DocumentPDF["content"][14]["table"]["widths"]=self.getWidths(23);
+		DocumentPDF["content"][14]["table"]["widths"]=self.getWidths(23,100);
 		//console.log(DocumentPDF);
 		DocumentPDF["content"][17]["table"]["body"]=Table2;
-		DocumentPDF["content"][17]["table"]["widths"]=self.getWidths(6);
+		DocumentPDF["content"][17]["table"]["widths"]=self.getWidths(6,200);
 
 
 
@@ -467,7 +468,7 @@ function PDFManager()
 
 
 
-	self.addHeader=function(ValHeader)
+	self.addHeader=function(ValHeader,fontSize)
 	{
 
 
@@ -512,17 +513,15 @@ function PDFManager()
 					headerResult[i][j].colSpan=colspan;
 					headerResult[i][j].rowSpan=rowspan;
 					headerResult[i][j].alignment='center';
-					headerResult[i][j].fontSize= 7;
+					headerResult[i][j].fontSize= fontSize;
 
 					rowSpanArray[j]=rowspan-1;
 					k++;
-					console.log(colspan);
+
 
 					if(colspan>1)
 					{
-						console.log("++++++++++++++++++++#33333333333333333");
-						console.log(j);
-						console.log("(((((");
+
 						j++;
 
 						for (var z=j;z<j+colspan-2;z++)
@@ -530,12 +529,10 @@ function PDFManager()
 							//headerResult[i][j]={'text': '', 'colSpan': 1, 'rowSpan': 1, 'alignment': 'center'};
 							headerResult[i][j]={'text': '', 'colSpan': 1, 'rowSpan': 1};
 							rowSpanArray[j]=0;
-							console.log(headerResult[i][j]);
-							console.log(j);
+
 						}
 
 						j+=colspan-2;
-						console.log("))))");
 					}
 					//console.log(headerResult);
 				}
@@ -543,7 +540,7 @@ function PDFManager()
 				{
 					if(rowSpanArray[j]>0)
 					{
-						console.log();
+
 						rowSpanArray[j]=rowSpanArray[j]-1;
 						//headerResult[i][j]={'text': '', 'colSpan': 1, 'rowSpan': 1, 'alignment': 'center'};
 						headerResult[i][j]={'text': '', 'colSpan': 1, 'rowSpan': 1 };
@@ -562,22 +559,21 @@ function PDFManager()
 						headerResult[i][j].colSpan=colspan;
 						headerResult[i][j].rowSpan=rowspan;
 						headerResult[i][j].alignment='center';
-						headerResult[i][j].fontSize=7;
+						headerResult[i][j].fontSize=fontSize;
 
 						rowSpanArray[j]=rowspan-1;
 						k++;
-						console.log(colspan);
-						console.log("------------------------");
+
 						if(colspan>1)
 						{
-							console.log("------------------------");
+
 							j++;
 							for (var z=j;z<j+colspan-2;z++)
 							{
 								//headerResult[i][j]={'text': '', 'colSpan': 1, 'rowSpan': 1, 'alignment': 'center'};
 								headerResult[i][j]={'text': '', 'colSpan': 1, 'rowSpan': 1 };
 								rowSpanArray[j]=0;
-								console.log(headerResult[i][j]);
+
 							}
 
 							j+=colspan-2;
@@ -596,7 +592,7 @@ function PDFManager()
 				headerResult[i][countColumn-1]={'text': '', 'colSpan': 1, 'rowSpan': 1 };
 				rowSpanArray[countColumn-1]=0;
 			}
-			console.log(headerResult[i][countColumn-1]);
+
 
 		}
 
@@ -604,7 +600,7 @@ function PDFManager()
 	}	
 
 
-	self.getWidths=function (count)
+	self.getWidths=function (count,firstSize)
 	{
 		let widtsArray=Array();
 		for (var i = 0; i < count; i++) 
@@ -614,7 +610,7 @@ function PDFManager()
 
 			if(i==0)
 			{
-				widtsArray[i]=100;
+				widtsArray[i]=firstSize;
 			}
 			else
 			{
@@ -628,7 +624,7 @@ function PDFManager()
 	}
 
 
-	self.createRows=function (Table,convertData,result)
+	self.createRows=function (Table,convertData,result,fontSize)
 	{
 		let row;
 		for(var i in Table)
@@ -637,7 +633,7 @@ function PDFManager()
 			for(var j in convertData)
 			{
 				let textCell= ((Table[i][convertData[j]]==null)||(Table[i][convertData[j]]==NaN)) ? "":Table[i][convertData[j]];
-				row.push({'text':textCell,'fontSize':7});
+				row.push({'text':textCell,'fontSize':fontSize});
 				// let NumberNewCell=row.length;
 				// row[NumberNewCell]=new Object();
 				// row[NumberNewCell].text=Table[i][convertData[j]];

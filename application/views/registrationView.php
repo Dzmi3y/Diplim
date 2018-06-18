@@ -1,6 +1,9 @@
 
 <div class="py-3 container text-center  ">
 
+<datalist id="DistrictsList"></datalist>
+<datalist id="RegionsList"></datalist>
+
 <div id="TitleRegistration" class=" container col-8 bg-success text-light rounded text-center"">  <strong><p>  Регистрация </p> </strong> </div>
 
     <!-- <div  id="RegistrationBlock" class=" container center-block">  -->
@@ -51,13 +54,13 @@
 
 				<div class="text-dark" class="form-group">
 					<label for="InputRegion"><b>Область</b></label>
-					<input type="text" class="form-control" id="InputRegion" placeholder="Область">	
-					<div id="ErrorRegionMessage" class="bg-danger text-white"></div>
+					<input type="text" autocomplete="off" class="form-control" id="InputRegion" list="RegionsList" placeholder="Область">	
+					<div id="ErrorRegionMessage" class="bg-danger text-white" ></div>
 				</div>
 
-								<div class="text-dark" class="form-group">
+				<div class="text-dark" class="form-group">
 					<label for="InputDistrict"><b>Район</b></label>
-					<input type="text" class="form-control" id="InputDistrict" placeholder="Район">	
+					<input type="text" autocomplete="off" class="form-control" id="InputDistrict" list="DistrictsList" placeholder="Район">	
 					<div id="ErrorDistrictMessage" class="bg-danger text-white"></div>
 				</div>
 
@@ -85,8 +88,39 @@
 
 </div>
 
+<script type="text/javascript" src="/js/RegionAndDistrict.js"></script>>
 
 <script type="text/javascript">
+
+		function  FillDatalist(IdDatalist,DataForFill,MetaData=null)
+	{
+
+		$("#"+IdDatalist).empty();
+
+		if(MetaData==null)
+		{
+			for( let i in DataForFill)
+			{
+				$("#"+IdDatalist).append( '<option value="'+DataForFill[i].value+'">'+DataForFill[i].value+'</option>"');
+
+			}
+			
+		}
+		else
+		{
+			for( let i in DataForFill)
+			{
+				if(DataForFill[i].Region==MetaData)
+				$("#"+IdDatalist).append( '<option value="'+DataForFill[i].value+'">'+DataForFill[i].value+'</option>"');
+			}
+		}
+
+
+
+	}
+
+
+
 
 
 	$('#InputEmail').bind('change',function(){Checker("Email",$("#InputEmail")[0].value);});
@@ -101,6 +135,73 @@
 
 	$('#InputUNP').bind('keyup',function(event) {return KeyDownHandler(event,this);});
 	$('#InputPhone').bind('keyup',function(event) {return KeyDownHandler(event,this);});
+
+	function ChangeRegion()
+	{
+
+		let value=$("#InputRegion")[0].value;
+		let FlagCorrect=true;
+		$("#ErrorRegionMessage p").remove();
+		for(let i in Regions)
+		{
+
+			if(Regions[i].value==value)
+			{
+				$('#InputDistrict')[0].value="";
+				$("#ErrorDistrictMessage p").remove();
+				FillDatalist("DistrictsList",Districts,Regions[i].value);
+				FlagCorrect=true;
+				break;
+			}
+				else
+			{
+				FlagCorrect=false;
+				
+			}
+			
+
+
+		}
+
+		if(!FlagCorrect)
+		{
+			console.log("eerroor");
+			$("#ErrorRegionMessage").append('<p> Неверное название области! </p>');
+
+		}
+
+	}
+
+	function ChangeDistrict()
+	{
+		let flagCorrect =true;
+		let value =$("#InputDistrict")[0].value;
+		$("#ErrorDistrictMessage p").remove();
+		for(let i in Districts)
+		{
+			if(Districts[i].value==value)
+			{
+
+				if(Districts[i].Region!=$("#InputRegion")[0].value)
+				{
+					$("#ErrorDistrictMessage").append('<p> Область не соответствует району! </p>');
+				}
+				flagCorrect=true;
+				break;
+			}
+				else
+			{
+				flagCorrect=false;
+			}
+
+		}
+		if(!flagCorrect)
+		{
+			$("#ErrorDistrictMessage").append('<p> Неверное название района </p>');
+		}
+
+	}
+
 
 
 
@@ -212,7 +313,19 @@
 			}
 
 			result *= IsNotEmpty(key,ValueForCheck);
+			
+			if(result)
+			{
+				if(key=="Region")
+				{
+					ChangeRegion();
+				}
 
+				if(key=="District")
+				{
+					ChangeDistrict();
+				}
+			}
 			
 
 
@@ -270,8 +383,7 @@
 				}
 			}
 
-
-
+			
 
 			if(key=="Password3")
 			{
@@ -350,6 +462,17 @@ KeyDownHandler=function(event,th)
 	th.value = th.value.replace(rep, ''); 
 	th.value = th.value.replace(',', '.'); 
 }
+
+
+
+	
+
+
+
+
+
+	FillDatalist("DistrictsList",Districts)
+	FillDatalist("RegionsList",Regions)
 
 
 
