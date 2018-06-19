@@ -126,12 +126,13 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 		else
 			if(NameField=="Region")
 			{
+				
 
 				for( let i in Regions)
-			{
-				$("#SearchList").append( '<option value="'+Regions[i].value+'">'+Regions[i].value+'</option>"');
+				{
+					$("#SearchList").append( '<option value="'+Regions[i].value+'">'+Regions[i].value+'</option>"');
 
-			}
+				}
 			}
 			else
 			{

@@ -23,8 +23,9 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	self.CreateNavTab =function(LaadedArray)
 	{
-		console.log("CreateNavTab");
-		console.log(NavTabID);
+	//	console.log("CreateNavTab");
+	//	console.log(NavTabID);
+
 		
 		$('#MessageListForSearch p').remove()
 
@@ -57,7 +58,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 				$('#li'+idSubTab).bind('click',function(){self.LoadTables(LaadedArray[i]["IDReport"],LaadedArray[i]["Year"],LaadedArray[i]["NameCompany"],LaadedArray[i]["IDCompany"]);});
 
 			}
-			console.log("GetArrayYearId2222222222222222222222222222222222");	
+			//console.log("GetArrayYearId2222222222222222222222222222222222");	
 			if(window.location.hash=="")
 			{
 				self.LoadTables(LaadedArray[0]["IDReport"],LaadedArray[0]["Year"],LaadedArray[0]["NameCompany"],LaadedArray[0]["IDCompany"]);
@@ -67,7 +68,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 		else
 		{
 			$('#MessageListForSearch').append("<p>Отчет не найден!</p>");
-			console.log("++++++++++++")
+		//	console.log("++++++++++++")
 
 		}
 	}
@@ -77,6 +78,8 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 	{
 		//console.log("GetArrayYearId33333333333");
 		self.CurrentIDCompany=CompanyID;
+
+
 		self.CurrentIDReport=IDReport;
 		currentReportId=IDReport;
 		$("#ModalMessageDelete strong").remove();
@@ -97,7 +100,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 		  success: self.callbackLoader
 		});
 
-		console.log(IDReport);
+		//console.log(IDReport);
 
 	}
 
@@ -166,7 +169,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	self.GetArrayYearId=function(SetArrayYearId)
 	{
-		console.log("GetArrayYearId111111111111111111111111111111111111111111111111111111111111111111111111111");	
+		//console.log("GetArrayYearId111111111111111111111111111111111111111111111111111111111111111111111111111");	
 		self.ArrayYearId=JSON.parse(SetArrayYearId);
 		self.CreateNavTab(self.ArrayYearId);
 		
@@ -219,7 +222,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 	self.callbackLoader= function($report)
 	{
-		console.log("hello");
+		//console.log("hello");
 
 
 		let ConvertColumn=["CA","CB","CV","CG","C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19"];
@@ -241,8 +244,12 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 		let ArrayDataList2=new Array();
 		ArrayDataList2["Editor2_column2"]=EventGroupCode;
 
+
+		$("#Editor").empty();
+		$("#Editor2").empty();
+		let DataForLoadingInTables= null;
 		DataForLoadingInTables= JSON.parse($report);
-		console.log(DataForLoadingInTables["Table1"]);
+		//console.log(DataForLoadingInTables["Table1"]);
 		Editor1.Load(HeadrRows,ConvertColumn,DataForLoadingInTables["Table1"],ArrayDataList);
 		Editor2.Load(HeadrRowsTable2,Convert2Column,DataForLoadingInTables["Table2"],ArrayDataList2);
 
@@ -321,8 +328,8 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
 		
 		
-		console.log("Result");
-		console.log(result);
+		/*console.log("Result");
+		console.log(result);*/
 
 		self.CreateNavTab(result);
 		
@@ -343,7 +350,7 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 		let FlagCorrectTable2=Editor2.IsCorrect();
 		if(FlagCorrectTable1&&FlagCorrectTable2)
 		{
-			console.log("--ssssaaavvveee-----------------");
+			//console.log("--ssssaaavvveee-----------------");
 
 			
 			let table1 = Editor1.GetData();
@@ -370,9 +377,9 @@ function ReportEditorForAdmin(NavTabID,Table1,Table2)
 
  self.callback= function (data) 
 	{
-		console.log("Вернулся!");
+		/*console.log("Вернулся!");
 		console.log(data);
-		console.log("end");
+		console.log("end");*/
 
 
 	};

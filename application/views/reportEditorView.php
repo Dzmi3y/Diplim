@@ -33,7 +33,7 @@
 	<div  class="tab-pane fade show active" id="selectReport">
 		<br/>
 		<div class="row">
-			<div class="col-3"></div>
+			<div class="col-2"></div>
 			<div class="col-8 text-center row" >
 
 
@@ -86,32 +86,41 @@
 
 
 	<div  class="tab-pane fade " id="firstTable" >
-		<!-- <dir class="contentForReport"> -->
+		 <dir class="row"> 
 			
 				
-			<div class=" container contentForReport text-center py-3 col-6 " ><h5><strong><p  class="nameReport"></p></strong></h5> </div>
-					
-
+			<div class="col-2"></div>
+			<div>
+				
+				<div class=" container contentForReport text-center py-3 col-6 " ><h5><strong><p  class="nameReport"></p></strong></h5> </div>
+				
 			
 
-			<table id="Editor" class="contentForReport mx-2" >	
-			</table>
-			
-				<button id="DeleteButton"  class="btn btn-dark contentForReport my-1 mx-1">Удалить отмеченные строки</button>
+				<table id="Editor" class="contentForReport mx-2" >	
+				</table>
+				
+					<button id="DeleteButton"  class="btn btn-dark contentForReport my-1 mx-1">Удалить отмеченные строки</button>
 
-				<div class="col-6">
-						<h3 class="contentForReport">Список ошибок</h3>
+					<div class="col-6">
+							<h3 class="contentForReport">Список ошибок</h3>
 
-						<div id="ErrorMessages" class="border contentForReport alert alert-danger  border-danger  " style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
-						</div>
-					
+							<div id="ErrorMessages" class="border contentForReport alert alert-danger  border-danger  " style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
+							</div>
+						
 					</div>
-		<!-- </dir> -->
+			</div>
+
+		 </dir>
 	</div>
 
 	<div class="tab-pane fade" id="secondTable">
 		
 			
+			 <dir class="row"> 
+			
+				
+			<div class="col-2"></div>
+			<div>
 			
 					<div class=" container contentForReport text-center py-3 col-6 " ><h5><strong><p  class="py-2 px-5  nameReport "></p></strong></h5> </div>
 					
@@ -127,7 +136,8 @@
 						<h3 class="contentForReport">Список ошибок</h3>
 						<div id="ErrorMessages2" class="border contentForReport alert alert-danger   border-danger  mx-1" style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
 						</div>
-					</div>		
+					</div>	
+			</div>	
 	</div>
 
 	<div class="tab-pane fade " id="sendReport">

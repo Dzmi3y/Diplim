@@ -2,6 +2,7 @@
    {
     border-collapse: collapse ; /* Убираем двойные границы между ячейками */
     border: 4px solid #000; /* Рамка вокруг таблицы */
+    margin: auto;
    }
 
     th.Editor

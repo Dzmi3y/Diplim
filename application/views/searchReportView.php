@@ -58,6 +58,11 @@
 	<div  class="tab-pane fade" id="firstTable" >
 		<div class="px-2">
 		
+		 <dir class="row"> 
+			
+				
+			<div class="col-2"></div>
+			<div>
 					<div class=" container text-center py-3 col-6 " ><h5><strong><p  class="py-2 px-5 nameReport "></p></strong></h5> </div>
 					
 			
@@ -74,6 +79,7 @@
 						</div>
 					
 				</div>
+			</div>
 		</div>
 
 	</div>
@@ -81,21 +87,27 @@
 	<div class="tab-pane fade" id="secondTable">
 		<div class="px-2">
 			
+			 <dir class="row"> 
+			
+				
+			<div class="col-2"></div>
+			<div>
 					<div class=" container text-center py-3 col-6 " ><h5><strong><p  class="py-2 px-5 nameReport "></p></strong></h5> </div>
 					
 				
-			<div class="container row">
-				<div class="container">
-					<table id="Editor2" class="my-1 mx-1 ">	
-					</table>
-					
-					<button id="DeleteButton2"  class="btn btn-dark  my-1 mx-1">Удалить отмеченные строки</button>
-					<div class="col-6">
-						<h5 >Список ошибок</h5>
+				<div class="container row">
+					<div class="container">
+						<table id="Editor2" class="my-1 mx-1 ">	
+						</table>
+						
+						<button id="DeleteButton2"  class="btn btn-dark  my-1 mx-1">Удалить отмеченные строки</button>
+						<div class="col-6">
+							<h5 >Список ошибок</h5>
 
-						<div id="ErrorMessages2" class="border alert alert-danger  border-danger " style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
+							<div id="ErrorMessages2" class="border alert alert-danger  border-danger " style="height: 100px;  overflow-y: scroll; border-radius: 10px;" >	
+							</div>
+						
 						</div>
-					
 					</div>
 				</div>
 			</div>
@@ -112,7 +124,7 @@
 				<div id="MessageSendError" class="text-center alert alert-danger" role="alert">
 				</div>
 				
-				<button id="SendReport"  class="btn btn-dark  my-1 mx-1"  >Отправить отчет</button>
+				<button id="SendReport"  class="btn btn-dark  my-1 mx-1" > Отправить отчет</button>
 			</dir>
 		</div>
 	</div>
@@ -193,8 +205,8 @@
 	{
 		$('#YearList p').remove();
 		let DataForLists= JSON.parse(jsonDataForLists);
-		console.log("--------------------------------");
-		console.log(DataForLists["Year"][0]);
+		//console.log("--------------------------------");
+		//console.log(DataForLists["Year"][0]);
 
 
 		for(let i in DataForLists["Year"])
@@ -229,6 +241,7 @@
 
 	$('#UpdateListDataBtn').bind('click',function()
 	{
+	   
 		updateDropDownList();
 		objReportEditorForAdmin.UpdateListData(); 
 		$("#YearInput")[0].value="";

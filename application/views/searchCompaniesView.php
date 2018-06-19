@@ -81,17 +81,14 @@
 
 
 </div>
+
 <script type="text/javascript" src="/js/RegionAndDistrict.js"></script>
 
-
 <script type="text/javascript" src="/js/LoaderCompaniesInfo.js"></script>
-
-
 
 <script type="text/javascript">
 	$('#MessageListForSearch').hide();
 	
-
 var objLoaderCompaniesInfo= new	LoaderCompaniesInfo("myTab","CompanyNameInput","SearchButton");
 objLoaderCompaniesInfo.Start();
 

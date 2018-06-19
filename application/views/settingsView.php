@@ -47,13 +47,13 @@
 
 				<div class="text-dark" class="form-group">
 					<label for="InputRegion"><b>Изменить область</b></label>
-					<input type="text" class="form-control" id="InputRegion" placeholder="">	
+					<input type="text" class="form-control" autocomplete="off" list="RegionsList" id="InputRegion" placeholder="">	
 					<div id="ErrorRegionMessage" class="bg-danger text-white"></div>
 				</div>
 
 				<div class="text-dark" class="form-group">
 					<label for="InputDistrict"><b>Изменить район</b></label>
-					<input type="text" class="form-control" id="InputDistrict" placeholder="">	
+					<input type="text" class="form-control" autocomplete="off" list="DistrictsList" id="InputDistrict" placeholder="">	
 					<div id="ErrorDistrictMessage" class="bg-danger text-white"></div>
 				</div>
 
@@ -119,9 +119,6 @@
 				$("#"+IdDatalist).append( '<option value="'+DataForFill[i].value+'">'+DataForFill[i].value+'</option>"');
 			}
 		}
-
-
-
 	}
 
 
@@ -133,7 +130,7 @@
 	$('#InputUNP').bind('change',function(){ Checker('UNP',$("#InputUNP")[0].value);});
 	$('#InputPhone').bind('change',function(){ Checker('Phone',$("#InputPhone")[0].value);});
 	$('#InputNameCompany').bind('change',function(){ Checker('NameCompany',$("#InputNameCompany")[0].value);});
-	$('#InputRegion').bind('change',function(){ Checker('Region',$("#InputRegion")[0].value);});
+	$('#InputRegion').bind('change',function(){ Checker('Region',$("#InputRegion")[0].value,true);});
 	$('#InputDistrict').bind('change',function(){ Checker('District',$("#InputDistrict")[0].value);});
 	$('#InputAddress').bind('change',function(){ Checker('Address',$("#InputAddress")[0].value);});
 
@@ -141,7 +138,7 @@
 	$('#InputPhone').bind('keyup',function(event) {return KeyDownHandler(event,this);});
 
 
-	function ChangeRegion()
+	function ChangeRegion(IsOnChange=false)
 	{
 
 		let value=$("#InputRegion")[0].value;
@@ -152,8 +149,12 @@
 
 			if(Regions[i].value==value)
 			{
-				$('#InputDistrict')[0].value="";
-				$("#ErrorDistrictMessage p").remove();
+				if(IsOnChange)
+				{
+					$('#InputDistrict')[0].value="";
+					$("#ErrorDistrictMessage p").remove();
+				}
+
 				FillDatalist("DistrictsList",Districts,Regions[i].value);
 				FlagCorrect=true;
 				break;
@@ -163,14 +164,13 @@
 				FlagCorrect=false;
 				
 			}
-			
 
 
 		}
 
 		if(!FlagCorrect)
 		{
-			console.log("eerroor");
+			//console.log("eerroor");
 			$("#ErrorRegionMessage").append('<p> Неверное название области! </p>');
 
 		}
@@ -202,6 +202,9 @@
 		}
 		if(!flagCorrect)
 		{
+			console.log(Districts[i].Region);
+			console.log($("#InputRegion")[0].value);
+
 			$("#ErrorDistrictMessage").append('<p> Неверное название района </p>');
 		}
 
@@ -310,7 +313,7 @@
 
 
 
-	function Checker(key,ValueForCheck)
+	function Checker(key,ValueForCheck,IsOnChange=false)
 	{
 
 	
@@ -340,7 +343,7 @@
 			{
 				if(key=="Region")
 				{
-					ChangeRegion();
+					ChangeRegion(IsOnChange);
 				}
 
 				if(key=="District")

@@ -36,13 +36,13 @@ class Authorization
 	public static function SignIn($auth)
 	{
 
-
 		
+		require_once 'AdminConfig.php';
 		
 		
 		header("Content-type: text/txt; charset=UTF-8");
 		
-		if(($auth["email"]=="Admin@gmail.com")&&($auth["pass"]=="12345"))
+		if(($auth["email"]==$Admin["email"])&&($auth["pass"]==$Admin["pass"]))
 		{
 			$_SESSION['Email']=$auth["email"];
 			$_SESSION['IsAdmin']=true;
