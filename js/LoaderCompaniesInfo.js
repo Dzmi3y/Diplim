@@ -7,10 +7,7 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 
 	self.Start=function()
 	{
-		
 		$("#"+IDButtonSearch).bind("click",function(){self.Search();});
-		
-
 		$.ajax(
 			{
 			  type: 'POST',
@@ -19,17 +16,11 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 			  dataType: 'html',
 			  success: self.callbackGetAllCompanies
 			});
-
-
 	}
 
 	self.callbackGetAllCompanies=function(jsonAllCompanies)
 	{
-		
 		 self.AllCompanies = JSON.parse(jsonAllCompanies);
-			
-			
-
 		 for(let i in self.AllCompanies[0] )
 		 {
 		 	if((i!="ID")&&(i!="Password"))
@@ -41,13 +32,6 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 
 		 self.CreateNavTab(self.AllCompanies);
 		 self.LoadSearchList("NameCompany");
-
-		// 
-
-		// $('#'+NavTabID)
-
-
-
 	}
 
 
@@ -86,24 +70,13 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 		 	$('#'+NavTabID).append('<li id="li'+idSubTab+'" class="nav-item "><a  id="a'+idSubTab+'" class="'+classes+'"  data-toggle="tab">'+LoadedArray[i]["NameCompany"]+'</a></li>');
 
 			$('#li'+idSubTab).bind('click',function(){self.LoadInfo(i,LoadedArray);});
-			
-			
-
-
-		 	//NameCompany
 		 }
 		 self.LoadInfo(0,LoadedArray);
-		 
-
-
-
-			
 		}
 		else
 		{
 			$('#MessageListForSearch').append("<p>Предприятие не найдено!</p>");
 			console.log("++++++++++++");
-
 		}
 	}
 
@@ -111,7 +84,6 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 	self.LoadSearchList= function(NameField)
 	{
 		$("#SearchList option").remove();
-		//console.log(NameField);
 		self.CurrentSearchField=NameField;
 		for(let i in self.AllCompanies)
 		{
@@ -146,22 +118,11 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 		  dataType: 'html',
 		  success: self.GetReportsId
 		});
-
-		
-
-		
-
-
-
 	}
 
 	self.GetReportsId =function(jsonReportsId)
 	{
 		let ArrayReportsId= JSON.parse(jsonReportsId);
-		//console.log("GetReportsId33333");
-
-		//console.log(ReportsId);
-
 		for(let i in ArrayReportsId)
 		{
 			$("#ListReports").append("<div><a href='/adminPersonalCabinet/searchReport#aTab"+ArrayReportsId[i]["ID"]+"'>"+ArrayReportsId[i]["Year"]+"</a></div>");
@@ -182,11 +143,9 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 			if(SearchKey=="")
 			{
 				result.push(self.AllCompanies[i]);
-
 			}
 			else
 			{
-
 				if(self.AllCompanies[i][self.CurrentSearchField]==SearchKey)
 				{
 					
@@ -198,8 +157,4 @@ function LoaderCompaniesInfo(NavTabID,IDSearcKey,IDButtonSearch)
 		console.log(result);
 		self.CreateNavTab(result);
 	}
-
-
-
-	
 }

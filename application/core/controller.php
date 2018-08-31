@@ -1,10 +1,6 @@
 <?php
-/**
- * base class for controllers
- */
  class Controller 
  {
- 	
  	public $view;
  	public $model;
 
@@ -13,15 +9,9 @@
  		$this->view= new View();
  	}
 
-
- 	// method for overriding
  	public function actionIndex()
  	{
 
  	}
-
-
  } 
-
-
 ?>

@@ -5,47 +5,34 @@ class Registration
 	public static function Register($RegistrationData)
 	{
 	session_start();
-	//include "ConnectionDB/ConnectDB.php"; 
-	//throw new Exception("Error Processing Request", 1);
-	
+	$queryCheckEmailAndCompany = "SELECT ID FROM Companies WHERE Email='".$RegistrationData->Email."';";
+	$CheckEmail=ConnectDB::SendQuery($queryCheckEmailAndCompany);
 
-		//echo  $RegistrationData;
-		$queryCheckEmailAndCompany = "SELECT ID FROM Companies WHERE Email='".$RegistrationData->Email."';";
-		//echo $queryCheckEmailAndCompany;
-		$CheckEmail=ConnectDB::SendQuery($queryCheckEmailAndCompany);
-		//echo ;
-		if(count( $CheckEmail)>0) 
-		{
-			$Message["Error"]="Ошибка! Пользователь с данным электронным адресом уже зарегестрирован.";
-			//echo $Message["Error"];
-			return '{"Error":"Ошибка! Пользователь с данным электронным адресом уже зарегестрирован."}';
-		}
+	if(count( $CheckEmail)>0) 
+	{
+		$Message["Error"]="Ошибка! Пользователь с данным электронным адресом уже зарегестрирован.";
+		return '{"Error":"Ошибка! Пользователь с данным электронным адресом уже зарегестрирован."}';
+	}
 
-	  $PassValue=$RegistrationData->Password;
-	  $RegistrationData->Password=md5(md5($PassValue));
-	  $query= self::getQuery($RegistrationData);
-	 
+	$PassValue=$RegistrationData->Password;
+	$RegistrationData->Password=md5(md5($PassValue));
+	$query= self::getQuery($RegistrationData);
 
-	  ConnectDB::SendQuery($query);
-	  return(true);
+	ConnectDB::SendQuery($query);
+	return(true);
 
 	}
 
 
 	public static function getQuery($RegistrationData)
 	{
-
 		$columnsDB="";
 		$valuesDB="";
 
-		
-
 		foreach ($RegistrationData as $key => $value) 
 		{
-			
 			if($columnsDB=="")
 			{
-				//if(($key=="Email")||( $key=="Password")|| ($key=="NameCompany")|| ($key=="Address"))
 				if(($key!="UNP")&&($key!="Phone"))
 				{
 					$valuesDB="'".$value."'";	
@@ -56,11 +43,9 @@ class Registration
 				}
 
 				$columnsDB=$key;
-				
 			}
 			else
 			{
-				//if(($key=="Email")||( $key=="Password")|| ($key=="NameCompany")|| ($key=="Address"))
 				if(($key!="UNP")&&($key!="Phone"))
 				{
 					$valuesDB.=", '".$value."'";	
@@ -72,8 +57,6 @@ class Registration
 				$columnsDB.=", ".$key;
 				
 			}
-			//echo $value;
-
 		}
 
 		$query= "INSERT INTO Companies (".$columnsDB.") VALUES(".$valuesDB.");";
@@ -89,14 +72,9 @@ class Registration
 		if($SettingData->Email!=$_SESSION['Email'])
 		{
 			$queryCheckEmailAndCompany = "SELECT ID FROM Companies WHERE Email='".$SettingData->Email."';";
-			//echo $queryCheckEmailAndCompany;
 			$CheckEmail=ConnectDB::SendQuery($queryCheckEmailAndCompany);
-			//echo ;
 			if(count( $CheckEmail)>0) 
 			{
-
-				//$Message["Error"]="Ошибка! Пользователь с данным электронным адресом уже зарегестрирован.";
-				//echo $Message["Error"];
 				return '{"Error":"Ошибка! Пользователь с данным электронным адресом уже зарегестрирован."}';
 			}
 		}
@@ -110,7 +88,6 @@ class Registration
 		$query = self::getQueryChangeSetting($SettingData,$IDCompany);
 		ConnectDB::SendQuery($query);
 	 	return(true);
-
 	}
 
 
@@ -121,8 +98,6 @@ class Registration
 		$valuesDB = "";
 		foreach ($SettingData as $key => $value) 
 		{
-
-			//if(($key=="Email")||( $key=="Password")|| ($key=="NameCompany")|| ($key=="Address"))
 			if(!(($key=="Password")&&(empty($value))))
 			{
 				if(($key!="UNP")&&($key!="Phone"))
@@ -133,7 +108,6 @@ class Registration
 				{
 					$valuesDB=$value;
 				}
-
 
 				if($flagFirst)
 				{
@@ -150,53 +124,14 @@ class Registration
 		}
 
 		$query= "UPDATE Companies SET ".$DataForUpdate." WHERE ID=".$IDCompany;
-		//echo $query;
 		return $query;
 	}
 
 
 	public static function LoadRegisterData($CompanyID)
 	{
-
 		$query = "SELECT * FROM  Companies WHERE ID=".$CompanyID;
 		return json_encode( ConnectDB::SendQuery($query));
-
 	} 
-
-
-
 }
-
-	
-		//include 'ConnectionDB/InfoForConnectingDB.php';
-	
-
-		// подключаем скрипт
- 
-		// подключаемся к серверу
-		
-		
-		
-		
-
-	
-
-
-
-
-
-
-
-
-
-	
-
-
-	
-
-
-
-
-
-
 ?>

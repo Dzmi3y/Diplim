@@ -1,7 +1,4 @@
 <?php
-/**
-* Singltone class for routers
-*/
 class Route 
 {
 	
@@ -12,22 +9,12 @@ class Route
 		$actionName='index';
 
 		$routes= explode('/', $_SERVER['REQUEST_URI']);
-		
 
-
-		/**
-		*Get controller name
-		*/
 		if (!empty($routes[1]))
 		{
 			$controllerName=$routes[1];
-		
 		}
 
-
-		/**
-		*Get action name
-		*/
 		if (!empty($routes[2]))
 		{
 			$actionName=$routes[2];
@@ -49,6 +36,7 @@ class Route
 				header("Location: http://".$_SERVER['HTTP_HOST']."/main");
 			}
 		}
+
 		if(($controllerName=="AdminPersonalCabinet")||($controllerName=="adminPersonalCabinet"))
 		{
 			if(empty($_SESSION['IsAdmin']))
@@ -57,37 +45,18 @@ class Route
 			}
 		}
 
-		/**
-		* Add prefixes
-		*/
 		$modelName='Model'.ucfirst($controllerName);
 		$controllerName='Controller'.ucfirst($controllerName);
 		$actionName='action'.ucfirst($actionName);
 
-
-
-		/**
-		*Add file with controller class
-		*/
 		$controllerFile=$controllerName.'.php';
 		$controllerPath=realpath(__DIR__ . '/..')."/controllers/".$controllerFile;
 		Route::AddFileWithClass($controllerPath);
 
-
-
-		/**
-		*Add file with model class
-		*/
-		
 		$modelFile=$modelName.'.php';
 		$modelPath=realpath(__DIR__ . '/..')."/models/".$modelFile;
 		Route::AddFileWithClass($modelPath,true);
 
-
-
-		/**
-		*Create controller
-		*/
 		$controller= new $controllerName;
 		$action = $actionName;
 
@@ -101,29 +70,22 @@ class Route
 			// need to throw an exception
 			Route::ErrorPage404();
 		}
-
 	}
 
 	function AddFileWithClass($fileDirectory,$isModel=false)
 	{
-
-
 		if(file_exists($fileDirectory))
 		{
-
 			include $fileDirectory;
 		}
 		else
 		{
-			// need to throw an exception
 			if(!$isModel)
 			{
 				Route::ErrorPage404();
 			}
 		}
 	}
-
-
 
 	function ErrorPage404()
 	{
@@ -133,5 +95,4 @@ class Route
 		header('Location:'.$host.'404');
     }
 }
-
 ?>

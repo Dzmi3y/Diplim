@@ -1,10 +1,6 @@
 <?php
-/**
-* 
-*/
 class ControllerContacts extends Controller
 {
-	
 	public function actionIndex()
 	{
 		$this->view->title="Контакты";
@@ -12,7 +8,4 @@ class ControllerContacts extends Controller
 		$this->view->generate('contactsView.php','templateView.php');
 	} 
 }
-
-
-
 ?>

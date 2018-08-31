@@ -1,13 +1,8 @@
 <?php
-
-
 class LoaderReports 
 {
-	
 	public static function Load($ID_Report)
 	{
-
-		
 		$QueryTable1= "SELECT * FROM WasteTable1 WHERE  ReportID=".$ID_Report;	
 		$QueryTable2= "SELECT * FROM WasteTable2 WHERE  ReportID=".$ID_Report;
 
@@ -19,11 +14,6 @@ class LoaderReports
 		$Report["Table2"]=$WasteTable2;
 
 		return json_encode($Report);
-
-
-		
 	}
 }
-
-
 ?>

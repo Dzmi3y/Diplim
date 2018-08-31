@@ -1,10 +1,6 @@
 <?php
-/**
-* 
-*/
 class ControllerPersonalCabinet extends Controller
 {
-	
 	public function actionIndex()
 	{
 		$this->view->title="Личный кабинет";
@@ -14,7 +10,6 @@ class ControllerPersonalCabinet extends Controller
 
 	public function actionNewReport()
 	{
-
 		$this->view->title="Новый отчет";
 		$this->view->nameCurrentPage="newReport";
 		$this->view->generate('newReportView.php','templatePersonalCabinet.php');

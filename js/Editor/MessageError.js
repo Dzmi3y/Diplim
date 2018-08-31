@@ -14,7 +14,6 @@ function MessageErrorManager(idTable,idMessagelist)
 		let idMessage= "Error"+idErrorElement;
 		console.log("eerrrooorr");
 		console.log(this);
-		//NumberRowError++;
 
 		if(!($('#'+idMessage).length))
 		{
@@ -40,16 +39,8 @@ function MessageErrorManager(idTable,idMessagelist)
 				}
 			}
 
-			/*if(ArrayErrorMessages[idMessage].length==0) 
-			{
-				ArrayErrorMessages[idMessage]= new Array();
-				
-
-			}*/
-
 			ArrayErrorMessages[idMessage]= {"NumberRow":NumberRowError,"ErrorText":ErrorMessag};
 
-			//ArrayErrorMessages[NumberRowError][idMessage]=ErrorMessag;
 			self.AddTitleRow(idMessage,NumberRowError);
 
 
@@ -113,8 +104,6 @@ function MessageErrorManager(idTable,idMessagelist)
 	{
 		
 		let NameRow= idTable+"EditRow"+NumberRow;
-		//console.log("Add title "+NumberRow);
-		//console.log($("#"+NameRow)[0]);
 		let LastErrorText=$("#"+NameRow).attr("title");
 		if (!LastErrorText) LastErrorText="";
 		let AllText =  LastErrorText+ArrayErrorMessages[idMessage].ErrorText+"\r";
@@ -129,8 +118,6 @@ function MessageErrorManager(idTable,idMessagelist)
 		let NumberRow= ArrayErrorMessages[idMessage].NumberRow;
 
 		let NameRow=idTable+"EditRow"+NumberRow;
-		//console.log("Remove title "+NameRow);
-		//console.log($("#"+NameRow)[0]);
 		let AllText =  $("#"+NameRow).attr("title");
 
 		let DeleteText= ArrayErrorMessages[idMessage].ErrorText+"\r";

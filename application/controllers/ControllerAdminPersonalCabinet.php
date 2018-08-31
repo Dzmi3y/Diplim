@@ -1,7 +1,4 @@
 <?php
-/**
-* 
-*/
 class ControllerAdminPersonalCabinet extends Controller
 {
 	
@@ -26,10 +23,4 @@ class ControllerAdminPersonalCabinet extends Controller
 	} 
 
 }
-
-
-
-
-
-
 ?>

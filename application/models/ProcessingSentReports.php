@@ -2,15 +2,11 @@
 <?php
 class ProcessingSentReports
 {
-	
 	public static function SaveReports($report)
 	{
-
-
 		$currentYear = date('Y');
 		$currentMonth=date('m');
 		$currentDay=date('d');
-
 
 		$insertYear;
 		if($currentMonth>1)
@@ -24,10 +20,6 @@ class ProcessingSentReports
 			
 		}
 
-
-
-
-
 		$CurrentDate=str_replace(' ','',date('Y-m-d'));
 		$queryAddReport= "INSERT INTO Reports (CompanyID,Year,Date_change) VALUES(".$_SESSION['ID'].",". $insertYear.",'".$CurrentDate."');";
 		$queryGetIdReport= "SELECT ID FROM Reports WHERE  CompanyID = ".$_SESSION['ID']." AND Year=".$insertYear;
@@ -38,67 +30,43 @@ class ProcessingSentReports
 		{
 			ConnectDB::SendQuery($queryAddReport);
 			$ID=ConnectDB::SendQuery($queryGetIdReport);
-
 		}
 		else
 		{
-
-			
+	
 		}
 
-
-			self::DeleteRows("WasteTable1",$report['table1']["Delete"]);
-			self::DeleteRows("WasteTable2",$report['table2']["Delete"]);
-
+		self::DeleteRows("WasteTable1",$report['table1']["Delete"]);
+		self::DeleteRows("WasteTable2",$report['table2']["Delete"]);
 
 		$st= self::SaveTablesInDB("WasteTable1",$report['table1']["Add"],$ID[0]["ID"]);
-
 		$st= self::SaveTablesInDB("WasteTable2",$report['table2']["Add"],$ID[0]["ID"]);
-
-
-
-
-		//return json_encode($ID[0]["ID"]);  
-
-		//return json_encode($report['table1']['1']['c3']);
 		return $st;
-		//return "yo";
 	}
 
 
-public static function SaveReportsAdmin($reportAdmin)
-{
+	public static function SaveReportsAdmin($reportAdmin)
+	{
 
-	self::DeleteRows("WasteTable1",$reportAdmin['table1']["Delete"]);
-	self::DeleteRows("WasteTable2",$reportAdmin['table2']["Delete"]);
+		self::DeleteRows("WasteTable1",$reportAdmin['table1']["Delete"]);
+		self::DeleteRows("WasteTable2",$reportAdmin['table2']["Delete"]);
 
-	self::SaveTablesInDB("WasteTable1",$reportAdmin['table1']["Add"],$reportAdmin["IDReport"]);
+		self::SaveTablesInDB("WasteTable1",$reportAdmin['table1']["Add"],$reportAdmin["IDReport"]);
 
-	$s=self::SaveTablesInDB("WasteTable2",$reportAdmin['table2']["Add"],$reportAdmin["IDReport"]);
-
-
-	return $s;
-}
+		$s=self::SaveTablesInDB("WasteTable2",$reportAdmin['table2']["Add"],$reportAdmin["IDReport"]);
 
 
-
-
-
-
-
-
+		return $s;
+	}
 
 
 	public static function DeleteRows($nameTableInDB, $tableId)
 	{
-		//echo "ddellllleeeetttee";
 		foreach ( $tableId as $key => $value) 
 		{
 			$queryDelete="DELETE FROM `".$nameTableInDB."` WHERE ID=".$value;
 			ConnectDB::SendQuery($queryDelete);
-			//echo $queryDelete;
 		}
-
 	}
 
 
@@ -108,15 +76,9 @@ public static function SaveReportsAdmin($reportAdmin)
 	{
 		$queryAllId= "SELECT ID FROM ". $nameTableInDB;
 		$AllID = ConnectDB::SendQuery($queryAllId);
-		/////// доделать!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		$s='';
-		//echo json_encode($AllID[0]["ID"]);
-		//echo "----------------------------------------------";
-		//echo $table;
 		foreach ($table as $key => $value) 
 		{
-
-
 			$nameColumn="";
 			$valueCells="";
 			$flagIsNewRow=true;
@@ -124,12 +86,8 @@ public static function SaveReportsAdmin($reportAdmin)
 			$ID_Row="";
 			if(!empty($value))
 			{
-
 				foreach ($value as $key2 => $value2) 
 				{
-
-
-
 					if( ($key2=="ID")||($key2=="ReportID"))
 					{
 						if($key2=="ID") 
@@ -140,7 +98,6 @@ public static function SaveReportsAdmin($reportAdmin)
 					}
 					else
 					{
-
 						if($flagIsNewRow)
 						{
 							if(empty($value2)) $value2="null";
@@ -200,8 +157,7 @@ public static function SaveReportsAdmin($reportAdmin)
 								else
 								{
 									$valueForUpdate.=",`".$key2."` = ".$value2;
-								}
-								
+								}	
 							}
 
 						}				
@@ -220,24 +176,10 @@ public static function SaveReportsAdmin($reportAdmin)
 				{
 					$query=" UPDATE `". $nameTableInDB."` SET ".$valueForUpdate." WHERE ID=".  $ID_Row;
 				}
-				//UPDATE `Companies` SET `UNP`=666 WHERE ID= 3
-
-				//echo $query."                                                                                          ";
 				ConnectDB::SendQuery($query);
-
 				$s.= $query."    ";
-
 			}
 		}
-
- 	
-
-	
-
-
-
-
-
 		return $s;
 	}
 	

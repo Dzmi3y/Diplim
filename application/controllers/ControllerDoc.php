@@ -1,10 +1,6 @@
 <?php
-/**
-* 
-*/
 class ControllerDoc extends Controller
 {
-	
 	public function actionIndex()
 	{
 		$this->view->title="Документация";
@@ -12,7 +8,4 @@ class ControllerDoc extends Controller
 		$this->view->generate('docView.php','templateView.php');
 	} 
 }
-
-
-
 ?>

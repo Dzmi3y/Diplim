@@ -1,10 +1,6 @@
 <?php
-/**
-* 
-*/
 class ControllerMain extends Controller
 {
-	
 	public function actionIndex()
 	{
 		$this->view->title="Главная";
@@ -12,7 +8,4 @@ class ControllerMain extends Controller
 		$this->view->generate('mainView.php','templateView.php');
 	} 
 }
-
-
-
 ?>
